@@ -1,3 +1,5 @@
+import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+
 export type OakQuoteRow = {
   code: string;
   finish: string;
@@ -31,7 +33,7 @@ export function OakQuoteTable({ sectionLabel, rows }: OakQuoteTableProps) {
       <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[#2b2b2b]">
         {sectionLabel}
       </p>
-      <div className="min-w-0 overflow-x-auto overflow-y-hidden rounded-xl border border-[rgba(43,43,43,0.1)]">
+      <ResponsiveTableFrame className="rounded-xl border border-[rgba(43,43,43,0.1)] overflow-y-hidden">
         <table className="w-full min-w-[320px] border-collapse text-left">
           <thead>
             <tr className="bg-[#1c3a13] text-[#d3fa99]">
@@ -80,7 +82,7 @@ export function OakQuoteTable({ sectionLabel, rows }: OakQuoteTableProps) {
             })}
           </tbody>
         </table>
-      </div>
+      </ResponsiveTableFrame>
     </div>
   );
 }

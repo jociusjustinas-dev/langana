@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { AlertTriangle, Check, X } from "lucide-react";
 
+import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+
 type ComparisonTone = "yes" | "no" | "mid";
 
 type ComparisonCell = { tone: ComparisonTone; text: string };
@@ -105,7 +107,7 @@ export function AluminumLangaiComparisonSection({ id = "palyginimas-aliuminis" }
         </div>
 
         <div className="w-full min-w-0">
-          <div className="w-full overflow-x-auto rounded-2xl">
+          <ResponsiveTableFrame className="rounded-2xl">
             <div className="w-full min-w-0 space-y-0 max-lg:min-w-[540px]">
               <div className="grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
                 <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">Savybė</span>
@@ -127,7 +129,7 @@ export function AluminumLangaiComparisonSection({ id = "palyginimas-aliuminis" }
                 </div>
               ))}
             </div>
-          </div>
+          </ResponsiveTableFrame>
         </div>
       </div>
     </section>

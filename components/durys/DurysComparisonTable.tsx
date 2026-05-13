@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { AnimatedSection } from "@/components/animations/AnimatedSection";
+import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
 
 type DurysComparisonColumn = {
   key: string;
@@ -65,7 +66,7 @@ export function DurysComparisonTable({
         </div>
 
         <div className="w-full min-w-0">
-          <div className="min-w-0 w-full overflow-x-auto rounded-2xl">
+          <ResponsiveTableFrame className="rounded-2xl">
             <div className="w-full min-w-0 space-y-0 max-lg:min-w-[880px]">
               <div
                 className="grid gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10"
@@ -95,7 +96,7 @@ export function DurysComparisonTable({
                 </div>
               ))}
             </div>
-          </div>
+          </ResponsiveTableFrame>
         </div>
       </div>
     </AnimatedSection>

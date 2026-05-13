@@ -6,6 +6,7 @@ import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
 import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
+import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 
 const HERO_IMAGE = "/images/durys.png";
@@ -171,7 +172,7 @@ export function SpecialiosPaskirtiesDurysSalesPage() {
             </p>
           </div>
 
-          <div className="min-w-0 w-full overflow-x-auto rounded-2xl">
+          <ResponsiveTableFrame className="rounded-2xl">
             <div className="w-full min-w-0 space-y-0 max-lg:min-w-[560px]">
               <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
                 <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">Informacija</span>
@@ -189,7 +190,7 @@ export function SpecialiosPaskirtiesDurysSalesPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </ResponsiveTableFrame>
         </div>
       </section>
 

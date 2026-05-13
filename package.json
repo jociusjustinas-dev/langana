@@ -9,7 +9,9 @@
     "lint": "eslint",
     "audit:images": "node scripts/audit-product-images.mjs",
     "audit:images:warn": "node scripts/audit-product-images.mjs --no-fail",
-    "research:product-media": "node scripts/product-media-research.mjs --out reports/product-media-research.md"
+    "research:product-media": "node scripts/product-media-research.mjs --out reports/product-media-research.md",
+    "research:product-photos": "node scripts/product-photo-research.mjs --out reports/product-photo-research.md",
+    "research:product-photos:download": "node scripts/product-photo-research.mjs --out reports/product-photo-research.md --download"
   },
   "dependencies": {
     "gsap": "^3.15.0",

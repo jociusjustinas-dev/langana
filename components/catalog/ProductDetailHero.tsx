@@ -104,23 +104,23 @@ export function ProductDetailHero({
               </ul>
             ) : null}
 
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  className="inline-flex w-fit items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-[#f6f7ff] transition hover:bg-[#1e31a8] md:px-[30px]"
-                  href={quoteHref ?? "/kontaktai#uzklausa"}
-                >
-                  Gauti pasiūlymą
-                </Link>
-                {learnMoreHref ? (
+              <div className="flex flex-col gap-2">
+                <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
                   <Link
-                    className="inline-flex w-fit items-center justify-center rounded-full border-2 border-[#263cd0] bg-transparent px-8 py-[13px] text-[15px] font-semibold text-[#263cd0] transition hover:bg-[#263cd0]/10"
-                    href={learnMoreHref}
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#f6f7ff] transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] md:px-[30px] md:py-[15px] md:text-[15px] md:leading-normal"
+                    href={quoteHref ?? "/kontaktai#uzklausa"}
                   >
-                    Sužinoti daugiau
+                    Gauti pasiūlymą
                   </Link>
-                ) : null}
-              </div>
+                  {learnMoreHref ? (
+                    <Link
+                      className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border-2 border-[#263cd0] bg-transparent px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#263cd0] transition hover:bg-[#263cd0]/10 sm:px-5 sm:text-[14px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
+                      href={learnMoreHref}
+                    >
+                      Sužinoti daugiau
+                    </Link>
+                  ) : null}
+                </div>
               <p className="text-sm text-[#16216b]">
                 Nemokamai · Atsakome per 24 val. · Jokių įsipareigojimų
               </p>

@@ -41,6 +41,8 @@ yarn-error.log*
 # vercel
 .vercel
 
-# generated research (regenerate: npm run research:product-media)
+# generated research (regenerate: npm run research:product-media / research:product-photos)
 /reports/product-media-research.md
+/reports/product-photo-research.md
+/reports/yawal-product-images/
 

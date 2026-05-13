@@ -11,6 +11,7 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
+import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 const DURYS_IMAGES = {
   hero: "/images/Durys/ChatGPT Image May 7, 2026, 03_18_07 PM (1).png",
@@ -131,7 +132,7 @@ function DurysFaq() {
             <span className="text-[#263cd0]">Jūsų klausimai – </span>
             <span className="block text-[#16216b]">aiškūs atsakymai</span>
           </h2>
-          <div className="flex flex-col gap-2.5">
+          <div className="hidden flex-col gap-2.5 md:flex">
             <div className="flex gap-[18px] py-1.5">
               <Phone aria-hidden className="mt-0.5 size-6 shrink-0 text-[#16216b]" strokeWidth={2} />
               <div>
@@ -202,15 +203,15 @@ export function DurysCategoryPage() {
                 dizaino ir objekto reikalavimus.
               </p>
               <div className="flex flex-col gap-2">
-                <div className="flex flex-wrap gap-3">
+                <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
                   <Link
-                    className="inline-flex w-fit shrink-0 items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-white transition hover:bg-[#1e31a8]"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] md:px-8 md:py-[15px] md:text-[15px] md:leading-normal"
                     href="/kontaktai#uzklausa"
                   >
                     Gauti pasiūlymą
                   </Link>
                   <Link
-                    className="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-[#263cd0] bg-white px-8 py-[13px] text-[15px] font-semibold text-[#263cd0] transition hover:bg-[#f6f7ff]"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border border-[#263cd0] bg-white px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#263cd0] transition hover:bg-[#f6f7ff] sm:px-5 sm:text-[14px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
                     href="#durys-tipai"
                   >
                     Peržiūrėti durų tipus
@@ -315,15 +316,15 @@ export function DurysCategoryPage() {
                     ))}
                   </ul>
                 </div>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
                   <Link
-                    className="inline-flex w-fit shrink-0 items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-white transition hover:bg-[#1e31a8]"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] md:px-8 md:py-[15px] md:text-[15px] md:leading-normal"
                     href={activeType.href}
                   >
                     Sužinoti daugiau
                   </Link>
                   <Link
-                    className="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-[#263cd0] bg-transparent px-8 py-[13px] text-[15px] font-semibold text-[#263cd0] transition hover:bg-[#263cd0] hover:text-white"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border border-[#263cd0] bg-transparent px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#263cd0] transition hover:bg-[#263cd0] hover:text-white sm:px-5 sm:text-[14px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
                     href="/kontaktai#uzklausa"
                   >
                     Gauti pasiūlymą
@@ -379,8 +380,9 @@ export function DurysCategoryPage() {
             </p>
           </div>
 
-          <div className="min-w-0 w-full overflow-x-auto rounded-2xl">
-            <div className="w-full min-w-0 space-y-0 max-lg:min-w-[520px]">
+          <div className="min-w-0 w-full">
+            <ResponsiveTableFrame className="rounded-2xl">
+              <div className="w-full min-w-0 space-y-0 max-lg:min-w-[520px]">
               <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
                 <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">Poreikis</span>
                 <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">
@@ -399,6 +401,7 @@ export function DurysCategoryPage() {
                 </div>
               ))}
             </div>
+            </ResponsiveTableFrame>
           </div>
         </div>
       </AnimatedSection>

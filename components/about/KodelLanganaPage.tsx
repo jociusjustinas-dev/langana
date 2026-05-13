@@ -173,15 +173,15 @@ export function KodelLanganaPage() {
                 <span className="text-[#16216b]">Langana?</span>
               </h1>
               <div className="mt-6 flex flex-col gap-2">
-                <div className="flex flex-wrap gap-3">
+                <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
                   <Link
-                    className="inline-flex w-fit shrink-0 items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-white transition hover:bg-[#1e31a8]"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] md:px-8 md:py-[15px] md:text-[15px] md:leading-normal"
                     href="/kontaktai#uzklausa"
                   >
                     Gauti pasiūlymą
                   </Link>
                   <Link
-                    className="inline-flex w-fit shrink-0 items-center justify-center rounded-full border border-[#263cd0] bg-white px-8 py-[13px] text-[15px] font-semibold text-[#263cd0] transition hover:bg-[#f6f7ff]"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border border-[#263cd0] bg-white px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#263cd0] transition hover:bg-[#f6f7ff] sm:px-5 sm:text-[14px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
                     href="#sprendimai"
                   >
                     Peržiūrėti sprendimus

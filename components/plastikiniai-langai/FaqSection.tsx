@@ -34,7 +34,7 @@ export function FaqSection({
             <span className="text-[#263cd0]">{headingLead}</span>
             <span className="block text-[#16216b]">{headingRest}</span>
           </h2>
-          <div className="flex flex-col gap-2.5">
+          <div className="hidden flex-col gap-2.5 md:flex">
             <div className="flex gap-[18px] py-1.5">
               <Phone aria-hidden className="mt-0.5 size-6 shrink-0 text-[#16216b]" strokeWidth={2} />
               <div>
