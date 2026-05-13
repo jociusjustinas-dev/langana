@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 
 import { ClientCookieConsent } from "@/components/legal/ClientCookieConsent";
 import { MobileStickyCta } from "@/components/home/MobileStickyCta";
@@ -59,7 +60,17 @@ export default function RootLayout({
 }>) {
   return (
     <html className="m-0 h-full antialiased [scrollbar-gutter:stable]" lang="lt">
+      <head>
+        <link href="https://widget.meetvolley.com/static/css/widget.css" rel="stylesheet" />
+      </head>
       <body className={`${jakarta.className} m-0 flex min-h-full flex-col p-0`}>
+        <Script
+          data-widget="https://api.meetvolley.com/api/public/get-widget/3224580a-a434-4fcd-8c78-1f44a38077e2"
+          id="meetvolley-widget"
+          src="https://widget.meetvolley.com/widget.js"
+          strategy="beforeInteractive"
+          type="text/javascript"
+        />
         <script
           // eslint-disable-next-line react/no-danger -- JSON-LD structured data
           dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSON_LD) }}
