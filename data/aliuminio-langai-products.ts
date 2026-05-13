@@ -1,6 +1,7 @@
 import type { ProductCardProps } from "@/components/catalog/ProductCard";
 
 import { catalogProductSlugFromHref } from "@/data/catalog";
+import { aluminumLangaiYawalProductImages } from "@/lib/figma-assets";
 
 /** TM 102HI — pilnas kortelės / vidinio puslapio produktas. */
 export const tm102hiSistemaProduct: ProductCardProps = {
@@ -38,7 +39,8 @@ export const tm77hiSistemaProduct: ProductCardProps = {
   energyClass: "Moderniems pastatams",
   description:
     "Saugi ir moderni Yawal aliuminio sistema, skirta langams, durims ir didesnėms konstrukcijoms. Padeda pasiekti gerus šilumos, garso izoliacijos, vandens nepralaidumo ir atsparumo vėjui parametrus.",
-  image: "/images/products/tm-77hi-sistema.png",
+  image: aluminumLangaiYawalProductImages.tm77hi,
+  gallery: [aluminumLangaiYawalProductImages.tm77hi],
   operationTypes: [
     { label: "Varstomas langas", icon: "Square" },
     { label: "Atverčiamas langas", icon: "PanelLeftOpen" },
@@ -66,7 +68,8 @@ export const tm74hiSistemaProduct: ProductCardProps = {
   energyClass: "Universalus sprendimas",
   description:
     "Aliuminio langų, durų ir vitrinų sistema su labai gerais šilumos izoliacijos parametrais. Tinka gyvenamiesiems, viešosios paskirties ir pramoniniams pastatams.",
-  image: "/images/products/tm-74hi-sistema.png",
+  image: aluminumLangaiYawalProductImages.tm74hi,
+  gallery: [aluminumLangaiYawalProductImages.tm74hi],
   operationTypes: [
     { label: "Varstomas langas", icon: "Square" },
     { label: "Atverčiamas langas", icon: "PanelLeftOpen" },
@@ -94,7 +97,8 @@ export const tm62SistemaProduct: ProductCardProps = {
   energyClass: "3 kamerų sistema",
   description:
     "Trijų kamerų aliuminio profilių sistema modernioms langų ir durų konstrukcijoms su šilumos izoliacija. Tinka gyvenamiesiems ir viešosios paskirties pastatams, kuriuose svarbus tvirtumas, funkcionalumas ir intensyvus naudojimas.",
-  image: "/images/products/tm-62-sistema.png",
+  image: aluminumLangaiYawalProductImages.tm62,
+  gallery: [aluminumLangaiYawalProductImages.tm62],
   operationTypes: [
     { label: "Varstomas langas", icon: "Square" },
     { label: "Atverčiamas langas", icon: "PanelLeftOpen" },
@@ -122,7 +126,8 @@ export const pi50nSistemaProduct: ProductCardProps = {
   energyClass: "Universali sistema",
   description:
     "Išplėsta aliuminio profilių sistema, skirta įvairių tipų langams, durims, vitrinoms, pertvaroms ir prieangiams su šilumos izoliacija.",
-  image: "/images/products/pi-50n-sistema.png",
+  image: aluminumLangaiYawalProductImages.pi50n,
+  gallery: [aluminumLangaiYawalProductImages.pi50n],
   operationTypes: [
     { label: "Langai", icon: "Square" },
     { label: "Durys", icon: "DoorOpen" },
@@ -150,7 +155,8 @@ export const tm62hiSistemaProduct: ProductCardProps = {
   energyClass: "Šiltesnė TM 62 versija",
   description:
     "Aliuminio konstrukcijų sistema su šilumos izoliacija langams ir durims. Tinka gyvenamiesiems bei viešosios paskirties pastatams, kuriuose svarbus sandarumas, patikimumas ir intensyvus naudojimas.",
-  image: "/images/products/tm-62hi-sistema.png",
+  image: aluminumLangaiYawalProductImages.tm62hi,
+  gallery: [aluminumLangaiYawalProductImages.tm62hi],
   operationTypes: [
     { label: "Varstomas langas", icon: "Square" },
     { label: "Atverčiamas langas", icon: "PanelLeftOpen" },

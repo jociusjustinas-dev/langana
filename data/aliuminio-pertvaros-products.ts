@@ -1,5 +1,6 @@
 import type { ProductCardProps } from "@/components/catalog/ProductCard";
 import { catalogProductSlugFromHref } from "@/data/catalog";
+import { aluminumPartitionProductImages } from "@/lib/figma-assets";
 
 export const pbi50nSistemaProduct: ProductCardProps = {
   id: "pbi-50n-sistema",
@@ -8,8 +9,8 @@ export const pbi50nSistemaProduct: ProductCardProps = {
   energyClass: "Vidaus pertvaroms",
   description:
     "Aliuminio profilių sistema šilumos izoliacijos nereikalaujančioms vidinėms pertvaroms, švytuoklinėms durims, aptarnavimo langeliams ir atitvertoms patalpų dalims.",
-  image: "/images/products/pbi-50n-sistema.png",
-  gallery: ["/images/products/pbi-50n-sistema.png"],
+  image: aluminumPartitionProductImages.pbi50n,
+  gallery: [aluminumPartitionProductImages.pbi50n],
   operationTypes: [
     { label: "Vidinės pertvaros", icon: "PanelTop" },
     { label: "Švytuoklinės durys", icon: "DoorOpen" },
@@ -35,8 +36,8 @@ export const pbi40eSistemaProduct: ProductCardProps = {
   energyClass: "Ekonomiškas interjeras",
   description:
     "Aliuminio sistema šilumos izoliacijos nereikalaujančioms vidinėms pertvaroms, durims, langams, vitrinoms ir atitvertoms patalpų dalims.",
-  image: "/images/products/pbi-40e-sistema.png",
-  gallery: ["/images/products/pbi-40e-sistema.png"],
+  image: aluminumPartitionProductImages.pbi40e,
+  gallery: [aluminumPartitionProductImages.pbi40e],
   operationTypes: [
     { label: "Vidinės pertvaros", icon: "PanelTop" },
     { label: "Vidaus durys", icon: "DoorOpen" },

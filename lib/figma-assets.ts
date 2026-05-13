@@ -6,10 +6,44 @@
  */
 
 /** `public/` kelias su tarpais/skliaustais — saugus `next/image` ir tiesioginiam fetch. */
-function publicImageSegments(path: `/${string}`): string {
+export function publicImagePath(path: `/${string}`): string {
   const tail = path.startsWith("/") ? path.slice(1) : path;
   return `/${tail.split("/").map(encodeURIComponent).join("/")}`;
 }
+
+/** Aliuminio fasadų kortelės / hero — vietiniai dideli vizualai (`fa-*.png` kataloge nebuvo). */
+export const aluminumFacadeProductImages = {
+  fa50n: publicImagePath("/images/Aliuminio sprendimai /ChatGPT Image May 7, 2026, 04_22_53 PM (3).png"),
+  fa50nHi: publicImagePath("/images/Aliuminio sprendimai /ChatGPT Image May 7, 2026, 04_22_53 PM (8).png"),
+} as const;
+
+/** Aliuminio pertvarų kortelės / hero. */
+export const aluminumPartitionProductImages = {
+  pbi50n: publicImagePath("/images/Aliuminio sprendimai /ChatGPT Image May 7, 2026, 04_22_53 PM (6).png"),
+  pbi40e: publicImagePath("/images/Aliuminio sprendimai /ChatGPT Image May 7, 2026, 04_22_53 PM (10).png"),
+} as const;
+
+/** Aliuminės stumdomos — didesnės terasų / vitrinų iliustracijos vietoj mažų `products/dp-*.png`. */
+export const aluminumSlidingProductImages = {
+  dp180: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (1).png"),
+  dp150t: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (2).png"),
+  dp100: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_30 PM (1).png"),
+  l50: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (2).png"),
+  harmonic: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (4).png"),
+} as const;
+
+/**
+ * Yawal TM / PI aliuminių langų kortelės — `products/tm-*.png` buvo keli identiški failai (ta pati nuotrauka).
+ * Čia kiekvienai sistemai skirtingas kadras iš `public/images/Langai/`.
+ */
+export const aluminumLangaiYawalProductImages = {
+  tm102hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (1).png"),
+  tm77hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (2).png"),
+  tm74hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (3).png"),
+  tm62hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (5).png"),
+  tm62: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (6).png"),
+  pi50n: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (4).png"),
+} as const;
 
 export const assets = {
   logo: "/langana-logo.svg",
@@ -21,9 +55,7 @@ export const assets = {
     aluminumLangai: "/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (4).png",
     sliding: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (3).png",
     /** Žiemos sodų hero / kortelėms — `public/images/Ziemos sodai/...`. */
-    ziemosSodai: publicImageSegments(
-      "/images/Ziemos sodai/ChatGPT Image May 7, 2026, 04_12_17 PM (2).png",
-    ),
+    ziemosSodai: publicImagePath("/images/Ziemos sodai/ChatGPT Image May 7, 2026, 04_12_17 PM (2).png"),
   },
   cta: {
     /** CTA pastato nuotrauka — `public/images/home/cta.png`. */

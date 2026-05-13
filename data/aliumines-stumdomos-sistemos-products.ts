@@ -1,6 +1,7 @@
 import type { ProductCardProps } from "@/components/catalog/ProductCard";
 import { catalogProductSlugFromHref } from "@/data/catalog";
 import type { ProductInnerSimilarItem } from "@/data/product-inner/types";
+import { aluminumSlidingProductImages } from "@/lib/figma-assets";
 
 export const dp180SistemaProduct: ProductCardProps = {
   id: "dp-180-sistema",
@@ -9,8 +10,8 @@ export const dp180SistemaProduct: ProductCardProps = {
   energyClass: "Didelėms angoms",
   description:
     "Pakeliama-slankioji Yawal aliuminio sistema išorinėms sienoms, langams ir durims. Skirta dideliems stiklo plotams, gerai šilumos izoliacijai ir patogiam naudojimui gyvenamuosiuose bei viešosios paskirties pastatuose.",
-  image: "/images/products/dp-180-sistema.png",
-  gallery: ["/images/products/dp-180-sistema.png"],
+  image: aluminumSlidingProductImages.dp180,
+  gallery: [aluminumSlidingProductImages.dp180],
   operationTypes: [
     { label: "Pakeliamos-slankios durys", icon: "MoveHorizontal" },
     { label: "Išorinės sienos konstrukcija", icon: "Building2" },
@@ -37,8 +38,8 @@ export const dp150tSistemaProduct: ProductCardProps = {
   energyClass: "Terasoms ir žiemos sodams",
   description:
     "Pakeliama-slankioji Yawal aliuminio durų sistema, skirta dideliems įstiklintiems plotams, žiemos sodams, išorinėms atitvaroms ir patogiam išėjimui į terasą.",
-  image: "/images/products/dp-150t-sistema.png",
-  gallery: ["/images/products/dp-150t-sistema.png"],
+  image: aluminumSlidingProductImages.dp150t,
+  gallery: [aluminumSlidingProductImages.dp150t],
   operationTypes: [
     { label: "Pakeliamos-slankios durys", icon: "MoveHorizontal" },
     { label: "Terasos durys", icon: "DoorOpen" },
@@ -65,8 +66,8 @@ export const dp100SistemaProduct: ProductCardProps = {
   energyClass: "Ekonomiškas sprendimas",
   description:
     "Slankioji ir pakeliama-slankioji Yawal aliuminio sistema ekonomiškai išorinei pastato konstrukcijai. Tinka praktiškiems ir šilumos izoliaciją turintiems stumdomiems sprendimams.",
-  image: "/images/products/dp-100-sistema.png",
-  gallery: ["/images/products/dp-100-sistema.png"],
+  image: aluminumSlidingProductImages.dp100,
+  gallery: [aluminumSlidingProductImages.dp100],
   operationTypes: [
     { label: "Slankiosios durys", icon: "MoveHorizontal" },
     { label: "Pakeliamos-slankiosios durys", icon: "DoorOpen" },
@@ -93,8 +94,8 @@ export const l50SistemaProduct: ProductCardProps = {
   energyClass: "Balkonams ir lodžijoms",
   description:
     "Moderni aliuminio profilių sistema slankiesiems įstiklintiems elementams balkonams, lodžijoms ir pertvaroms. Tinka lengvoms konstrukcijoms, kai svarbi apsauga nuo triukšmo, atmosferos poveikio ir patogus naudojimas.",
-  image: "/images/products/l-50-sistema.png",
-  gallery: ["/images/products/l-50-sistema.png"],
+  image: aluminumSlidingProductImages.l50,
+  gallery: [aluminumSlidingProductImages.l50],
   operationTypes: [
     { label: "Balkonų stiklinimas", icon: "PanelsTopLeft" },
     { label: "Lodžijos", icon: "Building2" },
@@ -121,8 +122,8 @@ export const harmonicSistemaProduct: ProductCardProps = {
   energyClass: "Erdvėms atverti",
   description:
     "Sulankstomų durų sistema, leidžianti atverti dideles erdves arba patogiai padalinti patalpą į atskiras zonas. Gali būti naudojama tiek išorinėms konstrukcijoms su šilumos izoliacija, tiek vidinėms pertvaroms.",
-  image: "/images/products/sulankstomos-sistemos-harmonic.png",
-  gallery: ["/images/products/sulankstomos-sistemos-harmonic.png"],
+  image: aluminumSlidingProductImages.harmonic,
+  gallery: [aluminumSlidingProductImages.harmonic],
   operationTypes: [
     { label: "Sulankstomos durys", icon: "PanelsTopLeft" },
     { label: "Išorinės konstrukcijos", icon: "Building2" },

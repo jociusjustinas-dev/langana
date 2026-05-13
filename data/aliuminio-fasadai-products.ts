@@ -1,5 +1,6 @@
 import type { ProductCardProps } from "@/components/catalog/ProductCard";
 import { catalogProductSlugFromHref } from "@/data/catalog";
+import { aluminumFacadeProductImages } from "@/lib/figma-assets";
 
 export const fa50nSistemaProduct: ProductCardProps = {
   id: "fa-50n-sistema",
@@ -8,8 +9,8 @@ export const fa50nSistemaProduct: ProductCardProps = {
   energyClass: "Fasadų sistema",
   description:
     "Lengvų fasadinių statinių-skersinių konstrukcijų sistema, skirta aliuminio fasadų projektavimui ir įrengimui.",
-  image: "/images/products/fa-50n-sistema.png",
-  gallery: ["/images/products/fa-50n-sistema.png"],
+  image: aluminumFacadeProductImages.fa50n,
+  gallery: [aluminumFacadeProductImages.fa50n],
   operationTypes: [
     { label: "Fasadinės sienos", icon: "Building2" },
     { label: "Aliuminio fasadai", icon: "PanelsTopLeft" },
@@ -35,8 +36,8 @@ export const fa50nHiSistemaProduct: ProductCardProps = {
   energyClass: "Energiją tausojanti sistema",
   description:
     "Moderni aliuminio fasadų sistema su geresnėmis šilumos izoliacijos savybėmis. Tinka biurams, viešosios paskirties pastatams ir architektūriniams sprendimams.",
-  image: "/images/products/fa-50n-hi-sistema.png",
-  gallery: ["/images/products/fa-50n-hi-sistema.png"],
+  image: aluminumFacadeProductImages.fa50nHi,
+  gallery: [aluminumFacadeProductImages.fa50nHi],
   operationTypes: [
     { label: "Aliuminio fasadai", icon: "PanelsTopLeft" },
     { label: "Stiklo fasadai", icon: "Building2" },
