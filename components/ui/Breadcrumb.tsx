@@ -16,7 +16,7 @@ export function Breadcrumb({
       className={
         onDark
           ? "w-full max-w-full"
-          : "mx-auto max-w-[1440px] px-4 py-4 md:px-10 lg:px-[100px]"
+          : "mx-auto max-w-[1440px] px-4 py-4 md:px-[70px]"
       }
     >
       <nav aria-label="Breadcrumb" className="mb-0">

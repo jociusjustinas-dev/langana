@@ -6,14 +6,26 @@ const scrollShell =
 /**
  * Horizontalaus slinkimo rėmelis plačioms lentelėms / palyginimo tinkleliams ant siaurų ekranų.
  * Naudoti: `className` su vizualiais kampais (pvz. `rounded-2xl`), viduje — `min-w-[…px]` arba tinklelis.
+ * Su `ariaLabel` — `role="region"` skaitytuvams.
  */
 export function ResponsiveTableFrame({
   children,
   className = "",
+  ariaLabel,
 }: {
   children: ReactNode;
   /** Pvz. `rounded-2xl`, Oak: `rounded-xl border border-…`. */
   className?: string;
+  /** Pasirinktinai — slankiklio zonos pavadinimas ekrano skaitytuvams. */
+  ariaLabel?: string;
 }) {
-  return <div className={[scrollShell, className].filter(Boolean).join(" ")}>{children}</div>;
+  return (
+    <div
+      aria-label={ariaLabel}
+      className={[scrollShell, className].filter(Boolean).join(" ")}
+      role={ariaLabel ? "region" : undefined}
+    >
+      {children}
+    </div>
+  );
 }

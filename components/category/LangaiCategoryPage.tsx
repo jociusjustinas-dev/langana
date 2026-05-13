@@ -9,7 +9,8 @@ import { BenefitsSection } from "@/components/plastikiniai-langai/BenefitsSectio
 import { CaseStudiesProjectsCarousel } from "@/components/plastikiniai-langai/CaseStudiesProjectsCarousel";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
-import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
+import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 
 const LANGAI_IMAGES = {
@@ -46,6 +47,19 @@ const LANGAI_TYPES_SLIDES = [
 type ComparisonTone = "yes" | "no" | "mid";
 
 type ComparisonCell = { tone: ComparisonTone; text: string };
+
+const LANGAI_COMPARE_COLUMNS = [
+  {
+    key: "plastic",
+    label: "Plastikiniai",
+    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+  },
+  {
+    key: "aluminum",
+    label: "Aliuminio",
+    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+  },
+] as const;
 
 const COMPARISON_ROWS: {
   label: string;
@@ -139,7 +153,7 @@ function LangaiFaq() {
       className="w-full bg-white px-4 py-16 md:px-[70px] md:py-[100px]"
       id="duk"
     >
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-[100px] lg:flex-row lg:gap-[100px]">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 md:gap-12 lg:flex-row lg:gap-[100px]">
         <div className="flex shrink-0 flex-col gap-14 lg:max-w-md">
           <h2 className="text-4xl font-semibold leading-[1.2] tracking-[-0.032em] text-[#16216b] md:text-[45px] md:leading-[52px]">
             <span className="text-[#263cd0]">Jūsų klausimai.</span>
@@ -257,12 +271,8 @@ export function LangaiCategoryPage() {
         </div>
 
         <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
-          <div className="mb-8 flex justify-center md:mb-12">
-            <div
-              aria-label="Langų tipai"
-              className="flex w-fit flex-wrap items-center justify-center gap-2 rounded-full bg-[#eef0fb] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:gap-2 sm:p-2"
-              role="tablist"
-            >
+          <div className="mb-8 md:mb-12">
+            <SegmentedPillTabList ariaLabel="Langų tipai">
               {LANGAI_TYPES_SLIDES.map((tab, i) => {
                 const selected = i === activeTypeIndex;
                 const tabDomId = `${tabsId}-tab-${i}`;
@@ -283,7 +293,7 @@ export function LangaiCategoryPage() {
                   </button>
                 );
               })}
-            </div>
+            </SegmentedPillTabList>
           </div>
 
           <div
@@ -355,34 +365,14 @@ export function LangaiCategoryPage() {
           </div>
 
           <div className="min-w-0 w-full lg:w-auto">
-            <ResponsiveTableFrame className="rounded-2xl">
-              <div className="w-full min-w-0 space-y-0 max-lg:min-w-[540px]">
-                <div className="grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
-                  <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">
-                    Savybė
-                  </span>
-                  <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">
-                    Plastikiniai
-                  </span>
-                  <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">
-                    Aliuminio
-                  </span>
-                </div>
-                {COMPARISON_ROWS.map((row, idx) => (
-                  <div
-                    className={`grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10 ${
-                      idx % 2 === 0 ? "rounded-xl bg-[#f6f7ff]" : ""
-                    }`}
-                    key={row.label}
-                  >
-                    <p className="self-center text-sm font-semibold text-[#16216b] md:text-base">
-                      {row.label}
-                    </p>
-                    <ComparisonValueCell {...row.plastic} />
-                    <ComparisonValueCell {...row.aluminum} />
-                  </div>
-                ))}
-                <div className="grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
+            <ResponsiveComparisonGrid
+              ariaLabel="Plastikinių ir aliuminių langų palyginimas"
+              columns={LANGAI_COMPARE_COLUMNS}
+              desktopFooter={
+                <div
+                  className="grid gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10"
+                  style={{ gridTemplateColumns: "minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr)" }}
+                >
                   <span aria-hidden className="select-none">
                     &nbsp;
                   </span>
@@ -403,8 +393,45 @@ export function LangaiCategoryPage() {
                     </Link>
                   </div>
                 </div>
-              </div>
-            </ResponsiveTableFrame>
+              }
+              desktopMinWidthClass="max-lg:min-w-[540px]"
+              firstColumnLabel="Savybė"
+              gridTemplateColumns="minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr)"
+              mobileFooter={
+                <>
+                  <Link
+                    className="inline-flex w-full items-center justify-center rounded-full bg-[#263cd0] px-6 py-3 text-center text-[14px] font-semibold text-white transition hover:bg-[#1e31a8] md:text-[15px]"
+                    href="/langai/plastikiniai-langai"
+                  >
+                    Ieškoti plastikinių langų
+                  </Link>
+                  <Link
+                    className="inline-flex w-full items-center justify-center rounded-full bg-[#263cd0] px-6 py-3 text-center text-[14px] font-semibold text-white transition hover:bg-[#1e31a8] md:text-[15px]"
+                    href="/langai/aliuminio-langai"
+                  >
+                    Ieškoti aliuminių langų
+                  </Link>
+                </>
+              }
+              rows={COMPARISON_ROWS.map((row) => ({
+                key: row.label,
+                feature: (
+                  <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.label}</p>
+                ),
+                cells: {
+                  plastic: (
+                    <div className="flex justify-center sm:justify-center">
+                      <ComparisonValueCell {...row.plastic} />
+                    </div>
+                  ),
+                  aluminum: (
+                    <div className="flex justify-center sm:justify-center">
+                      <ComparisonValueCell {...row.aluminum} />
+                    </div>
+                  ),
+                },
+              }))}
+            />
           </div>
         </div>
 

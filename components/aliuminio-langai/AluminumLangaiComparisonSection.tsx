@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AlertTriangle, Check, X } from "lucide-react";
 
-import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 
 type ComparisonTone = "yes" | "no" | "mid";
 
@@ -53,6 +53,19 @@ const ROWS: {
     plastic: { tone: "yes", text: "Namai, butai, renovacija" },
   },
 ];
+
+const COLUMNS = [
+  {
+    key: "aluminum",
+    label: "Aliuminiai langai",
+    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+  },
+  {
+    key: "plastic",
+    label: "Plastikiniai langai",
+    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+  },
+] as const;
 
 function ComparisonValueCell({ tone, text }: ComparisonCell) {
   const a11y =
@@ -107,29 +120,30 @@ export function AluminumLangaiComparisonSection({ id = "palyginimas-aliuminis" }
         </div>
 
         <div className="w-full min-w-0">
-          <ResponsiveTableFrame className="rounded-2xl">
-            <div className="w-full min-w-0 space-y-0 max-lg:min-w-[540px]">
-              <div className="grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
-                <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">Savybė</span>
-                <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">Aliuminiai langai</span>
-                <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">
-                  Plastikiniai langai
-                </span>
-              </div>
-              {ROWS.map((row, idx) => (
-                <div
-                  className={`grid grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10 ${
-                    idx % 2 === 0 ? "rounded-xl bg-[#f6f7ff]" : ""
-                  }`}
-                  key={row.label}
-                >
-                  <p className="self-center text-sm font-semibold text-[#16216b] md:text-base">{row.label}</p>
-                  <ComparisonValueCell {...row.aluminum} />
-                  <ComparisonValueCell {...row.plastic} />
-                </div>
-              ))}
-            </div>
-          </ResponsiveTableFrame>
+          <ResponsiveComparisonGrid
+            ariaLabel="Aliumininių ir plastikinių langų palyginimas"
+            columns={COLUMNS}
+            desktopMinWidthClass="max-lg:min-w-[540px]"
+            firstColumnHeaderClassName="self-center text-sm font-semibold text-[#59799f] md:text-base"
+            firstColumnLabel="Savybė"
+            gridTemplateColumns="minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr)"
+            rows={ROWS.map((row) => ({
+              key: row.label,
+              feature: <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.label}</p>,
+              cells: {
+                aluminum: (
+                  <div className="flex justify-center">
+                    <ComparisonValueCell {...row.aluminum} />
+                  </div>
+                ),
+                plastic: (
+                  <div className="flex justify-center">
+                    <ComparisonValueCell {...row.plastic} />
+                  </div>
+                ),
+              },
+            }))}
+          />
         </div>
       </div>
     </section>

@@ -23,13 +23,13 @@ export const aluminumPartitionProductImages = {
   pbi40e: publicImagePath("/images/Aliuminio sprendimai /ChatGPT Image May 7, 2026, 04_22_53 PM (10).png"),
 } as const;
 
-/** Aliuminės stumdomos — didesnės terasų / vitrinų iliustracijos vietoj mažų `products/dp-*.png`. */
+/** Aliuminės stumdomos — terasų / vitrinų iliustracijos (`public/images/Stumdomos sistemos/...`). Raw keliai kaip `assets.hero.sliding`: `publicImagePath` čia dažnai sulaužo Next Image optimizatorių vietiniams failams su tarpais. */
 export const aluminumSlidingProductImages = {
-  dp180: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (1).png"),
-  dp150t: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (2).png"),
-  dp100: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_30 PM (1).png"),
-  l50: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (2).png"),
-  harmonic: publicImagePath("/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (4).png"),
+  dp180: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (1).png",
+  dp150t: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (2).png",
+  dp100: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_30 PM (1).png",
+  l50: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (2).png",
+  harmonic: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (4).png",
 } as const;
 
 /**
@@ -91,3 +91,16 @@ export const assets = {
     openingMaskWidthsPx: [44, 30, 44, 48, 44] as const,
   },
 } as const;
+
+/**
+ * `next/image`: nuotoliniams URL, `products/*` ir Stumdomų aplanke — `unoptimized`,
+ * kad išvengtume Sharp/optimizatoriaus problemų su tarpais/skliaustais pavadinimuose.
+ */
+export function shouldUseUnoptimizedImage(src: string): boolean {
+  return (
+    src.startsWith("http://") ||
+    src.startsWith("https://") ||
+    src.startsWith("/images/products/") ||
+    src.startsWith("/images/Stumdomos sistemos/")
+  );
+}

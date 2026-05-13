@@ -33,7 +33,61 @@ export function OakQuoteTable({ sectionLabel, rows }: OakQuoteTableProps) {
       <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[#2b2b2b]">
         {sectionLabel}
       </p>
-      <ResponsiveTableFrame className="rounded-xl border border-[rgba(43,43,43,0.1)] overflow-y-hidden">
+
+      <div className="flex flex-col gap-2 lg:hidden">
+        {rows.map((row) => {
+          const lineTotal = row.pricePerSqm * row.areaSqm;
+          return (
+            <article
+              className="overflow-hidden rounded-xl border border-[rgba(43,43,43,0.1)] bg-white shadow-sm"
+              key={`${row.code}-${row.dimensions}-m`}
+            >
+              <div className="bg-[#1c3a13] px-2.5 py-2 font-mono text-[9px] font-semibold uppercase tracking-[0.05em] text-[#d3fa99]">
+                {row.code}
+              </div>
+              <dl className="divide-y divide-[rgba(43,43,43,0.08)] px-2.5 py-1">
+                <div className="flex flex-col gap-0.5 py-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                  <dt className="font-mono text-[8px] font-medium uppercase tracking-[0.05em] text-[#7a7a7a]">
+                    Apdaila
+                  </dt>
+                  <dd className="text-right text-[10px] font-medium leading-snug text-[#2b2b2b] sm:max-w-[65%] sm:text-left">
+                    {row.finish}
+                  </dd>
+                </div>
+                <div className="flex flex-col gap-0.5 py-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                  <dt className="font-mono text-[8px] font-medium uppercase tracking-[0.05em] text-[#7a7a7a]">
+                    Matmenys
+                  </dt>
+                  <dd className="text-right font-mono text-[9px] leading-snug text-[#7a7a7a] sm:text-left">
+                    {row.dimensions}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3 py-2">
+                  <dt className="font-mono text-[8px] font-medium uppercase tracking-[0.05em] text-[#7a7a7a]">
+                    €/m²
+                  </dt>
+                  <dd className="font-mono text-[11px] font-bold leading-none text-[#1c3a13]">
+                    {formatEurPerSqm(row.pricePerSqm)}
+                  </dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-3 py-2">
+                  <dt className="font-mono text-[8px] font-medium uppercase tracking-[0.05em] text-[#7a7a7a]">
+                    Iš viso
+                  </dt>
+                  <dd className="font-mono text-[10px] font-medium leading-none text-[#2b2b2b]">
+                    {formatEurWhole(lineTotal)}
+                  </dd>
+                </div>
+              </dl>
+            </article>
+          );
+        })}
+      </div>
+
+      <ResponsiveTableFrame
+        ariaLabel={`${sectionLabel} — lentelė`}
+        className="hidden overflow-y-hidden rounded-xl border border-[rgba(43,43,43,0.1)] lg:block"
+      >
         <table className="w-full min-w-[320px] border-collapse text-left">
           <thead>
             <tr className="bg-[#1c3a13] text-[#d3fa99]">

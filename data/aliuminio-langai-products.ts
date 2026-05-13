@@ -11,7 +11,8 @@ export const tm102hiSistemaProduct: ProductCardProps = {
   energyClass: "Pasyviems pastatams",
   description:
     "Aukščiausios šilumos izoliacijos Yawal aliuminio profilių sistema, skirta energiją taupantiems ir pasyviems pastatams. Tinka moderniems langams, durims ir vitrinoms.",
-  image: "/images/products/tm-102hi-sistema.png",
+  image: aluminumLangaiYawalProductImages.tm102hi,
+  gallery: [aluminumLangaiYawalProductImages.tm102hi],
   operationTypes: [
     { label: "Varstomas langas", icon: "Square" },
     { label: "Atverčiamas langas", icon: "PanelLeftOpen" },

@@ -51,8 +51,8 @@ export function SalesHero({
       : ctaPrimary.href;
 
   return (
-    <section className="langana-flush-under-site-header no-rounded relative flex min-h-[min(66vh,30rem)] w-full flex-col overflow-x-clip bg-white md:min-h-[min(70vh,32rem)] lg:min-h-[min(68vh,34rem)]">
-      <div className="pointer-events-none no-rounded absolute inset-0">
+    <section className="langana-flush-under-site-header no-rounded relative flex min-h-[min(66vh,30rem)] w-full flex-col bg-white md:min-h-[min(70vh,32rem)] lg:min-h-[min(68vh,34rem)]">
+      <div className="pointer-events-none no-rounded absolute inset-0 overflow-hidden">
         <Image
           alt=""
           className="no-rounded object-cover"
@@ -112,7 +112,7 @@ export function SalesHero({
             <div className="flex w-full min-w-0 max-w-[min(100%,32rem)] flex-col gap-6 lg:shrink-0">
               <p className="text-balance break-words text-base leading-relaxed text-white">{description}</p>
               <div className="flex flex-col gap-4">
-                <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
+                <div className="flex w-full min-w-0 flex-row flex-nowrap items-center gap-2 sm:gap-3">
                   <Link
                     className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] sm:py-[13px] md:px-8 md:py-[15px] md:text-[15px] md:leading-normal"
                     href={primaryHref}
@@ -120,7 +120,7 @@ export function SalesHero({
                     {ctaPrimary.label}
                   </Link>
                   <Link
-                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border border-white bg-transparent px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-white/10 sm:px-5 sm:text-[14px] sm:py-[11px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
+                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border-2 border-white bg-transparent px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-white/10 sm:px-5 sm:text-[14px] sm:py-[11px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
                     href={ctaSecondary.href}
                   >
                     {ctaSecondary.label}

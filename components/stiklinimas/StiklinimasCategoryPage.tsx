@@ -10,6 +10,7 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
+import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 
 const MAIN_DIRECTIONS = [
@@ -178,12 +179,8 @@ export function StiklinimasCategoryPage() {
         </div>
 
         <div className="mx-auto mt-8 max-w-[1440px] px-4 md:mt-10 md:px-[70px]">
-          <div className="mb-8 flex justify-center md:mb-10">
-            <div
-              aria-label="Stiklinimo kryptys"
-              className="flex w-fit max-w-full flex-wrap items-center justify-center gap-2 rounded-full bg-[#eef0fb] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:gap-2 sm:p-2"
-              role="tablist"
-            >
+          <div className="mb-8 md:mb-10">
+            <SegmentedPillTabList ariaLabel="Stiklinimo kryptys">
               {MAIN_DIRECTIONS.map((tab, i) => {
                 const selected = i === activeDirectionIndex;
                 const tabDomId = `${directionsTabsId}-tab-${i}`;
@@ -204,7 +201,7 @@ export function StiklinimasCategoryPage() {
                   </button>
                 );
               })}
-            </div>
+            </SegmentedPillTabList>
           </div>
 
           <div

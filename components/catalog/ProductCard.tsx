@@ -48,7 +48,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import { assets } from "@/lib/figma-assets";
+import { assets, shouldUseUnoptimizedImage } from "@/lib/figma-assets";
 import { catalogProductSlugFromHref } from "@/data/catalog";
 import { kontaktaiQuoteHrefFromPath } from "@/lib/contact-href";
 
@@ -301,7 +301,7 @@ export function ProductCard({
               quality={92}
               sizes="(max-width: 768px) 90vw, 360px"
               src={image}
-              unoptimized={image.startsWith("http") || image.startsWith("/images/products/")}
+              unoptimized={shouldUseUnoptimizedImage(image)}
             />
           </div>
         </div>

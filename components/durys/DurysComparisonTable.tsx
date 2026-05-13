@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { AnimatedSection } from "@/components/animations/AnimatedSection";
-import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 
 type DurysComparisonColumn = {
   key: string;
@@ -36,6 +36,26 @@ export function DurysComparisonTable({
 }) {
   const gridTemplateColumns = `repeat(${columns.length + 1}, minmax(0, 1fr))`;
 
+  const compColumns = columns.map((c) => ({ key: c.key, label: c.label }));
+
+  const compRows = rows.map((row) => ({
+    key: row.feature,
+    feature: (
+      <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.feature}</p>
+    ),
+    cells: Object.fromEntries(
+      columns.map((c) => [
+        c.key,
+        <p
+          className="text-sm font-normal leading-relaxed text-[#16216b] md:text-base"
+          key={`${row.feature}-${c.key}`}
+        >
+          {row.values[c.key]}
+        </p>,
+      ]),
+    ),
+  }));
+
   return (
     <AnimatedSection as="section" className="w-full bg-white py-16 md:py-[100px]" id={sectionId}>
       <div className="mx-auto w-full max-w-[1440px] space-y-10 px-4 md:px-[70px]">
@@ -66,37 +86,14 @@ export function DurysComparisonTable({
         </div>
 
         <div className="w-full min-w-0">
-          <ResponsiveTableFrame className="rounded-2xl">
-            <div className="w-full min-w-0 space-y-0 max-lg:min-w-[880px]">
-              <div
-                className="grid gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10"
-                style={{ gridTemplateColumns }}
-              >
-                <span className="self-center text-left text-sm font-semibold text-[#59799f] md:text-base">{firstColumnLabel}</span>
-                {columns.map((column) => (
-                  <span className="text-left text-sm font-semibold text-[#263cd0] md:text-base" key={column.key}>
-                    {column.label}
-                  </span>
-                ))}
-              </div>
-              {rows.map((row, idx) => (
-                <div
-                  className={`grid gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10 ${
-                    idx % 2 === 0 ? "rounded-xl bg-[#f6f7ff]" : ""
-                  }`}
-                  style={{ gridTemplateColumns }}
-                  key={row.feature}
-                >
-                  <p className="self-center text-sm font-semibold text-[#16216b] md:text-base">{row.feature}</p>
-                  {columns.map((column) => (
-                    <p className="text-sm font-normal leading-relaxed text-[#16216b] md:text-base" key={`${row.feature}-${column.key}`}>
-                      {row.values[column.key]}
-                    </p>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </ResponsiveTableFrame>
+          <ResponsiveComparisonGrid
+            ariaLabel={`${headingLead} ${headingRest}`.replace(/\s+/g, " ").trim()}
+            columns={compColumns}
+            desktopMinWidthClass="max-lg:min-w-[880px]"
+            firstColumnLabel={firstColumnLabel}
+            gridTemplateColumns={gridTemplateColumns}
+            rows={compRows}
+          />
         </div>
       </div>
     </AnimatedSection>

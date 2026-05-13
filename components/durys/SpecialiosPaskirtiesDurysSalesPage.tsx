@@ -6,7 +6,7 @@ import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
 import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
-import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 
 const HERO_IMAGE = "/images/durys.png";
@@ -23,6 +23,14 @@ const PURPOSE_CARDS = [
   {
     title: "Viešiesiems pastatams",
     body: "Sprendimai mokykloms, įstaigoms, daugiabučiams, bendroms zonoms ar kitoms intensyviai naudojamoms erdvėms.",
+  },
+] as const;
+
+const REQUEST_INFO_COLUMNS = [
+  {
+    key: "why",
+    label: "Kodėl svarbu?",
+    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
   },
 ] as const;
 
@@ -172,25 +180,21 @@ export function SpecialiosPaskirtiesDurysSalesPage() {
             </p>
           </div>
 
-          <ResponsiveTableFrame className="rounded-2xl">
-            <div className="w-full min-w-0 space-y-0 max-lg:min-w-[560px]">
-              <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
-                <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">Informacija</span>
-                <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">Kodėl svarbu?</span>
-              </div>
-              {REQUEST_ROWS.map((row, idx) => (
-                <div
-                  className={`grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10 ${
-                    idx % 2 === 0 ? "rounded-xl bg-[#f6f7ff]" : ""
-                  }`}
-                  key={row.info}
-                >
-                  <p className="self-center text-sm font-semibold text-[#16216b] md:text-base">{row.info}</p>
-                  <p className="text-sm font-normal leading-relaxed text-[#16216b] md:text-base">{row.why}</p>
-                </div>
-              ))}
-            </div>
-          </ResponsiveTableFrame>
+          <ResponsiveComparisonGrid
+            ariaLabel="Informacija specialių durų užklausai"
+            columns={REQUEST_INFO_COLUMNS}
+            desktopMinWidthClass="max-lg:min-w-[560px]"
+            firstColumnHeaderClassName="self-center text-sm font-semibold text-[#59799f] md:text-base"
+            firstColumnLabel="Informacija"
+            gridTemplateColumns="minmax(0,0.9fr) minmax(0,1.1fr)"
+            rows={REQUEST_ROWS.map((row) => ({
+              key: row.info,
+              feature: <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.info}</p>,
+              cells: {
+                why: <p className="text-sm font-normal leading-relaxed text-[#16216b] md:text-base">{row.why}</p>,
+              },
+            }))}
+          />
         </div>
       </section>
 

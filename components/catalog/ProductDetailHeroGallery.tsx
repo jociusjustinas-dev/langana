@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useState } from "react";
 
 import { CarouselFilledCircleNav } from "@/components/ui/CarouselFilledCircleNav";
+import { shouldUseUnoptimizedImage } from "@/lib/figma-assets";
 
 type ProductDetailHeroGalleryProps = {
   images: string[];
@@ -30,8 +31,8 @@ export function ProductDetailHeroGallery({ images, alt }: ProductDetailHeroGalle
   const canPrev = canNavigate && index > 0;
   const canNext = canNavigate && index < n - 1;
   const slideSrc = slides[index];
-  /** Nuotoliniai URL ir vietiniai `/images/products/*` — be Sharp/WebP perkonvertavimo (išlaikoma šaltinio kokybė). */
-  const unoptimized = slideSrc.startsWith("http") || slideSrc.startsWith("/images/products/");
+  /** Nuotoliniai URL, `products/*`, Stumdomų aplankas — be Sharp (žr. `shouldUseUnoptimizedImage`). */
+  const unoptimized = shouldUseUnoptimizedImage(slideSrc);
 
   const frame = (
     <div className="relative aspect-[340/564] min-h-[240px] w-full max-w-[340px] overflow-hidden md:min-h-[min(460px,calc(52svh-5rem))]">

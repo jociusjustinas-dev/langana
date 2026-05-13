@@ -28,7 +28,7 @@ export function FaqSection({
 }: FaqSectionProps) {
   return (
     <AnimatedSection as="section" className="w-full bg-white px-4 py-16 md:px-[70px] md:py-[100px]" id={sectionId}>
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-[100px] lg:flex-row lg:gap-[100px]">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 md:gap-12 lg:flex-row lg:gap-[100px]">
         <div className="flex shrink-0 flex-col gap-14 lg:max-w-md">
           <h2 className="text-4xl font-semibold leading-[1.2] tracking-[-0.032em] text-[#16216b] md:text-[45px] md:leading-[52px]">
             <span className="text-[#263cd0]">{headingLead}</span>

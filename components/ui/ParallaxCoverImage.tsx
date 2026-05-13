@@ -4,6 +4,8 @@ import gsap from "gsap";
 import Image, { type ImageProps } from "next/image";
 import { useEffect, useRef } from "react";
 
+import { shouldUseUnoptimizedImage } from "@/lib/figma-assets";
+
 function cx(...parts: (string | false | undefined)[]) {
   return parts.filter(Boolean).join(" ");
 }
@@ -51,13 +53,16 @@ export function ParallaxCoverImage({
     return () => gsap.ticker.remove(update);
   }, [strength, translateStart]);
 
+  const src = typeof imageProps.src === "string" ? imageProps.src : "";
+  const unoptimized = imageProps.unoptimized ?? (src ? shouldUseUnoptimizedImage(src) : false);
+
   return (
     <div
       ref={layerRef}
       className="absolute inset-0 will-change-transform"
       style={{ height: innerHeight, transform: `translateY(${translateStart})` }}
     >
-      <Image {...imageProps} alt={alt} className={cx("object-cover", className)} fill />
+      <Image {...imageProps} alt={alt} className={cx("object-cover", className)} fill unoptimized={unoptimized} />
     </div>
   );
 }

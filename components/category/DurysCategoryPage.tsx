@@ -11,7 +11,8 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
-import { ResponsiveTableFrame } from "@/components/ui/ResponsiveTableFrame";
+import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
+import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 const DURYS_IMAGES = {
   hero: "/images/Durys/ChatGPT Image May 7, 2026, 03_18_07 PM (1).png",
@@ -76,6 +77,14 @@ const SELECTION_ROWS: { need: string; type: string }[] = [
   { need: "Specialūs saugos reikalavimai", type: "Priešgaisrinės durys" },
 ];
 
+const SELECTION_COMPARE_COLUMNS = [
+  {
+    key: "type",
+    label: "Rekomenduojamas durų tipas",
+    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+  },
+] as const;
+
 const FAQ_ITEMS: { question: string; answer: string }[] = [
   {
     question: "Kokios durys geriausiai tinka individualiam namui?",
@@ -126,7 +135,7 @@ const PROCESS_STEPS = [
 function DurysFaq() {
   return (
     <AnimatedSection as="section" className="w-full bg-white px-4 py-16 md:px-[70px] md:py-[100px]" id="duk-durys">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-[100px] lg:flex-row lg:gap-[100px]">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 md:gap-12 lg:flex-row lg:gap-[100px]">
         <div className="flex shrink-0 flex-col gap-14 lg:max-w-md">
           <h2 className="text-4xl font-semibold leading-[1.2] tracking-[-0.032em] text-[#16216b] md:text-[45px] md:leading-[52px]">
             <span className="text-[#263cd0]">Jūsų klausimai – </span>
@@ -253,12 +262,8 @@ export function DurysCategoryPage() {
         </div>
 
         <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
-          <div className="mb-8 flex justify-center md:mb-12">
-            <div
-              aria-label="Durų tipai"
-              className="flex w-fit flex-wrap items-center justify-center gap-2 rounded-full bg-[#eef0fb] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:gap-2 sm:p-2"
-              role="tablist"
-            >
+          <div className="mb-8 md:mb-12">
+            <SegmentedPillTabList ariaLabel="Durų tipai">
               {DURYS_TYPES_SLIDES.map((tab, i) => {
                 const selected = i === activeTypeIndex;
                 const tabDomId = `${tabsId}-tab-${i}`;
@@ -279,7 +284,7 @@ export function DurysCategoryPage() {
                   </button>
                 );
               })}
-            </div>
+            </SegmentedPillTabList>
           </div>
 
           <div
@@ -381,27 +386,25 @@ export function DurysCategoryPage() {
           </div>
 
           <div className="min-w-0 w-full">
-            <ResponsiveTableFrame className="rounded-2xl">
-              <div className="w-full min-w-0 space-y-0 max-lg:min-w-[520px]">
-              <div className="grid grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10">
-                <span className="self-center text-sm font-semibold text-[#59799f] md:text-base">Poreikis</span>
-                <span className="text-center text-base font-semibold text-[#263cd0] md:text-[18px]">
-                  Rekomenduojamas durų tipas
-                </span>
-              </div>
-              {SELECTION_ROWS.map((row, idx) => (
-                <div
-                  className={`grid grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-3 px-4 py-3 md:gap-4 md:px-8 md:py-4 lg:px-10 ${
-                    idx % 2 === 0 ? "rounded-xl bg-[#f6f7ff]" : ""
-                  }`}
-                  key={row.need}
-                >
-                  <p className="self-center text-sm font-semibold text-[#16216b] md:text-base">{row.need}</p>
-                  <p className="text-center text-sm font-semibold leading-snug text-[#16216b] md:text-base">{row.type}</p>
-                </div>
-              ))}
-            </div>
-            </ResponsiveTableFrame>
+            <ResponsiveComparisonGrid
+              ariaLabel="Durų pasirinkimas pagal poreikį"
+              columns={SELECTION_COMPARE_COLUMNS}
+              desktopMinWidthClass="max-lg:min-w-[520px]"
+              firstColumnHeaderClassName="self-center text-sm font-semibold text-[#59799f] md:text-base"
+              firstColumnLabel="Poreikis"
+              gridTemplateColumns="minmax(0,1.15fr) minmax(0,1fr)"
+              rows={SELECTION_ROWS.map((row) => ({
+                key: row.need,
+                feature: <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.need}</p>,
+                cells: {
+                  type: (
+                    <p className="text-center text-sm font-semibold leading-snug text-[#16216b] md:text-base">
+                      {row.type}
+                    </p>
+                  ),
+                },
+              }))}
+            />
           </div>
         </div>
       </AnimatedSection>
