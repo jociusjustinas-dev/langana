@@ -23,26 +23,29 @@ export const aluminumPartitionProductImages = {
   pbi40e: publicImagePath("/images/Aliuminio sprendimai /ChatGPT Image May 7, 2026, 04_22_53 PM (10).png"),
 } as const;
 
-/** Aliuminės stumdomos — terasų / vitrinų iliustracijos (`public/images/Stumdomos sistemos/...`). Raw keliai kaip `assets.hero.sliding`: `publicImagePath` čia dažnai sulaužo Next Image optimizatorių vietiniams failams su tarpais. */
+/**
+ * Aliuminės stumdomos — Yawal produktiniai kadrai, atsisiųsti į `public/images/yawal/`
+ * (šaltinis: `www.yawal.com`, naudojimo teisė — gamintojo medžiaga partneriams; kopijos vietiniame serveryje).
+ */
 export const aluminumSlidingProductImages = {
-  dp180: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (1).png",
-  dp150t: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (2).png",
-  dp100: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_30 PM (1).png",
-  l50: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (2).png",
-  harmonic: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_31 PM (4).png",
+  dp180: "/images/yawal/yawal-dp180-640.webp",
+  dp150t: "/images/yawal/yawal-dp150t-640.webp",
+  dp100: "/images/yawal/yawal-dp100.jpg",
+  l50: "/images/yawal/yawal-l50-640.webp",
+  harmonic: "/images/yawal/yawal-harmonic-tm77-bifold-640.webp",
 } as const;
 
 /**
- * Yawal TM / PI aliuminių langų kortelės — `products/tm-*.png` buvo keli identiški failai (ta pati nuotrauka).
- * Čia kiekvienai sistemai skirtingas kadras iš `public/images/Langai/`.
+ * Yawal TM / PI aliuminių langų kortelės — `public/images/yawal/` (atsisiųsta iš gamintojo CDN).
+ * **PI 50N:** `yawal-pi50n.webp` — iš Yawal pranešimo / publikacijos apie PI 50N (`pi50n-1920x1080.webp`), ne TM 102HI pakaitalas.
  */
 export const aluminumLangaiYawalProductImages = {
-  tm102hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (1).png"),
-  tm77hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (2).png"),
-  tm74hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_58_41 PM (3).png"),
-  tm62hi: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (5).png"),
-  tm62: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (6).png"),
-  pi50n: publicImagePath("/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (4).png"),
+  tm102hi: "/images/yawal/yawal-tm102hi-640.webp",
+  tm77hi: "/images/yawal/yawal-tm77hi-640.webp",
+  tm74hi: "/images/yawal/yawal-tm74hi-640.webp",
+  tm62hi: "/images/yawal/yawal-tm62hi-640.webp",
+  tm62: "/images/yawal/yawal-tm62.jpg",
+  pi50n: "/images/yawal/yawal-pi50n.webp",
 } as const;
 
 export const assets = {

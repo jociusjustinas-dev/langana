@@ -4,7 +4,6 @@ import { DurysComparisonTable } from "@/components/durys/DurysComparisonTable";
 import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
-import { ProductBottomCta } from "@/components/product-inner/ProductBottomCta";
 import { CaseStudiesProjectsCarousel } from "@/components/plastikiniai-langai/CaseStudiesProjectsCarousel";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
@@ -231,12 +230,6 @@ export function PlastikinesStumdomosSistemosSalesPage() {
         headingLine1="Kaip vyksta plastikinių stumdomų sistemų užsakymas?"
         id="procesas-plastikines-stumdomos"
         steps={PROCESS}
-      />
-
-      <ProductBottomCta
-        cta={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
-        description="Atsiųskite angos matmenis arba trumpai aprašykite situaciją - padėsime įvertinti, ar plastikinė stumdoma sistema tinkama jūsų projektui."
-        title="Svarstote plastikinę stumdomą sistemą?"
       />
     </div>
   );
