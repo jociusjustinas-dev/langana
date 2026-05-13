@@ -1,0 +1,88 @@
+"use client";
+
+import Link from "next/link";
+
+import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
+
+const FEATURES = [
+  {
+    title: "Poilsio zonai",
+    description: "Jauki vieta rytinei kavai, vakarui su knyga ar ramiam laikui stebint lietų, sniegą ir gamtą.",
+  },
+  {
+    title: "Augalams ir namų sodui",
+    description: "Šviesi erdvė augalams, kuri leidžia susikurti žalią kampelį namuose nepriklausomai nuo oro.",
+  },
+  {
+    title: "Namų erdvės praplėtimui",
+    description: "Žiemos sodas gali tapti papildoma namų zona, kuri vizualiai ir funkciškai padidina gyvenamąją erdvę.",
+  },
+  {
+    title: "Individualiam architektūriniam akcentui",
+    description: "Galima rinktis formą, spalvą, konstrukciją ir stilių - nuo modernaus iki klasikinio sprendimo.",
+  },
+] as const;
+
+function FeatureRow({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="flex flex-col gap-5">
+      <div className="h-px w-full bg-[#263cd0]/16" />
+      <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
+        <span
+          aria-hidden
+          className="row-start-1 size-2 shrink-0 self-center rounded-full bg-[#263cd0]"
+        />
+        <h3 className="col-start-2 row-start-1 text-[22px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#16216b]">
+          {title}
+        </h3>
+        <p className="col-start-2 row-start-2 text-[16px] leading-relaxed text-[#16216b]">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+export function ZiemosSodaiUseCasesSection() {
+  return (
+    <section className="relative z-[2] w-full bg-white py-16 md:py-[100px]" id="kam-tinka-ziemos-sodas">
+      <div className="mx-auto w-full max-w-[1440px] px-4 md:px-[70px]">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+          <div className="relative min-h-[360px] overflow-hidden rounded-2xl bg-[#e8ebfa] lg:min-h-[840px]">
+            <ParallaxCoverImage
+              alt="Žiemos sodo panaudojimo galimybės"
+              fill
+              priority={false}
+              sizes="(max-width: 1023px) 100vw, 46vw"
+              src="/images/Ziemos sodai/ChatGPT Image May 7, 2026, 04_12_17 PM (1).png"
+            />
+          </div>
+
+          <div className="flex max-w-[560px] flex-col gap-12 lg:gap-16 xl:gap-20">
+            <div>
+              <h2 className="text-3xl font-semibold leading-[1.12] tracking-[-0.03em] text-[#16216b] md:text-[45px] md:leading-[52px]">
+                <span className="text-[#263cd0]">Kai norisi daugiau </span>
+                <span className="text-[#16216b]">šviesos, erdvės ir ryšio su gamta</span>
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              {FEATURES.map((feature) => (
+                <FeatureRow description={feature.description} key={feature.title} title={feature.title} />
+              ))}
+              <div className="h-px w-full bg-[#263cd0]/16" />
+            </div>
+
+            <div>
+              <Link
+                className="inline-flex items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-white transition hover:bg-[#1e31a8]"
+                href="/kontaktai#uzklausa"
+              >
+                Gauti pasiūlymą
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+

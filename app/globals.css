@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f7ff;
+  --foreground: #16216b;
+  --brand: #263cd0;
+  --brand-dark: #16216b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-muted-foreground: #59799f;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Portalo antraštė: tik kai `data-langana-header-portal` (nustato SiteHeader), kad SSR / pirmas
+ * renderis be portalo neturėtų dvigubo tarpo (padding + antraštė sraute).
+ */
+html[data-langana-header-portal="1"] #smooth-content {
+  padding-top: max(8.75rem, var(--langana-site-header-spacer, 0px));
+  /* Ne grynas #fff — mažiau pastebimas tarpas, jei hero ir rezervas 1–2 px nesutampa. */
+  background-color: var(--background);
+}
+
+/*
+ * Portalo antraštė: neigiamas margin traukia hero į #smooth-content viršinį padding.
+ * Nenaudoti čia `padding-top` ant pačios sekcijos — tada matytųsi sekcijos fono juosta virš
+ * vidinio bloko (pvz. nuotraukos), nes `Image fill` dažniausiai yra gilesniame relative div.
+ *
+ * Viršutinį tarpą po meniu duoda `.langana-site-header-clearance` ant vidinio konteinerio.
+ */
+html[data-langana-header-portal="1"] .langana-flush-under-site-header,
+html[data-langana-header-portal="1"] .hero-bento-under-header {
+  margin-top: calc(-1 * max(8.75rem, var(--langana-site-header-spacer, 0px)));
+}
+
+html[data-langana-header-portal="1"] .langana-site-header-clearance {
+  padding-top: max(8.75rem, var(--langana-site-header-spacer, 0px));
+}
+
+/*
+ * Herojai su `justify-center`: vietoj `padding-top` ant to paties flex — turinys „nuskęsta“ žemyn.
+ * Tuščias spacer eilutėje / grid — po juo `flex-1 justify-center` centruoja tikroje „po menu“ zonoje.
+ */
+.langana-site-header-spacer {
+  flex-shrink: 0;
+  width: 100%;
+  height: max(8.75rem, var(--langana-site-header-spacer, 8.75rem));
+}
+
+/* Antraštės — Figma „Averta“ stiliaus tracking ir eilučių aukštis (display / section / card) */
+@layer base {
+  /*
+   * Bendras puslapio slinkimas: GSAP ScrollSmoother + inkarai per `SmoothScrollAnchors`.
+   * Parallax hero: `ParallaxCoverImage` (gsap.ticker). Papildomai galima GSAP `data-speed` su `effects: true`.
+   */
+  html {
+    scroll-behavior: auto;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  /*
+   * Tik permatomumas — be `color` čia: antraštės ant nuotraukų dažnai `<p>` eilutėmis su `text-white`
+   * tėve; tiesioginis `color` ant `p` perrašytų paveldėtą baltą (Tailwind ant tėvo neveiktų).
+   */
+  :where(p) {
+    opacity: 0.8;
+  }
+
+  /* Unified rounded system: cards + controls (no hero/media force-rounding). */
+  :where(section) {
+    border-radius: 1rem;
+  }
+
+  :where(article) {
+    border-radius: 1rem;
+  }
+
+  :where(button, input, select, textarea) {
+    border-radius: 1rem;
+  }
+
+  :where(img) {
+    border-radius: 1rem;
+  }
+
+  :where(.no-rounded) {
+    border-radius: 0;
+  }
+}
+
+/* Home load sequence — aligns with Figma Hero variants (hidden intro → full reveal) */
+@keyframes home-fade-y {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.1rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-reveal {
+    opacity: 0;
+    animation: home-fade-y 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .page-reveal .route-reveal-item.route-reveal-init {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+
+  .page-reveal .route-reveal-item {
+    transition:
+      opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .page-reveal .route-reveal-item.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .page-reveal p.route-reveal-item.is-visible {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .page-reveal .route-reveal-item {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .page-reveal p.route-reveal-item {
+    opacity: 0.8 !important;
+  }
+}
+
+/* Bendras viewport įėjimas (IntersectionObserver + klasė `is-visible`) — suderinta su home judesiu. */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-in-view-target {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    will-change: opacity, transform;
+  }
+
+  .motion-in-view-target.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--in-view-delay, 0ms);
+  }
+
+  p.motion-in-view-target.is-visible {
+    opacity: 0.8;
+  }
+
+  /* Tik opacity — be `transform`, kad `position:sticky` palikuonys veiktų (pvz. produktų intro). */
+  .motion-in-view-fade-target {
+    opacity: 0;
+  }
+
+  .motion-in-view-fade-target.is-visible {
+    opacity: 1;
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--in-view-delay, 0ms);
+  }
+
+  p.motion-in-view-fade-target.is-visible {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-in-view-target {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+
+  p.motion-in-view-target {
+    opacity: 0.8 !important;
+  }
+
+  .motion-in-view-fade-target {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  p.motion-in-view-fade-target {
+    opacity: 0.8 !important;
+  }
 }

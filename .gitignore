@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+.cursor/
+
+# TypeScript
+*.tsbuildinfo
 
 # debug
 npm-debug.log*
@@ -36,6 +40,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# generated research (regenerate: npm run research:product-media)
+/reports/product-media-research.md
+
