@@ -49,7 +49,7 @@ const STATIC_ROUTES: StaticRoute[] = [
 
 function siteUrl(path: string): string {
   const base = SITE_URL.replace(/\/$/, "");
-  if (path === "/" || path === "") return base;
+  if (path === "/" || path === "") return `${base}/`;
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${base}${p}`;
 }
