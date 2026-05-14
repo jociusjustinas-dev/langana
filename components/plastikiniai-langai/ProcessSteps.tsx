@@ -15,12 +15,14 @@ export type ProcessStepsProps = {
   headingLine1: string;
   /** Jei nenurodyta, rodoma tik pirmoji antraštės eilutė. */
   headingLine2?: string;
+  /** Po antraštės, prieš žingsnius – ant mėlyno fono (pvz. proceso įvadas). */
+  headingIntro?: string;
   steps: readonly ProcessStep[];
   /** Sekcijos inkaras (pvz. `procesas-plastikines`). */
   id?: string;
 };
 
-export function ProcessSteps({ headingLine1, headingLine2, steps, id }: ProcessStepsProps) {
+export function ProcessSteps({ headingLine1, headingLine2, headingIntro, steps, id }: ProcessStepsProps) {
   const [openIndex, setOpenIndex] = useState(0);
 
   const toggle = (index: number) => {
@@ -30,10 +32,17 @@ export function ProcessSteps({ headingLine1, headingLine2, steps, id }: ProcessS
   return (
     <AnimatedSection as="section" className="no-rounded w-full bg-[#263cd0] px-4 py-16 md:px-[70px] md:py-[100px]" id={id}>
       <div className="mx-auto flex max-w-[1440px] flex-col gap-12 md:gap-[60px]">
-        <div className="font-semibold tracking-[-0.036em] text-white">
-          <p className="text-[28px] leading-snug text-white opacity-100 md:text-[40px]">{headingLine1}</p>
-          {headingLine2 ? (
-            <p className="mt-1 text-[28px] leading-snug text-white opacity-100 md:mt-0 md:text-[40px]">{headingLine2}</p>
+        <div>
+          <div className="font-semibold tracking-[-0.036em] text-white">
+            <p className="text-[28px] leading-snug text-white opacity-100 md:text-[40px]">{headingLine1}</p>
+            {headingLine2 ? (
+              <p className="mt-1 text-[28px] leading-snug text-white opacity-100 md:mt-0 md:text-[40px]">{headingLine2}</p>
+            ) : null}
+          </div>
+          {headingIntro ? (
+            <p className="mt-6 max-w-[52rem] text-base font-normal leading-relaxed text-white/90 md:mt-8 md:text-[17px]">
+              {headingIntro}
+            </p>
           ) : null}
         </div>
 

@@ -415,16 +415,21 @@ export function AliuminioSprendimaiHubPage() {
             Aliuminio konstrukcijos taip pat naudojamos languose, duryse, stumdomose sistemose ir individualiuose projektuose.
           </p>
         </div>
-        <div className="mx-auto mt-8 grid max-w-[1440px] gap-4 px-4 md:mt-10 md:grid-cols-2 md:px-[70px]">
+        <div className="mx-auto mt-10 grid max-w-[1440px] grid-cols-1 gap-4 px-4 md:grid-cols-2 md:px-[70px] lg:grid-cols-4 lg:gap-4">
           {CROSS_LINKS.map((card) => (
-            <article className="rounded-2xl bg-[#f6f7ff] p-8" key={card.title}>
-              <h3 className="text-2xl font-semibold leading-tight tracking-[-0.03em] text-[#263cd0]">{card.title}</h3>
-              <p className="mt-4 text-base leading-relaxed text-[#16216b]">{card.body}</p>
+            <article
+              className="flex min-h-[280px] flex-col justify-between gap-6 rounded-2xl bg-[#f6f7ff] p-8 md:min-h-[300px]"
+              key={card.title}
+            >
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold leading-snug tracking-[-0.03em] text-[#263cd0] md:text-2xl">{card.title}</h3>
+                <p className="text-base leading-relaxed text-[#16216b]">{card.body}</p>
+              </div>
               <Link
-                className="mt-6 inline-flex text-[15px] font-semibold text-[#263cd0] no-underline underline-offset-8 transition-all duration-200 ease-out hover:underline hover:underline-offset-4"
+                className="inline-flex w-fit items-center justify-center rounded-full border-2 border-[#263cd0] bg-transparent px-6 py-3 text-[14px] font-semibold text-[#263cd0] transition hover:bg-[#263cd0] hover:text-white md:px-8 md:py-[13px] md:text-[15px]"
                 href={card.href}
               >
-                Sužinokite daugiau
+                Sužinoti daugiau
               </Link>
             </article>
           ))}

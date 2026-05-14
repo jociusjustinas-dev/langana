@@ -51,7 +51,7 @@ export function CaseStudiesProjectsCarousel({
   if (slideCount === 0) return null;
 
   return (
-    <AnimatedSection as="section" className="w-full bg-white pb-16 md:pb-[100px]">
+    <AnimatedSection as="section" className="w-full bg-white pt-14 pb-16 md:pt-16 md:pb-[100px]">
       <div className="mx-auto mb-10 flex w-full max-w-[1440px] flex-col gap-6 px-4 sm:flex-row sm:items-end sm:justify-between md:px-[70px]">
         <div className="max-w-2xl space-y-4">
           <h2 className="text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[40px] md:leading-[46px]">

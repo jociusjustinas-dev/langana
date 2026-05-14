@@ -274,16 +274,8 @@ export function AliuminioFasadaiPage() {
       </div>
 
       <div className="scroll-mt-28 md:scroll-mt-32" id="procesas-fasadai">
-        <section className="w-full bg-white pb-8 pt-4 md:pb-10 md:pt-6">
-          <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
-            <p className="max-w-[920px] text-base leading-relaxed text-[#16216b] md:text-[17px]">
-              Aliuminio fasadas yra didesnės apimties projektas, todėl darbai vyksta nuosekliai ir kontroliuojamai.
-              Štai pagrindiniai etapai nuo pirmojo susitikimo iki sumontuoto fasado. Kiekvienas etapas uždaromas
-              dokumentais, kad užsakovas matytų, kas patvirtinta prieš gamybą ir prieš montavimą.
-            </p>
-          </div>
-        </section>
         <ProcessSteps
+          headingIntro="Aliuminio fasadas yra didesnės apimties projektas, todėl darbai vyksta nuosekliai ir kontroliuojamai. Štai pagrindiniai etapai nuo pirmojo susitikimo iki sumontuoto fasado. Kiekvienas etapas uždaromas dokumentais, kad užsakovas matytų, kas patvirtinta prieš gamybą ir prieš montavimą."
           headingLine1="Kaip vyksta aliuminio fasado projektas?"
           steps={FACADE_PROCESS_STEPS}
         />
