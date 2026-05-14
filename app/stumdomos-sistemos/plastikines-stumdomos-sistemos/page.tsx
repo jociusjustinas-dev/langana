@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
+
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { PlastikinesStumdomosSistemosSalesPage } from "@/components/stumdomos-sistemos/PlastikinesStumdomosSistemosSalesPage";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Plastikinės stumdomos sistemos Šiauliuose",
+  description:
+    "Plastikinės stumdomos sistemos Šiauliuose – šilumos izoliacija, ekonomiškas sprendimas balkonams ir terasoms. Profesionalus montavimas, garantija.",
+  path: "/stumdomos-sistemos/plastikines-stumdomos-sistemos",
+});
 
 export default function PlastikinesStumdomosSistemosPage() {
   return (

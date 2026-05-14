@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 
-import { PrivacyPolicyPageView } from "@/components/legal/PrivacyPolicyPageView";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
+import { PrivacyPolicyPageView } from "@/components/legal/PrivacyPolicyPageView";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privatumo politika",
   description:
-    "UAB Langana privatumo politika: asmens duomenų tvarkymas, slapukai, BDAR teisės ir kontaktai duomenų klausimais.",
-  robots: { index: false, follow: true },
-  alternates: { canonical: "/privatumo-politika" },
-};
+    "Langana privatumo politika – kaip tvarkome jūsų asmens duomenis, slapukai, jūsų teisės. UAB Langana, Šiauliai.",
+  path: "/privatumo-politika",
+});
 
 export default function PrivatumoPolitikaPage() {
   return (

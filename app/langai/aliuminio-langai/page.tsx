@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
+
 import { AliuminiaiLangaiSalesPage } from "@/components/aliuminio-langai/AliuminiaiLangaiSalesPage";
 import { SiteMainClosing } from "@/components/home/SiteMainClosing";
 import { SiteHeader } from "@/components/home/SiteHeader";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Aliuminio langai Šiauliuose – plonas profilis, dideli stiklai",
+  description:
+    "Aliuminio langai Šiauliuose – plonas profilis, didelės stiklo angos, ilgaamžiškumas. Tinka šiuolaikiškiems namams ir komercijai. Gauk pasiūlymą.",
+  path: "/langai/aliuminio-langai",
+});
 
 export default function AliuminioLangaiPage() {
   return (

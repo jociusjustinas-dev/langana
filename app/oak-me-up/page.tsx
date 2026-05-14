@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
+
 import { OakQuoteTable, oakMeUpSampleQuoteRows } from "@/components/oak-me-up/OakQuoteTable";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Oak Me Up",
+  description: "Oak Me Up sprendimai – Langana.",
+  path: "/oak-me-up",
+  noindex: true,
+});
 
 export default function OakMeUpQuotePage() {
   return (

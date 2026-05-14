@@ -5,6 +5,7 @@ import { useId, useState } from "react";
 
 import { AnimatedSection } from "@/components/animations/AnimatedSection";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
+import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 
 /** Vietinės nuotraukos iš `public/images/Stumdomos sistemos/` (be Figma watermark). */
 const TAB_IMAGES = {
@@ -94,12 +95,8 @@ export function StumdomosSistemosTabs({ sectionId = "sistemos-tipai" }: { sectio
           </p>
         </div>
 
-        <div className="mx-auto flex w-full flex-col">
-          <div
-            aria-label="Stumdomų sistemų tipai"
-            className="mx-auto mb-8 flex w-full flex-wrap items-center justify-center gap-2 rounded-full bg-[#eef0fb] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:w-auto sm:gap-2 sm:p-2 md:mb-12"
-            role="tablist"
-          >
+        <div className="mx-auto flex w-full min-w-0 flex-col">
+          <SegmentedPillTabList ariaLabel="Stumdomų sistemų tipai" className="mb-8 md:mb-12">
             {TABS.map((tab, i) => {
               const selected = i === activeIndex;
               const tabDomId = `${baseId}-tab-${tab.id}`;
@@ -107,7 +104,7 @@ export function StumdomosSistemosTabs({ sectionId = "sistemos-tipai" }: { sectio
                 <button
                   aria-controls={`${baseId}-panel`}
                   aria-selected={selected}
-                  className={`min-h-[44px] flex-1 rounded-full px-5 py-2.5 text-center text-[14px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2 sm:flex-none sm:px-7 sm:py-3 sm:text-[15px] ${
+                  className={`min-h-[44px] rounded-full px-5 py-2.5 text-center text-[14px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2 sm:px-7 sm:py-3 sm:text-[15px] ${
                     selected ? "bg-[#263cd0] text-white shadow-sm" : "bg-transparent text-[#59799f] hover:text-[#16216b]"
                   }`}
                   id={tabDomId}
@@ -120,7 +117,7 @@ export function StumdomosSistemosTabs({ sectionId = "sistemos-tipai" }: { sectio
                 </button>
               );
             })}
-          </div>
+          </SegmentedPillTabList>
 
           <div
             aria-labelledby={`${baseId}-tab-${active.id}`}

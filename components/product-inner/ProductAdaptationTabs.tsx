@@ -20,6 +20,7 @@ export function ProductAdaptationTabs({
   const [activeId, setActiveId] = useState(tabs[0]?.id ?? "");
   const baseId = useId();
   const active = tabs.find((t) => t.id === activeId) ?? tabs[0];
+  const isScrollableMobile = tabs.length > 2;
 
   return (
     <AnimatedSection as="section" className="w-full bg-white px-4 py-14 md:px-[70px] md:py-[100px]">
@@ -56,32 +57,50 @@ export function ProductAdaptationTabs({
 
         <div className="flex min-w-0 flex-1 flex-col gap-10">
           <div
-            className="flex w-full flex-col gap-3 sm:flex-row sm:gap-5"
+            className={[
+              "w-full min-w-0",
+              isScrollableMobile
+                ? "max-md:overflow-x-auto max-md:[-ms-overflow-style:none] max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden max-md:scroll-pl-2 max-md:scroll-pr-2"
+                : "max-md:overflow-x-visible",
+            ].join(" ")}
             role="tablist"
             aria-label="Pritaikymo kategorijos"
           >
-            {tabs.map((tab) => {
-              const selected = tab.id === active?.id;
-              const tabDomId = `${baseId}-tab-${tab.id}`;
-              return (
-                <button
-                  aria-controls={`${baseId}-panel`}
-                  aria-selected={selected}
-                  className={`flex-1 rounded-full px-[30px] py-[15px] text-center text-[15px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2 ${
-                    selected
-                      ? "bg-[#263cd0] text-white"
-                      : "bg-[#f6f7ff] text-[#59799f] hover:text-[#16216b]"
-                  }`}
-                  id={tabDomId}
-                  key={tab.id}
-                  onClick={() => setActiveId(tab.id)}
-                  role="tab"
-                  type="button"
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
+            <div
+              className={[
+                "flex flex-row flex-nowrap gap-2 sm:w-full sm:gap-5",
+                isScrollableMobile ? "max-md:w-max max-md:min-w-max" : "w-full",
+              ].join(" ")}
+            >
+              {tabs.map((tab) => {
+                const selected = tab.id === active?.id;
+                const tabDomId = `${baseId}-tab-${tab.id}`;
+                return (
+                  <button
+                    aria-controls={`${baseId}-panel`}
+                    aria-selected={selected}
+                    className={[
+                      "rounded-full text-center font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2",
+                      "whitespace-nowrap",
+                      isScrollableMobile
+                        ? "max-md:shrink-0 max-md:flex-none max-md:px-5 max-md:py-2.5 max-md:text-[14px]"
+                        : "max-md:flex-1 max-md:basis-1/2 max-md:min-w-0 max-md:px-4 max-md:py-2.5 max-md:text-[13px]",
+                      "sm:flex-1 sm:basis-0 sm:min-w-0 sm:px-[30px] sm:py-[15px] sm:text-[15px]",
+                      selected
+                        ? "bg-[#263cd0] text-white"
+                        : "bg-[#f6f7ff] text-[#59799f] hover:text-[#16216b]",
+                    ].join(" ")}
+                    id={tabDomId}
+                    key={tab.id}
+                    onClick={() => setActiveId(tab.id)}
+                    role="tab"
+                    type="button"
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div

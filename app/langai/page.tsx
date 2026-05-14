@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
+
 import { LangaiCategoryPage } from "@/components/category/LangaiCategoryPage";
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Langai Šiauliuose – plastikiniai ir aliuminio",
+  description:
+    "Plastikiniai ir aliuminio langai Šiauliuose. A+ klasės energetinis efektyvumas. Montavimas per 3–5 d. Gauk nemokamą pasiūlymą per 24 val.",
+  path: "/langai",
+});
 
 export default function LangaiPage() {
   return (

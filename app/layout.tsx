@@ -7,6 +7,7 @@ import { MobileStickyCta } from "@/components/home/MobileStickyCta";
 import { RouteReveal } from "@/components/layout/RouteReveal";
 import { ScrollSmootherClient } from "@/components/layout/ScrollSmootherClient";
 import { SmoothScrollAnchors } from "@/components/layout/SmoothScrollAnchors";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -23,21 +24,31 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://langana.lt"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Langana — langai, durys, stiklinimas Šiauliuose",
-    template: "%s | Langana Šiauliai",
+    template: "%s | Langana",
   },
   description:
-    "Aukščiausios kokybės langai, durys, stiklinimas ir stumdomos sistemos Šiauliuose. Montavimas per 3–5 dienas. Gaukite nemokamą pasiūlymą.",
+    "Langai, durys, stiklinimas Šiauliuose. 20+ metų patirties, 300+ projektų, sertifikuota kokybė. Montavimas per 3–5 d. Nemokamas matavimas ir pasiūlymas per 24 val.",
+  applicationName: SITE_NAME,
+  authors: [{ name: "UAB Langana" }],
+  generator: "Next.js",
+  keywords: [
+    "langai Šiauliai",
+    "plastikiniai langai",
+    "durys",
+    "stiklinimas",
+    "balkonų stiklinimas",
+    "Langana",
+  ],
   openGraph: {
-    siteName: "Langana",
+    siteName: SITE_NAME,
     locale: "lt_LT",
     type: "website",
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Langana — langai ir durys Šiauliuose" }],
   },
-  alternates: {
-    canonical: "/",
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -45,7 +56,7 @@ const LOCAL_BUSINESS_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "UAB Langana",
-  url: "https://langana.lt",
+  url: SITE_URL,
   telephone: "+37060620666",
   email: "uablangana@gmail.com",
   address: {

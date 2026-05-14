@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { ProductDetailHero } from "@/components/catalog/ProductDetailHero";
 import { CategoryPageStub, labelFromKebab } from "@/components/CategoryPageStub";
 import { HomeCta } from "@/components/home/HomeCta";
@@ -6,8 +8,37 @@ import { SiteHeader } from "@/components/home/SiteHeader";
 import { ProductInnerPage } from "@/components/product-inner/ProductInnerPage";
 import { getAluminumSlidingProductBySlug } from "@/data/aliumines-stumdomos-sistemos-products";
 import { getProductInnerContent } from "@/data/product-inner";
+import { getSystem, systemDescription, systemTitle } from "@/lib/product-systems";
+import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const path = `/stumdomos-sistemos/aliumines-stumdomos-sistemos/${slug}`;
+  const sys = getSystem(slug);
+  if (sys) {
+    return pageMeta({
+      title: systemTitle(sys),
+      description: systemDescription(sys),
+      path,
+    });
+  }
+  const product = getAluminumSlidingProductBySlug(slug);
+  if (product) {
+    return pageMeta({
+      title: `${product.title} – stumdomos sistemos Šiauliuose`,
+      description: product.description.slice(0, 160),
+      path,
+    });
+  }
+  return pageMeta({
+    title: `${labelFromKebab(slug)} – stumdomos sistemos`,
+    description: "Aliuminės stumdomos sistemos Šiauliuose. Konsultacija ir pasiūlymas nemokamai.",
+    path,
+    noindex: true,
+  });
+}
 
 export default async function AliuminesStumdomosSistemosInnerPage({ params }: Props) {
   const { slug } = await params;

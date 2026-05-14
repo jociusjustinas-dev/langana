@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { KontaktaiPageView } from "@/components/kontaktai/KontaktaiPageView";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kontaktai — nemokama konsultacija",
+export const metadata: Metadata = pageMeta({
+  title: "Kontaktai – Langana Šiauliuose",
   description:
-    "Susisiekite su Langana: +370 606 20 666. Pardavimo salonas Tilžės g. 83b, Šiauliai. Užpildykite užklausą ir gaukite pasiūlymą per 24h.",
-  alternates: { canonical: "/kontaktai" },
-  openGraph: { title: "Kontaktai | Langana Šiauliai", url: "/kontaktai" },
-};
+    "Langana kontaktai – Tilžės g. 83b, Šiauliai. Tel. +370 606 20 666. Darbo laikas Pr–Pt 8–17, Š 9–13. Konsultacija ir matavimas nemokamai.",
+  path: "/kontaktai",
+});
 
 export default function KontaktaiPage() {
   return (

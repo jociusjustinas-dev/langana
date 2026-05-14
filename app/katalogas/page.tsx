@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
 import { KatalogasPageView } from "@/components/catalog/KatalogasPageView";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Produktų katalogas",
+export const metadata: Metadata = pageMeta({
+  title: "Produktų katalogas – langai, durys, stiklinimas",
   description:
-    "Langų, durų, stiklinimo, stumdomų sistemų ir aliuminio konstrukcijų katalogas. Greitas montavimas Šiauliuose. Gaukite nemokamą pasiūlymą.",
-};
+    "Pilnas Langana produktų katalogas – langai, durys, stiklinimas, stumdomos sistemos, žiemos sodai, aliuminio sprendimai. Konsultacija ir pasiūlymas nemokamai.",
+  path: "/katalogas",
+});
 
 export default function KatalogasPage() {
   return <KatalogasPageView />;

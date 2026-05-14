@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
+import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { useId, useState } from "react";
 
 type BalkonuTab = {
@@ -70,12 +71,8 @@ export function BalkonuStiklinimasSolutionTabs() {
 
   return (
     <div className="mx-auto mt-8 max-w-[1440px] px-4 md:mt-10 md:px-[70px]">
-      <div className="mb-8 flex justify-center md:mb-12">
-        <div
-          aria-label="Balkonų stiklinimo tipai"
-          className="flex w-fit flex-wrap items-center justify-center gap-2 rounded-full bg-[#eef0fb] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] sm:gap-2 sm:p-2"
-          role="tablist"
-        >
+      <div className="mb-8 md:mb-12">
+        <SegmentedPillTabList ariaLabel="Balkonų stiklinimo tipai">
           {TABS.map((tab, i) => {
             const selected = i === activeIndex;
             const tabDomId = `${baseId}-tab-${tab.id}`;
@@ -96,7 +93,7 @@ export function BalkonuStiklinimasSolutionTabs() {
               </button>
             );
           })}
-        </div>
+        </SegmentedPillTabList>
       </div>
 
       <div

@@ -1,7 +1,17 @@
-import { SiteHeader } from "@/components/home/SiteHeader";
+import type { Metadata } from "next";
+
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
+import { SiteHeader } from "@/components/home/SiteHeader";
 import { AliuminesStumdomosSistemosSalesPage } from "@/components/stumdomos-sistemos/AliuminesStumdomosSistemosSalesPage";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Aliuminės stumdomos sistemos Šiauliuose",
+  description:
+    "Aliuminės stumdomos sistemos Šiauliuose – patogus išėjimas į terasą, didelės stiklo angos, plonas profilis, ilgaamžiškumas. Nemokamas matavimas.",
+  path: "/stumdomos-sistemos/aliumines-stumdomos-sistemos",
+});
 
 export default function AliuminesStumdomosSistemosPage() {
   return (

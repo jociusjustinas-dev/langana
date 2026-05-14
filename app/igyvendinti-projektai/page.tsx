@@ -6,17 +6,14 @@ import { SiteHeader } from "@/components/home/SiteHeader";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { ImplementedProjectsGallery } from "@/components/projects/ImplementedProjectsGallery";
 import { KONTAKTAI_FORM_HREF } from "@/lib/contact-href";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Įgyvendinti projektai",
+export const metadata: Metadata = pageMeta({
+  title: "Įgyvendinti projektai ir galerija – Šiauliai",
   description:
-    "Peržiūrėkite Langana atliktus langų, durų, stiklinimo ir aliuminio konstrukcijų projektus namams, daugiabučiams ir komerciniams objektams.",
-  alternates: { canonical: "/igyvendinti-projektai" },
-  openGraph: {
-    title: "Įgyvendinti projektai | Langana",
-    url: "/igyvendinti-projektai",
-  },
-};
+    "Langana įgyvendintų projektų galerija – plastikiniai langai, balkonų stiklinimas, terasos, žiemos sodai. Realūs darbai Šiauliuose ir Lietuvoje.",
+  path: "/igyvendinti-projektai",
+});
 
 const HERO_BG = "/images/Langai/ChatGPT Image May 7, 2026, 02_58_42 PM (6).png";
 
@@ -29,8 +26,8 @@ export default function IgyvendintiProjektaiPage() {
           backgroundImageSrc={HERO_BG}
           ctaPrimary={{ href: KONTAKTAI_FORM_HREF, label: "Gauti pasiūlymą" }}
           ctaSecondary={{ href: "#projektai-galerija", label: "Žiūrėti projektus" }}
-          heroUrgencyLine
           description="Peržiūrėkite Langana atliktus langų, durų, stiklinimo ir aliuminio konstrukcijų projektus privatiems namams, daugiabučiams, komerciniams ir viešosios paskirties objektams."
+          heroUrgencyLine
           title="Įgyvendinti projektai"
         />
         <ImplementedProjectsGallery />

@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
+
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { StumdomosSistemosCategoryPage } from "@/components/stumdomos-sistemos/StumdomosSistemosCategoryPage";
+import { pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({
+  title: "Stumdomos sistemos Šiauliuose",
+  description:
+    "Aliuminės ir plastikinės stumdomos sistemos Šiauliuose – didelės stiklo angos, sklandus atidarymas, modernus dizainas. Tinka terasoms ir interjerui.",
+  path: "/stumdomos-sistemos",
+});
 
 export default function StumdomosSistemosPage() {
   return (

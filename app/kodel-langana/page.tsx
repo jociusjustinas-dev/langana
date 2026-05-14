@@ -4,14 +4,14 @@ import { KodelLanganaPage } from "@/components/about/KodelLanganaPage";
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kodėl rinktis Langana?",
+export const metadata: Metadata = pageMeta({
+  title: "Kodėl rinktis Langana – apie mus, patirtis Šiauliuose",
   description:
-    "Sertifikuota kokybė, greitas montavimas ir ilgalaikė garantija. Sužinokite kodėl šimtai klientų pasirinko Langana langus ir duris Šiauliuose.",
-  alternates: { canonical: "/kodel-langana" },
-  openGraph: { title: "Kodėl rinktis Langana?", url: "/kodel-langana" },
-};
+    "Apie Langana – 20+ metų patirties langų, durų ir stiklinimo srityje Šiauliuose. 300+ projektų, sertifikuota kokybė ir asmeninis aptarnavimas.",
+  path: "/kodel-langana",
+});
 
 export default function KodelLanganaRoute() {
   return (

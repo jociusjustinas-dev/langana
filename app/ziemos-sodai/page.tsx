@@ -4,14 +4,14 @@ import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { ZiemosSodaiPage } from "@/components/ziemos-sodai/ZiemosSodaiPage";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Žiemos sodai",
+export const metadata: Metadata = pageMeta({
+  title: "Žiemos sodai Šiauliuose – aliuminio konstrukcijos",
   description:
-    "Šilti ir šalti žiemos sodai Šiauliuose — individualus projektavimas, aliuminio konstrukcijos, montavimas per 5 dienas. Gaukite nemokamą pasiūlymą.",
-  alternates: { canonical: "/ziemos-sodai" },
-  openGraph: { title: "Žiemos sodai | Langana Šiauliai", url: "/ziemos-sodai" },
-};
+    "Žiemos sodai Šiauliuose – aliuminio konstrukcijos, panoraminis stiklas, šilumos izoliacija. Erdvė poilsiui ar darbui. Individualus projektas ir montavimas.",
+  path: "/ziemos-sodai",
+});
 
 export default function ZiemosSodaiRoutePage() {
   return (
