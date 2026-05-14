@@ -13,6 +13,8 @@ export type SalesHeroProps = {
   /** Virš H1 – ant tamsaus hero fono (`variant="onDark"`). */
   breadcrumbItems?: BreadcrumbItem[];
   title: string;
+  /** Po H1, prieš stats – ant tamsaus fono (SEO podantrštė, ne antras H1). */
+  heroSubtitle?: string;
   description: string;
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
@@ -33,6 +35,7 @@ export type SalesHeroProps = {
 export function SalesHero({
   breadcrumbItems,
   title,
+  heroSubtitle,
   description,
   ctaPrimary,
   ctaSecondary,
@@ -93,6 +96,11 @@ export function SalesHero({
               >
                 {title}
               </h1>
+              {heroSubtitle ? (
+                <p className="max-w-full text-balance break-words text-base font-normal leading-relaxed text-white/90 md:text-[17px]">
+                  {heroSubtitle}
+                </p>
+              ) : null}
               {stats && stats.length > 0 ? (
                 <div className="flex flex-wrap justify-start gap-x-6 gap-y-4 py-1 sm:gap-x-8 sm:gap-y-5">
                   {stats.map((stat) => (

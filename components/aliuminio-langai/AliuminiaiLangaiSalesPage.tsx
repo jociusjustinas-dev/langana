@@ -45,7 +45,8 @@ export function AliuminiaiLangaiSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Peržiūrėti sistemas", href: "#sprendimai" }}
         description="Tvirti, ilgaamžiai ir estetiški aliuminio langai, durys bei vitrinos su šilumos izoliacija. Rinkitės sistemą pagal pastato tipą, energinius poreikius ir konstrukcijos dydį."
-        title="Aliuminiai langai moderniems namams ir projektams"
+        heroSubtitle="Moderniems namams ir projektams – plonas profilis, didelės stiklo angos."
+        title="Aliuminio langai Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="sprendimai">

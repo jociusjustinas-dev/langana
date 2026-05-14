@@ -83,7 +83,8 @@ export function AliuminesStumdomosSistemosSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Peržiūrėti sistemas", href: "#sprendimai" }}
         description="Tvirti, modernūs ir ilgaamžiai Yawal aliuminio stumdomų sistemų sprendimai terasoms, balkonams, žiemos sodams, lodžijoms, vitrinoms ir didelėms stiklo konstrukcijoms."
-        title="Aliuminės stumdomos sistemos didelėms angoms, terasoms ir vitrinoms"
+        heroSubtitle="Didelėms angoms, terasoms ir vitrinoms – plonas profilis, sklandus atidarymas."
+        title="Aliuminės stumdomos sistemos Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="sprendimai">

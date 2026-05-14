@@ -114,7 +114,8 @@ export function MetalinesDurysSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Peržiūrėti privalumus", href: "#privalumai-metalines" }}
         description="Tvirtos, ilgaamžės ir ekonomiškos metalinės lauko durys, kurios padeda apsaugoti namus, sumažinti išorės triukšmą ir užtikrinti ramybę kasdien."
-        title="Metalinės durys saugiems ir patikimiems namams"
+        heroSubtitle="Saugūs ir patikimi sprendimai namams ir butams."
+        title="Metalinės lauko durys Šiauliuose"
       />
 
       <MetalinesDurysSolutionTabs sectionId="sprendimai-metalines" />

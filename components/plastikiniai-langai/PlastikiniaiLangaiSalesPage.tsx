@@ -48,7 +48,8 @@ export function PlastikiniaiLangaiSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Ieškoti sprendimų", href: "#sprendimai" }}
         description="Šilti, sandarūs ir ekonomiški plastikiniai langai, pritaikyti tiek naujos statybos, tiek renovuojamiems namams."
-        title="Plastikiniai langai – patikimas sprendimas jūsų namams"
+        heroSubtitle="Patikimas sprendimas jūsų namams – Kömmerling, Wital ir Veka sistemos."
+        title="Plastikiniai langai Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="sprendimai">

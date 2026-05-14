@@ -103,12 +103,13 @@ export function SpecialiosPaskirtiesDurysSalesPage() {
         heroUrgencyLine
         ctaSecondary={{ label: "Pasikonsultuoti", href: "/kontaktai#uzklausa" }}
         description="Durų sprendimai techninėms, komercinėms, pramoninėms ir kitoms erdvėms, kuriose svarbus saugumas, funkcionalumas, atsparumas ir atitikimas konkretiems objekto poreikiams."
+        heroSubtitle="Sprendimai pagal objekto reikalavimus – priešgaisrinės, garsą slopinančios, technologinės."
         stats={[
           { number: "Priešgaisrinės", label: "ir šarvuotos durys" },
           { number: "Saugumas", label: "Prioritetas" },
           { number: "5 d.", label: "Montavimas" },
         ]}
-        title="Specialios paskirties durys pagal objekto reikalavimus"
+        title="Specialios paskirties durys Šiauliuose"
       />
 
       <section className="w-full bg-white pt-12 md:pt-20 lg:pt-24" id="kam-skirtos-specialios-durys">

@@ -118,12 +118,13 @@ export function BalkonuStiklinimasPage() {
         heroUrgencyLine
         ctaSecondary={{ label: "Peržiūrėti naudą", href: "#naudos-blokas" }}
         description="Įstiklintas balkonas apsaugo nuo lietaus, sniego, vėjo, dulkių ir triukšmo. Tai būdas paversti balkoną jaukesne, saugesne ir patogiau naudojama namų erdve."
+        heroSubtitle="Patogesnis gyvenimas – apsauga nuo vėjo, lietaus, sniego ir triukšmo."
         stats={[
           { number: "200+", label: "Įstiklintų balkonų" },
           { number: "Šilta ir šalta", label: "Sistema" },
           { number: "5 d.", label: "Montavimas" },
         ]}
-        title="Balkonų stiklinimas patogesniam gyvenimui"
+        title="Balkonų stiklinimas Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]">

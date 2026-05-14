@@ -99,7 +99,8 @@ export function PlastikinesStumdomosSistemosSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Peržiūrėti video", href: "#video-demo" }}
         description="Praktiškas ir ekonomiškas sprendimas, kai norite patogaus išėjimo į terasą ar balkoną, daugiau šviesos ir lengvai naudojamos stumdomos konstrukcijos."
-        title="Plastikinės stumdomos sistemos balkonams, terasoms ir namams"
+        heroSubtitle="Sprendimai balkonams, terasoms ir namams – šilumos izoliacija, ekonomiškas pasirinkimas."
+        title="Plastikinės stumdomos sistemos Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="video-demo">

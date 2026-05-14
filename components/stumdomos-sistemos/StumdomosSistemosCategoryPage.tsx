@@ -94,13 +94,14 @@ export function StumdomosSistemosCategoryPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Pasirinkti sistemą", href: "#sistemos-tipai" }}
         description="Patogūs aliuminio ir plastiko stumdomų sistemų sprendimai, kai norite daugiau šviesos, lengvo naudojimo ir sklandaus perėjimo tarp vidaus bei lauko erdvių."
+        heroSubtitle="Sprendimai terasoms, balkonams ir didelėms angoms – aliuminis ir plastikas."
         stats={[
           { number: "100+", label: "Stumdomų sistemų" },
           { number: "Aliuminis ir plastikas", label: "Sistemos pagal biudžetą" },
           { number: "5 d.", label: "Vidutinis montavimas" },
         ]}
         primaryCtaReassurance
-        title="Stumdomos sistemos terasoms, balkonams ir didelėms angoms"
+        title="Stumdomos sistemos Šiauliuose"
       />
 
       <StumdomosSistemosTabs sectionId="sistemos-tipai" />

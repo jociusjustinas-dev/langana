@@ -128,12 +128,13 @@ export function TerasuStiklinimasPage() {
         heroUrgencyLine
         ctaSecondary={{ label: "Peržiūrėti privalumus", href: "#kodel-terasu-stiklinimas" }}
         description="Įstiklinta terasa apsaugo nuo vėjo, lietaus, sniego, dulkių ir triukšmo, todėl ja galite naudotis ne tik vasarą, bet ir vėsesniais metų laikais."
+        heroSubtitle="Ilgesnis lauko sezonas – stumdomos dalys, šiltos ir šaltos sistemos."
         stats={[
           { number: "100+", label: "Terasų projektų" },
           { number: "Plastik ir aliuminis", label: "Sistema" },
           { number: "5 d.", label: "Montavimas" },
         ]}
-        title="Terasų stiklinimas ilgesniam lauko sezonui"
+        title="Terasų stiklinimas Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="terasu-sistemos">

@@ -121,7 +121,8 @@ export function AliuminioDurysSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Peržiūrėti privalumus", href: "#privalumai-aliuminio" }}
         description="Tvirtos, saugios ir prie skirtingo pastato stiliaus pritaikomos aliuminio durys namams, daugiabučiams, komerciniams ir pramoniniams objektams."
-        title="Aliuminio lauko durys saugumui, ilgaamžiškumui ir estetikai"
+        heroSubtitle="Lauko durys – saugumas, ilgaamžiškumas, modernus dizainas."
+        title="Aliuminio durys Šiauliuose"
       />
 
       <AliuminioDurysSolutionTabs sectionId="sprendimai-aliuminio" />

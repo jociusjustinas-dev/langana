@@ -139,13 +139,14 @@ export function StiklinimasCategoryPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Pasirinkti sprendimą", href: "#pasirinkti-sprendima" }}
         description="Šilti ir šalti stiklinimo sprendimai, kurie padeda apsaugoti erdves nuo vėjo, lietaus, sniego, dulkių ir triukšmo."
+        heroSubtitle="Sprendimai balkonams ir terasoms – plastiku ar aliuminiu."
         stats={[
           { number: "200+", label: "Įstiklintų balkonų" },
           { number: "Šilta ir šalta", label: "Sistema pagal poreikį" },
           { number: "5 d.", label: "Vidutinis montavimas" },
         ]}
         primaryCtaReassurance
-        title="Stiklinimo sprendimai balkonams ir terasoms"
+        title="Stiklinimas Šiauliuose – balkonai ir terasos"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="pasirinkti-sprendima">

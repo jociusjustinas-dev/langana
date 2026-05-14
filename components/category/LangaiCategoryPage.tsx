@@ -186,9 +186,12 @@ export function LangaiCategoryPage() {
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
             <div className="flex flex-col gap-4 text-left lg:sticky lg:top-28 lg:min-w-0 lg:flex-1 lg:self-start">
               <h1 className="text-4xl font-semibold leading-[1.15] tracking-[-0.026em] md:text-[55px] md:leading-[64px]">
-                <span className="text-[#263cd0]">Aukštos kokybės </span>
-                <span className="text-[#16216b]">langai jūsų namams</span>
+                <span className="text-[#263cd0]">Langai Šiauliuose</span>
+                <span className="text-[#16216b]"> – plastikiniai ir aliuminio</span>
               </h1>
+              <p className="max-w-[min(100%,42rem)] text-base leading-relaxed text-[#16216b] md:text-[17px]">
+                Aukštos kokybės langai jūsų namams. Pasirinkite tinkamiausią sprendimą.
+              </p>
               <div className="flex flex-wrap justify-start gap-6 py-1 sm:gap-8">
                 {[
                   { number: "300+", label: "Langų projektų" },

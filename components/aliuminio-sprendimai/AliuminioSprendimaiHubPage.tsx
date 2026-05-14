@@ -169,13 +169,14 @@ export function AliuminioSprendimaiHubPage() {
         ctaSecondary={{ label: "Peržiūrėti sprendimus", href: "#pagrindines-kryptys" }}
         denseHeroTitle
         description="Projektuojame, gaminame ir montuojame aliuminio konstrukcijas gyvenamiesiems, komerciniams, viešosios paskirties ir pramoniniams objektams Lietuvoje bei užsienyje."
+        heroSubtitle="Sprendimai fasadams, pertvaroms ir nestandartinėms konstrukcijoms."
         stats={[
           { number: "YAWAL & PONZIO", label: "Aliuminio sistemos" },
           { number: "Individualus", label: "Kiekvienas projektas" },
           { number: "Garantija", label: "Įtraukta į kainą" },
         ]}
         primaryCtaReassurance
-        title="Aliuminio sprendimai fasadams, pertvaroms ir nestandartinėms konstrukcijoms"
+        title="Aliuminio sprendimai Šiauliuose – fasadai, pertvaros"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="pagrindines-kryptys">

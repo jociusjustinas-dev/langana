@@ -120,7 +120,8 @@ export function PlastikinesDurysSalesPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Peržiūrėti privalumus", href: "#privalumai-plastikines" }}
         description="Sandarios, lengvai prižiūrimos ir prie skirtingo pastato stiliaus pritaikomos plastikinės durys balkonams, terasoms, individualiems namams, biurams ir parduotuvėms."
-        title="Plastikinės durys namams, biurams ir komercinėms erdvėms"
+        heroSubtitle="Sprendimai namams, biurams ir komercinėms erdvėms."
+        title="Plastikinės durys Šiauliuose"
       />
 
       <PlastikinesDurysSolutionTabs sectionId="sprendimai-plastikines" />

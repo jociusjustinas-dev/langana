@@ -28,12 +28,13 @@ export function AliuminioFasadaiPage() {
         heroUrgencyLine
         ctaSecondary={{ label: "Peržiūrėti sistemas", href: "#fasadu-sistemos" }}
         description="Aliuminio fasadų sistemos komerciniams, viešiesiems ir moderniems gyvenamiesiems projektams."
+        heroSubtitle="Projektiniams ir komerciniams objektams – modernus dizainas, energijos efektyvumas."
         stats={[
           { number: "YAWAL & PONZIO", label: "Profilių gamintojai" },
           { number: "Individualus", label: "Kiekvienas projektas" },
           { number: "Garantija", label: "Įtraukta" },
         ]}
-        title="Aliuminio fasadai projektiniams ir komerciniams objektams"
+        title="Aliuminio fasadai Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="fasadu-sistemos">

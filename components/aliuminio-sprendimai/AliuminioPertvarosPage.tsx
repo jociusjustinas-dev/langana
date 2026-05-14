@@ -28,12 +28,13 @@ export function AliuminioPertvarosPage() {
         heroUrgencyLine
         ctaSecondary={{ label: "Peržiūrėti sistemas", href: "#pertvaru-sistemos" }}
         description="Aliuminio pertvarų, vitrinų ir vidaus durų sistemos funkcionaliam, estetiškam ir patikimam erdvių zonavimui."
+        heroSubtitle="Komercinėms ir vidaus erdvėms – ofisų zonavimas, stiklo užpildai."
         stats={[
           { number: "YAWAL & PONZIO", label: "Profilių gamintojai" },
           { number: "Šilti ir šalti", label: "Profiliai" },
           { number: "Garantija", label: "Įtraukta" },
         ]}
-        title="Aliuminio pertvaros komercinėms ir vidaus erdvėms"
+        title="Aliuminio pertvaros Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]" id="pertvaru-sistemos">

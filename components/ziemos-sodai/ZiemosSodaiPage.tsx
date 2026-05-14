@@ -147,13 +147,14 @@ export function ZiemosSodaiPage() {
         ctaPrimary={{ label: "Gauti pasiūlymą", href: "/kontaktai#uzklausa" }}
         ctaSecondary={{ label: "Aptarti idėją", href: "/kontaktai#uzklausa" }}
         description="Sukurkite gamtos kampelį savo namuose – šviesią, nuo vėjo, lietaus ir sniego apsaugotą erdvę poilsiui, augalams, rytinei kavai ar ramioms akimirkoms visais metų laikais."
+        heroSubtitle="Šviesesnė ir jaukesnė namų erdvė – aliuminio konstrukcijos, panoraminis stiklas."
         stats={[
           { number: "50+", label: "Žiemos sodų projektų" },
           { number: "Individualus", label: "Kiekvienas projektas" },
           { number: "Garantija", label: "Įtraukta į kainą" },
         ]}
         primaryCtaReassurance
-        title="Žiemos sodai šviesesnei ir jaukesnei namų erdvei"
+        title="Žiemos sodai Šiauliuose"
       />
 
       <section className="w-full bg-white py-14 md:py-[100px]">
