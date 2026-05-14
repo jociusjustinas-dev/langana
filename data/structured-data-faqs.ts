@@ -421,6 +421,36 @@ export const ALIUMINIO_PERTVAROS_FAQ: StructuredFaqItem[] = [
     question: "Ar padedate parinkti sistemą pagal projektą?",
     answer: "Taip, įvertiname objektą ir parenkame tinkamą sistemą pagal funkciją, estetiką ir biudžetą.",
   },
+  {
+    question: "Kokia aliuminio pertvaros kaina?",
+    answer:
+      "Aliuminio pertvaros kaina priklauso nuo pasirinktos sistemos (PBI 40E ar PBI 50N), stiklo storio ir tipo, pertvaros aukščio bei ilgio, durų pasirinkimo ir spalvų. Tikslų pasiūlymą pateikiame po nemokamo objekto įvertinimo Šiauliuose arba pagal pateiktus projekto brėžinius.",
+  },
+  {
+    question: "Ar galima pertvarą sumontuoti veikiančiame ofise?",
+    answer:
+      "Taip. Aliuminio pertvarų montavimas vyksta sausuoju būdu, be didelio dulkių ar triukšmo kiekio. Daugumoje atvejų darbas vyksta per 1–3 darbo dienas ir nereikalauja viso ofiso uždarymo – galima zoną aptverti laikinomis užuolaidomis ir tęsti darbą greta.",
+  },
+  {
+    question: "Kokios stiklo galimybės?",
+    answer:
+      "Pertvarose naudojamas grūdintas stiklas, kuris yra saugesnis ir tvirtesnis nei standartinis. Galima rinktis permatomą stiklą, matinį (acid-etched arba sandblast), su privatumo plėvele, su firminio logo spauda arba dvigubą stiklą su žaliuzėmis tarp sluoksnių.",
+  },
+  {
+    question: "Ar pertvara užtikrina garso izoliaciją?",
+    answer:
+      "Taip. Tinkamai parinkta sistema su grūdintu stiklu ir kokybiškomis sandarinimo tarpinėmis užtikrina 35–45 dB akustinę izoliaciją. Tai atitinka standartinio ofiso kabinetų reikalavimus ir leidžia kurti ramias darbo zonas net atvirame plane.",
+  },
+  {
+    question: "Ar į pertvarą galima įmontuoti duris?",
+    answer:
+      "Taip. Galima įmontuoti stiklo duris (su aliuminio rėmu arba be jo), klasikines aliuminio duris su stiklu ar net stumdomas duris – pagal pertvaros sistemą ir projekto poreikį. Durys gali turėti standartines spynas ar elektroninę prieigos kontrolę.",
+  },
+  {
+    question: "Ar pertvarą galima vėliau perkelti?",
+    answer:
+      "Taip. Aliuminio pertvaros yra modulinės – galima jas išmontuoti ir perkonfigūruoti pakeičiant patalpos paskirtį. Tai ekonomiškas sprendimas nuomojamoms patalpoms ar augančioms įmonėms, kur erdvės struktūra keičiasi laikui bėgant.",
+  },
 ];
 
 export const ZIEMOS_SODAI_FAQ: StructuredFaqItem[] = [

@@ -33,12 +33,14 @@ export function ProcessSteps({ headingLine1, headingLine2, headingIntro, steps, 
     <AnimatedSection as="section" className="no-rounded w-full bg-[#263cd0] px-4 py-16 md:px-[70px] md:py-[100px]" id={id}>
       <div className="mx-auto flex max-w-[1440px] flex-col gap-12 md:gap-[60px]">
         <div>
-          <div className="font-semibold tracking-[-0.036em] text-white">
-            <p className="text-[28px] leading-snug text-white opacity-100 md:text-[40px]">{headingLine1}</p>
+          <h2 className="font-semibold tracking-[-0.036em] text-white">
+            <span className="block text-[28px] leading-snug text-white opacity-100 md:text-[40px]">{headingLine1}</span>
             {headingLine2 ? (
-              <p className="mt-1 text-[28px] leading-snug text-white opacity-100 md:mt-0 md:text-[40px]">{headingLine2}</p>
+              <span className="mt-1 block text-[28px] leading-snug text-white opacity-100 md:mt-0 md:text-[40px]">
+                {headingLine2}
+              </span>
             ) : null}
-          </div>
+          </h2>
           {headingIntro ? (
             <p className="mt-6 max-w-[52rem] text-base font-normal leading-relaxed text-white/90 md:mt-8 md:text-[17px]">
               {headingIntro}
