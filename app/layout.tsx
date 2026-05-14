@@ -21,6 +21,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#263cd0",
   /** Mobile Chrome: layout atnaujinamas, kai slankioji naršyklės UI keičia matomą viewport aukštį. */
   interactiveWidget: "resizes-content",
 };
@@ -51,6 +52,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 

@@ -86,7 +86,7 @@ export function localBusinessSchema(): Record<string, unknown> {
     description:
       "Langai, durys, stiklinimas Šiauliuose. Plastikiniai ir aliuminio langai, balkonų stiklinimas, terasų stiklinimas, žiemos sodai.",
     url: SITE_URL,
-    logo: `${SITE_URL}/langana-logo.svg`,
+    logo: `${SITE_URL}/apple-touch-icon.png`,
     image: `${SITE_URL}/og-default.jpg`,
     telephone: "+37060620666",
     email: "uablangana@gmail.com",
@@ -135,7 +135,7 @@ export function organizationSchema(): Record<string, unknown> {
     "@id": ORGANIZATION_ID,
     name: "UAB Langana",
     url: SITE_URL,
-    logo: `${SITE_URL}/langana-logo.svg`,
+    logo: `${SITE_URL}/apple-touch-icon.png`,
   };
 }
 

@@ -11,7 +11,8 @@
     "audit:images:warn": "node scripts/audit-product-images.mjs --no-fail",
     "research:product-media": "node scripts/product-media-research.mjs --out reports/product-media-research.md",
     "research:product-photos": "node scripts/product-photo-research.mjs --out reports/product-photo-research.md",
-    "research:product-photos:download": "node scripts/product-photo-research.mjs --out reports/product-photo-research.md --download"
+    "research:product-photos:download": "node scripts/product-photo-research.mjs --out reports/product-photo-research.md --download",
+    "generate:pwa-icons": "node scripts/generate-pwa-icons.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",
@@ -28,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
