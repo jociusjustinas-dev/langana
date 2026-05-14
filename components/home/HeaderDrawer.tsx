@@ -115,7 +115,7 @@ function MegaDrawerCategoryDetails({
   const summaryLooksActive = !marketingDim || sectionPathOn;
 
   return (
-    <details className="group border-b border-[rgba(163,170,214,0.35)] last:border-b-0">
+    <details className="group">
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-4 [&::-webkit-details-marker]:hidden">
         <span
           className={[
@@ -133,7 +133,7 @@ function MegaDrawerCategoryDetails({
           strokeWidth={2}
         />
       </summary>
-      <div className="border-l-2 border-[#263cd0]/25 pb-5 pl-4">
+      <div className="pb-5 pl-3">
         <Link
           className={[
             "mb-3 inline-block text-[15px] font-semibold text-[#263cd0] underline decoration-transparent underline-offset-2 transition-colors hover:decoration-[#263cd0]",
@@ -205,7 +205,7 @@ function DrawerMegaCategories({
           return (
             <Link
               key={section.id}
-              className="group border-b border-[rgba(163,170,214,0.35)] py-3.5 last:border-b-0"
+              className="group py-3.5"
               href={section.href}
               onClick={onNavigate}
             >
@@ -347,7 +347,7 @@ export function HeaderDrawer({ open, onClose, titleId }: HeaderDrawerProps) {
         aria-labelledby={titleId}
         aria-modal="true"
         className={[
-          "pointer-events-auto fixed left-0 top-0 z-[201] flex h-[100dvh] max-h-[100dvh] w-full max-w-[min(100%,calc(100vw-32px))] flex-col border-0 border-r border-[rgba(163,170,214,0.2)] bg-[#f6f7ff] shadow-[4px_0_32px_rgba(22,33,107,0.12)]",
+          "pointer-events-auto fixed left-0 top-0 z-[201] flex h-[100dvh] max-h-[100dvh] w-full max-w-[min(100%,calc(100vw-32px))] flex-col border-0 bg-[#f6f7ff] shadow-[4px_0_32px_rgba(22,33,107,0.12)]",
           "sm:max-w-[min(440px,92vw)]",
           "transform-gpu",
           uiTransitionDrawerPanel,
