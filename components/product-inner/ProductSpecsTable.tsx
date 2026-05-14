@@ -35,7 +35,7 @@ export function ProductSpecsTable({
       key: "value",
       label: valueHead,
       headerClassName:
-        "text-center text-base font-semibold leading-normal text-[#16216b] md:text-[16px] md:leading-[1.5]",
+        "text-left text-base font-semibold leading-normal text-[#16216b] md:text-[16px] md:leading-[1.5]",
     },
   ] as const;
 
@@ -48,7 +48,7 @@ export function ProductSpecsTable({
     ),
     cells: {
       value: (
-        <p className="min-w-0 break-words text-base font-normal leading-normal text-[#16216b] sm:text-center md:text-[16px] md:leading-[1.5]">
+        <p className="min-w-0 break-words text-left text-base font-normal leading-normal text-[#16216b] md:text-[16px] md:leading-[1.5]">
           {row.value}
         </p>
       ),

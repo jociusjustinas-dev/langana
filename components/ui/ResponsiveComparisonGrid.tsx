@@ -69,28 +69,28 @@ export function ResponsiveComparisonGrid({
           <article
             className={
               idx % 2 === 0
-                ? "rounded-xl border border-transparent bg-[#f6f7ff] p-4 shadow-sm"
-                : "rounded-xl border border-[#e8ebfa] bg-white p-4 shadow-sm"
+                ? "rounded-xl border border-transparent bg-[#f6f7ff] p-4 text-left shadow-sm"
+                : "rounded-xl border border-[#e8ebfa] bg-white p-4 text-left shadow-sm"
             }
             key={row.key}
           >
             <div
-              className="mb-3 border-b border-[#dfe4f7] pb-2 text-sm font-semibold leading-snug text-[#16216b] md:text-base"
+              className="mb-3 border-b border-[#dfe4f7] pb-2 text-left text-sm font-semibold leading-snug text-[#16216b] md:text-base"
               role="heading"
               aria-level={3}
             >
               {row.feature}
             </div>
-            <dl className="space-y-0">
+            <dl className="space-y-0 text-left">
               {columns.map((col) => (
                 <div
-                  className="flex flex-col gap-1.5 border-b border-[#eef0fb] py-3 last:border-b-0 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
+                  className="flex flex-col gap-1.5 border-b border-[#eef0fb] py-3 text-left last:border-b-0 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
                   key={`${row.key}-${col.key}`}
                 >
-                  <dt className="shrink-0 text-[13px] font-semibold leading-snug text-[#263cd0] sm:max-w-[40%] sm:pt-0.5">
+                  <dt className="shrink-0 text-left text-[13px] font-semibold leading-snug text-[#263cd0] sm:max-w-[40%] sm:pt-0.5">
                     {col.label}
                   </dt>
-                  <dd className="min-w-0 flex-1">{row.cells[col.key]}</dd>
+                  <dd className="min-w-0 flex-1 text-left [&_*]:text-left">{row.cells[col.key]}</dd>
                 </div>
               ))}
             </dl>
@@ -118,9 +118,9 @@ export function ResponsiveComparisonGrid({
               key={`desk-${row.key}`}
               style={gridStyle}
             >
-              <div className="min-w-0 self-center">{row.feature}</div>
+              <div className="min-w-0 self-center text-left">{row.feature}</div>
               {columns.map((col) => (
-                <div className="min-w-0" key={`${row.key}-${col.key}`}>
+                <div className="min-w-0 text-left [&_*]:text-left" key={`${row.key}-${col.key}`}>
                   {row.cells[col.key]}
                 </div>
               ))}

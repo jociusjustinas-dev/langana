@@ -58,12 +58,12 @@ const COLUMNS = [
   {
     key: "aluminum",
     label: "Aliuminiai langai",
-    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+    headerClassName: "text-left text-base font-semibold text-[#263cd0] md:text-[18px]",
   },
   {
     key: "plastic",
     label: "Plastikiniai langai",
-    headerClassName: "text-center text-base font-semibold text-[#263cd0] md:text-[18px]",
+    headerClassName: "text-left text-base font-semibold text-[#263cd0] md:text-[18px]",
   },
 ] as const;
 
@@ -74,7 +74,7 @@ function ComparisonValueCell({ tone, text }: ComparisonCell) {
   return (
     <div
       aria-label={a11y}
-      className="flex flex-1 flex-col items-center justify-center gap-1 px-1.5 text-center sm:flex-row sm:gap-2 sm:px-2"
+      className="flex flex-1 flex-col items-start justify-start gap-1 px-1.5 text-left sm:flex-row sm:items-start sm:gap-2 sm:px-2"
     >
       {tone === "mid" ? (
         <AlertTriangle aria-hidden className="size-3.5 shrink-0 text-amber-600" strokeWidth={2.25} />
@@ -83,7 +83,7 @@ function ComparisonValueCell({ tone, text }: ComparisonCell) {
       ) : (
         <X aria-hidden className="size-3.5 shrink-0 text-red-500" strokeWidth={2.5} />
       )}
-      <span className="text-xs font-semibold leading-snug text-[#16216b] sm:text-sm">{text}</span>
+      <span className="text-left text-xs font-semibold leading-snug text-[#16216b] sm:text-sm">{text}</span>
     </div>
   );
 }
@@ -124,20 +124,22 @@ export function AluminumLangaiComparisonSection({ id = "palyginimas-aliuminis" }
             ariaLabel="Aliumininių ir plastikinių langų palyginimas"
             columns={COLUMNS}
             desktopMinWidthClass="max-lg:min-w-[540px]"
-            firstColumnHeaderClassName="self-center text-sm font-semibold text-[#59799f] md:text-base"
+            firstColumnHeaderClassName="self-center text-left text-sm font-semibold text-[#59799f] md:text-base"
             firstColumnLabel="Savybė"
             gridTemplateColumns="minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr)"
             rows={ROWS.map((row) => ({
               key: row.label,
-              feature: <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.label}</p>,
+              feature: (
+                <p className="text-left text-sm font-semibold text-[#16216b] md:text-base">{row.label}</p>
+              ),
               cells: {
                 aluminum: (
-                  <div className="flex justify-center">
+                  <div className="flex justify-start">
                     <ComparisonValueCell {...row.aluminum} />
                   </div>
                 ),
                 plastic: (
-                  <div className="flex justify-center">
+                  <div className="flex justify-start">
                     <ComparisonValueCell {...row.plastic} />
                   </div>
                 ),

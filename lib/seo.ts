@@ -54,38 +54,41 @@ export function pageMeta(opts: PageMetaOpts): Metadata {
   };
 }
 
-const HOME_TITLE = "Langana — langai, durys, stiklinimas Šiauliuose";
-const HOME_DESCRIPTION =
-  "Langai, durys, stiklinimas Šiauliuose. 20+ metų patirties, 300+ projektų, sertifikuota kokybė. Montavimas per 3–5 d. Nemokamas matavimas ir pasiūlymas per 24 val.";
+/**
+ * Pagrindinis puslapis: absoliutus `<title>` (be root `title.template`), canonical, OG, Twitter.
+ * Keyword + geo dažnai priekyje: pvz. „Langai, durys, stiklinimas Šiauliuose | Langana“.
+ */
+export function homeMetadata(opts: PageMetaOpts): Metadata {
+  const url = canonical(opts.path);
+  const ogImage = opts.ogImage || "/og-default.jpg";
 
-/** Pagrindinis puslapis: absoliutus `<title>`, be šablono „%s | Langana“. */
-export function homeMetadata(): Metadata {
-  const url = canonical("/");
   return {
-    title: { absolute: HOME_TITLE },
-    description: HOME_DESCRIPTION,
+    metadataBase: new URL(SITE_URL),
+    title: { absolute: opts.title },
+    description: opts.description,
     alternates: { canonical: url },
+    robots: opts.noindex ? { index: false, follow: true } : undefined,
     openGraph: {
-      title: HOME_TITLE,
-      description: HOME_DESCRIPTION,
+      title: opts.title,
+      description: opts.description,
       url,
       siteName: SITE_NAME,
       locale: "lt_LT",
       type: "website",
       images: [
         {
-          url: "/og-default.jpg",
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: HOME_TITLE,
+          alt: opts.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: HOME_TITLE,
-      description: HOME_DESCRIPTION,
-      images: ["/og-default.jpg"],
+      title: opts.title,
+      description: opts.description,
+      images: [ogImage],
     },
   };
 }

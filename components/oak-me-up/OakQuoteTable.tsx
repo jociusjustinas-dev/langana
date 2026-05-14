@@ -50,7 +50,7 @@ export function OakQuoteTable({ sectionLabel, rows }: OakQuoteTableProps) {
                   <dt className="font-mono text-[8px] font-medium uppercase tracking-[0.05em] text-[#7a7a7a]">
                     Apdaila
                   </dt>
-                  <dd className="text-right text-[10px] font-medium leading-snug text-[#2b2b2b] sm:max-w-[65%] sm:text-left">
+                  <dd className="text-left text-[10px] font-medium leading-snug text-[#2b2b2b] sm:max-w-[65%]">
                     {row.finish}
                   </dd>
                 </div>
@@ -58,7 +58,7 @@ export function OakQuoteTable({ sectionLabel, rows }: OakQuoteTableProps) {
                   <dt className="font-mono text-[8px] font-medium uppercase tracking-[0.05em] text-[#7a7a7a]">
                     Matmenys
                   </dt>
-                  <dd className="text-right font-mono text-[9px] leading-snug text-[#7a7a7a] sm:text-left">
+                  <dd className="text-left font-mono text-[9px] leading-snug text-[#7a7a7a]">
                     {row.dimensions}
                   </dd>
                 </div>

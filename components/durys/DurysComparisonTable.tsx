@@ -41,13 +41,13 @@ export function DurysComparisonTable({
   const compRows = rows.map((row) => ({
     key: row.feature,
     feature: (
-      <p className="text-sm font-semibold text-[#16216b] md:text-base">{row.feature}</p>
+      <p className="text-left text-sm font-semibold text-[#16216b] md:text-base">{row.feature}</p>
     ),
     cells: Object.fromEntries(
       columns.map((c) => [
         c.key,
         <p
-          className="text-sm font-normal leading-relaxed text-[#16216b] md:text-base"
+          className="text-left text-sm font-normal leading-relaxed text-[#16216b] md:text-base"
           key={`${row.feature}-${c.key}`}
         >
           {row.values[c.key]}
