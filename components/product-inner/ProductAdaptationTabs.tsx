@@ -5,6 +5,7 @@ import { useId, useState } from "react";
 
 import { AnimatedSection } from "@/components/animations/AnimatedSection";
 import type { ProductInnerAdaptationTab } from "@/data/product-inner/types";
+import { handleTabListArrowKey } from "@/lib/tab-list-keyboard";
 
 import { AdaptationSectionTitle } from "./AdaptationSectionTitle";
 
@@ -19,7 +20,6 @@ export function ProductAdaptationTabs({
 }) {
   const [activeId, setActiveId] = useState(tabs[0]?.id ?? "");
   const baseId = useId();
-  const active = tabs.find((t) => t.id === activeId) ?? tabs[0];
   const isScrollableMobile = tabs.length > 2;
 
   return (
@@ -72,12 +72,13 @@ export function ProductAdaptationTabs({
                 isScrollableMobile ? "max-md:w-max max-md:min-w-max" : "w-full",
               ].join(" ")}
             >
-              {tabs.map((tab) => {
-                const selected = tab.id === active?.id;
+              {tabs.map((tab, i) => {
+                const selected = tab.id === activeId;
                 const tabDomId = `${baseId}-tab-${tab.id}`;
+                const panelId = `${baseId}-panel-${tab.id}`;
                 return (
                   <button
-                    aria-controls={`${baseId}-panel`}
+                    aria-controls={panelId}
                     aria-selected={selected}
                     className={[
                       "rounded-full text-center font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2",
@@ -93,6 +94,14 @@ export function ProductAdaptationTabs({
                     id={tabDomId}
                     key={tab.id}
                     onClick={() => setActiveId(tab.id)}
+                    onKeyDown={(e) =>
+                      handleTabListArrowKey(e, {
+                        index: i,
+                        count: tabs.length,
+                        tabDomId: (j) => `${baseId}-tab-${tabs[j]!.id}`,
+                        setIndex: (j) => setActiveId(tabs[j]!.id),
+                      })
+                    }
                     role="tab"
                     type="button"
                   >
@@ -103,27 +112,33 @@ export function ProductAdaptationTabs({
             </div>
           </div>
 
-          <div
-            aria-labelledby={active ? `${baseId}-tab-${active.id}` : undefined}
-            className="flex w-full flex-col gap-8"
-            id={`${baseId}-panel`}
-            role="tabpanel"
-          >
-            {intro.trim() ? (
-              <p className="text-[16px] font-normal leading-[1.5] text-[#16216b]">{intro}</p>
-            ) : null}
+          {intro.trim() ? (
+            <p className="text-[16px] font-normal leading-[1.5] text-[#16216b]">{intro}</p>
+          ) : null}
 
-            {active ? (
-              <ul className="flex flex-col gap-3">
-                {active.bullets.map((line) => (
-                  <li className="flex items-center gap-3 text-[15px] font-normal leading-relaxed text-[#16216b] md:text-[16px] md:leading-[1.5]" key={line}>
-                    <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-[#263cd0]" />
-                    <span>{line}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
+          {tabs.map((tab) => {
+            const selected = tab.id === activeId;
+            const panelId = `${baseId}-panel-${tab.id}`;
+            return (
+              <div
+                aria-labelledby={`${baseId}-tab-${tab.id}`}
+                className="flex w-full flex-col gap-8"
+                hidden={!selected}
+                id={panelId}
+                key={tab.id}
+                role="tabpanel"
+              >
+                <ul className="flex flex-col gap-3">
+                  {tab.bullets.map((line) => (
+                    <li className="flex items-center gap-3 text-[15px] font-normal leading-relaxed text-[#16216b] md:text-[16px] md:leading-[1.5]" key={line}>
+                      <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-[#263cd0]" />
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </AnimatedSection>

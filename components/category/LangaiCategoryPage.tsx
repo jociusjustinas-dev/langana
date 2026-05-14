@@ -13,6 +13,7 @@ import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGr
 import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 import { LANGAI_HUB_FAQ } from "@/data/structured-data-faqs";
+import { handleTabListArrowKey } from "@/lib/tab-list-keyboard";
 
 const LANGAI_IMAGES = {
   hero: "/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (6).png",
@@ -174,7 +175,6 @@ function LangaiFaq() {
 export function LangaiCategoryPage() {
   const [activeTypeIndex, setActiveTypeIndex] = useState(0);
   const tabsId = useId();
-  const activeType = LANGAI_TYPES_SLIDES[activeTypeIndex] ?? LANGAI_TYPES_SLIDES[0];
 
   return (
     <div className="w-full bg-white text-[#16216b]">
@@ -254,9 +254,10 @@ export function LangaiCategoryPage() {
               {LANGAI_TYPES_SLIDES.map((tab, i) => {
                 const selected = i === activeTypeIndex;
                 const tabDomId = `${tabsId}-tab-${i}`;
+                const panelId = `${tabsId}-panel-${i}`;
                 return (
                   <button
-                    aria-controls={`${tabsId}-panel`}
+                    aria-controls={panelId}
                     aria-selected={selected}
                     className={`min-h-[44px] rounded-full px-5 py-2.5 text-center text-[14px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2 sm:px-7 sm:py-3 sm:text-[15px] ${
                       selected ? "bg-[#263cd0] text-white shadow-sm" : "bg-transparent text-[#59799f] hover:text-[#16216b]"
@@ -264,6 +265,14 @@ export function LangaiCategoryPage() {
                     id={tabDomId}
                     key={tab.title}
                     onClick={() => setActiveTypeIndex(i)}
+                    onKeyDown={(e) =>
+                      handleTabListArrowKey(e, {
+                        index: i,
+                        count: LANGAI_TYPES_SLIDES.length,
+                        tabDomId: (j) => `${tabsId}-tab-${j}`,
+                        setIndex: setActiveTypeIndex,
+                      })
+                    }
                     role="tab"
                     type="button"
                   >
@@ -274,57 +283,65 @@ export function LangaiCategoryPage() {
             </SegmentedPillTabList>
           </div>
 
-          <div
-            aria-labelledby={`${tabsId}-tab-${activeTypeIndex}`}
-            className="w-full rounded-2xl bg-[#f6f7ff] p-6 md:p-10 lg:p-12"
-            id={`${tabsId}-panel`}
-            role="tabpanel"
-          >
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
-              <div className="relative mx-auto aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:aspect-auto lg:h-full lg:min-h-[280px] lg:self-stretch">
-                <ParallaxCoverImage
-                  alt={activeType.title}
-                  fill
-                  key={activeType.title}
-                  sizes="(max-width: 1023px) 100vw, 45vw"
-                  src={activeType.image}
-                />
+          {LANGAI_TYPES_SLIDES.map((activeType, i) => {
+            const selected = i === activeTypeIndex;
+            const panelId = `${tabsId}-panel-${i}`;
+            return (
+              <div
+                aria-labelledby={`${tabsId}-tab-${i}`}
+                className="w-full rounded-2xl bg-[#f6f7ff] p-6 md:p-10 lg:p-12"
+                hidden={!selected}
+                id={panelId}
+                key={activeType.title}
+                role="tabpanel"
+              >
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
+                  <div className="relative mx-auto aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:aspect-auto lg:h-full lg:min-h-[280px] lg:self-stretch">
+                    <ParallaxCoverImage
+                      alt={activeType.title}
+                      fill
+                      priority={i === 0}
+                      sizes="(max-width: 1023px) 100vw, 45vw"
+                      src={activeType.image}
+                    />
+                  </div>
+                  <div className="flex min-h-0 min-w-0 flex-col gap-6 lg:items-start">
+                    <div className="flex w-full flex-col gap-3 text-left">
+                      <h3 className="text-xl font-semibold leading-tight tracking-[-0.04em] text-[#16216b] md:text-[22px] lg:text-[24px]">
+                        {activeType.title}
+                      </h3>
+                      <p className="text-[15px] leading-relaxed text-[#16216b] md:text-base">{activeType.body}</p>
+                    </div>
+                    <div className="w-full">
+                      <p className="mb-3 text-[14px] font-semibold text-[#263cd0]">Kada rinktis?</p>
+                      <ul className="flex flex-col gap-2.5">
+                        {activeType.bullets.map((line) => (
+                          <li className="flex items-center gap-3 text-[15px] font-normal leading-relaxed text-[#16216b] md:text-[16px]" key={line}>
+                            <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-[#263cd0]" />
+                            <span>{line}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
+                      <Link
+                        className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] md:px-8 md:py-[15px] md:text-[15px] md:leading-normal"
+                        href={activeType.href}
+                      >
+                        Sužinoti daugiau
+                      </Link>
+                      <Link
+                        className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border border-[#263cd0] bg-transparent px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#263cd0] transition hover:bg-[#263cd0] hover:text-white sm:px-5 sm:text-[14px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
+                        href="/kontaktai#uzklausa"
+                      >
+                        Gauti pasiūlymą
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex min-h-0 min-w-0 flex-col gap-6 lg:items-start">
-                <div className="flex w-full flex-col gap-3 text-left">
-                  <h3 className="text-xl font-semibold leading-tight tracking-[-0.04em] text-[#16216b] md:text-[22px] lg:text-[24px]">
-                    {activeType.title}
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-[#16216b] md:text-base">{activeType.body}</p>
-                </div>
-                <div className="w-full">
-                  <p className="mb-3 text-[14px] font-semibold text-[#263cd0]">Kada rinktis?</p>
-                  <ul className="flex flex-col gap-2.5">
-                    {activeType.bullets.map((line) => (
-                      <li className="flex items-center gap-3 text-[15px] font-normal leading-relaxed text-[#16216b] md:text-[16px]" key={line}>
-                        <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-[#263cd0]" />
-                        <span>{line}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex w-full min-w-0 flex-row flex-nowrap items-stretch gap-2 sm:gap-3">
-                  <Link
-                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full bg-[#263cd0] px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-white transition hover:bg-[#1e31a8] sm:px-5 sm:text-[14px] md:px-8 md:py-[15px] md:text-[15px] md:leading-normal"
-                    href={activeType.href}
-                  >
-                    Sužinoti daugiau
-                  </Link>
-                  <Link
-                    className="inline-flex min-h-[48px] min-w-0 flex-1 basis-0 items-center justify-center rounded-full border border-[#263cd0] bg-transparent px-3 py-2.5 text-center text-[13px] font-semibold leading-snug text-[#263cd0] transition hover:bg-[#263cd0] hover:text-white sm:px-5 sm:text-[14px] md:px-8 md:py-[13px] md:text-[15px] md:leading-normal"
-                    href="/kontaktai#uzklausa"
-                  >
-                    Gauti pasiūlymą
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </AnimatedSection>
 

@@ -13,6 +13,7 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 import { ALIUMINIO_SPRENDIMAI_HUB_FAQ } from "@/data/structured-data-faqs";
+import { handleTabListArrowKey } from "@/lib/tab-list-keyboard";
 
 /** Hub sekcijų nuotraukos iš `public/images/Aliuminio sprendimai /` (ne `alium3` / `alium4`). */
 const HUB_PAGE_IMAGES = {
@@ -159,7 +160,6 @@ function BentoTopic({
 export function AliuminioSprendimaiHubPage() {
   const [activeMainIndex, setActiveMainIndex] = useState(0);
   const mainTabsId = useId();
-  const activeMain = MAIN_DIRECTIONS[activeMainIndex] ?? MAIN_DIRECTIONS[0];
 
   return (
     <div className="w-full bg-white text-[#16216b]">
@@ -195,9 +195,10 @@ export function AliuminioSprendimaiHubPage() {
               {MAIN_DIRECTIONS.map((tab, i) => {
                 const selected = i === activeMainIndex;
                 const tabDomId = `${mainTabsId}-tab-${i}`;
+                const panelId = `${mainTabsId}-panel-${i}`;
                 return (
                   <button
-                    aria-controls={`${mainTabsId}-panel`}
+                    aria-controls={panelId}
                     aria-selected={selected}
                     className={`min-h-[44px] rounded-full px-5 py-2.5 text-center text-[14px] font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#263cd0] focus-visible:ring-offset-2 sm:px-7 sm:py-3 sm:text-[15px] ${
                       selected ? "bg-[#263cd0] text-white shadow-sm" : "bg-transparent text-[#59799f] hover:text-[#16216b]"
@@ -205,6 +206,14 @@ export function AliuminioSprendimaiHubPage() {
                     id={tabDomId}
                     key={tab.title}
                     onClick={() => setActiveMainIndex(i)}
+                    onKeyDown={(e) =>
+                      handleTabListArrowKey(e, {
+                        index: i,
+                        count: MAIN_DIRECTIONS.length,
+                        tabDomId: (j) => `${mainTabsId}-tab-${j}`,
+                        setIndex: setActiveMainIndex,
+                      })
+                    }
                     role="tab"
                     type="button"
                   >
@@ -215,40 +224,48 @@ export function AliuminioSprendimaiHubPage() {
             </SegmentedPillTabList>
           </div>
 
-          <div
-            aria-labelledby={`${mainTabsId}-tab-${activeMainIndex}`}
-            className="w-full rounded-2xl bg-[#f6f7ff] p-6 md:p-10 lg:p-12"
-            id={`${mainTabsId}-panel`}
-            role="tabpanel"
-          >
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
-              <div className="relative mx-auto aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:aspect-auto lg:h-full lg:min-h-[280px] lg:self-stretch">
-                <ParallaxCoverImage
-                  alt={activeMain.title}
-                  fill
-                  key={activeMain.href}
-                  sizes="(max-width: 1023px) 100vw, 45vw"
-                  src={activeMain.image}
-                />
-              </div>
-              <div className="flex min-h-0 min-w-0 flex-col gap-6 lg:items-start">
-                <div className="space-y-4">
-                  <h3 className="text-[24px] font-semibold leading-[1.18] tracking-[-0.03em] text-[#263cd0] md:text-[32px]">
-                    {activeMain.title}
-                  </h3>
-                  <p className="max-w-[900px] text-[16px] leading-relaxed text-[#16216b]">{activeMain.description}</p>
+          {MAIN_DIRECTIONS.map((activeMain, i) => {
+            const selected = i === activeMainIndex;
+            const panelId = `${mainTabsId}-panel-${i}`;
+            return (
+              <div
+                aria-labelledby={`${mainTabsId}-tab-${i}`}
+                className="w-full rounded-2xl bg-[#f6f7ff] p-6 md:p-10 lg:p-12"
+                hidden={!selected}
+                id={panelId}
+                key={activeMain.href}
+                role="tabpanel"
+              >
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
+                  <div className="relative mx-auto aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:aspect-auto lg:h-full lg:min-h-[280px] lg:self-stretch">
+                    <ParallaxCoverImage
+                      alt={activeMain.title}
+                      fill
+                      priority={i === 0}
+                      sizes="(max-width: 1023px) 100vw, 45vw"
+                      src={activeMain.image}
+                    />
+                  </div>
+                  <div className="flex min-h-0 min-w-0 flex-col gap-6 lg:items-start">
+                    <div className="space-y-4">
+                      <h3 className="text-[24px] font-semibold leading-[1.18] tracking-[-0.03em] text-[#263cd0] md:text-[32px]">
+                        {activeMain.title}
+                      </h3>
+                      <p className="max-w-[900px] text-[16px] leading-relaxed text-[#16216b]">{activeMain.description}</p>
+                    </div>
+                    <div className="mt-2">
+                      <Link
+                        className="inline-flex items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-white transition hover:bg-[#1e31a8]"
+                        href={activeMain.href}
+                      >
+                        {activeMain.cta}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-2">
-                  <Link
-                    className="inline-flex items-center justify-center rounded-full bg-[#263cd0] px-8 py-[15px] text-[15px] font-semibold text-white transition hover:bg-[#1e31a8]"
-                    href={activeMain.href}
-                  >
-                    {activeMain.cta}
-                  </Link>
-                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
 
