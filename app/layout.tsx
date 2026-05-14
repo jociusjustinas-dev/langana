@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 
@@ -13,6 +13,14 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  /** Mobile Chrome: layout atnaujinamas, kai slankioji naršyklės UI keičia matomą viewport aukštį. */
+  interactiveWidget: "resizes-content",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://langana.lt"),
@@ -87,7 +95,7 @@ export default function RootLayout({
         />
         <div className="min-w-0 w-full overflow-x-clip" id="smooth-wrapper">
           <div
-            className="flex min-h-full min-w-0 flex-1 flex-col max-md:pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] md:pb-0"
+            className="flex min-h-full min-w-0 flex-1 flex-col max-md:pb-[var(--langana-mobile-sticky-bar-clearance)] md:pb-0"
             id="smooth-content"
           >
             <ScrollSmootherClient />

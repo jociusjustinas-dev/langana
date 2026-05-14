@@ -5,6 +5,11 @@
   --foreground: #16216b;
   --brand: #263cd0;
   --brand-dark: #16216b;
+  /*
+   * Mobilusis fiksuotas CTA juostos aukštis + iPhone home indicator.
+   * Sutampa su MobileStickyCta: vidinė eilutė (~4.5rem) + safe-area ant išorinio sluoksnio.
+   */
+  --langana-mobile-sticky-bar-clearance: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 @theme inline {
@@ -16,6 +21,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/*
+ * Mobilus viewport: `100vh` dažnai „užfiksuoja“ didelį layout aukštį ir kartu su `position:fixed`
+ * apačioje sukuria tuščią tarpą, kai Chrome/Safari UI suskleidžiamas. `100dvh` seka matomą aukštį.
+ */
+@supports (height: 100dvh) {
+  @media (max-width: 767.98px) {
+    html {
+      min-height: 100dvh;
+    }
+
+    body {
+      min-height: 100dvh;
+    }
+  }
 }
 
 /*
