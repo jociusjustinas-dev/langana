@@ -6,6 +6,9 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://langana.ver
 
 export const SITE_NAME = "Langana";
 
+/** Bendras OG/Twitter paveikslėlio alt visiems puslapiams (social + prieinamumas). */
+const OG_DEFAULT_IMAGE_ALT = "Langana — langai, durys ir stiklinimas Šiauliuose";
+
 export function canonical(path: string = ""): string {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   if (cleanPath === "/") return SITE_URL;
@@ -41,7 +44,7 @@ export function pageMeta(opts: PageMetaOpts): Metadata {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: opts.title,
+          alt: OG_DEFAULT_IMAGE_ALT,
         },
       ],
     },
@@ -80,7 +83,7 @@ export function homeMetadata(opts: PageMetaOpts): Metadata {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: opts.title,
+          alt: OG_DEFAULT_IMAGE_ALT,
         },
       ],
     },
