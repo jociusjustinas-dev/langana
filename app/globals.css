@@ -6,10 +6,10 @@
   --brand: #263cd0;
   --brand-dark: #16216b;
   /*
-   * Mobilusis fiksuotas CTA juostos aukštis + iPhone home indicator.
-   * Sutampa su MobileStickyCta: vidinė eilutė (~4.5rem) + safe-area ant išorinio sluoksnio.
+   * Mobilusis fiksuotas CTA: rezervas slenkamam turiniui (#smooth-content), ne dubliuojant safe-area
+   * ant vidinio CTA bloko (safe-area tik ant fiksuoto išorinio sluoksnio).
    */
-  --langana-mobile-sticky-bar-clearance: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  --mobile-sticky-cta-height: calc(5.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 @theme inline {
@@ -36,6 +36,13 @@ body {
     body {
       min-height: 100dvh;
     }
+  }
+}
+
+/* Mobilus CTA clearance: tik slenkamas turinys — ne „balta juosta“ po fiksuota juosta. */
+@media (max-width: 767.98px) {
+  #smooth-content {
+    padding-bottom: var(--mobile-sticky-cta-height);
   }
 }
 

@@ -94,10 +94,7 @@ export default function RootLayout({
           suppressHydrationWarning
         />
         <div className="min-w-0 w-full overflow-x-clip" id="smooth-wrapper">
-          <div
-            className="flex min-h-full min-w-0 flex-1 flex-col max-md:pb-[var(--langana-mobile-sticky-bar-clearance)] md:pb-0"
-            id="smooth-content"
-          >
+          <div className="flex min-h-full min-w-0 flex-1 flex-col" id="smooth-content">
             <ScrollSmootherClient />
             <SmoothScrollAnchors />
             <RouteReveal>{children}</RouteReveal>
