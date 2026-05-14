@@ -14,7 +14,7 @@ export function ResponsiveTableFrame({
   ariaLabel,
 }: {
   children: ReactNode;
-  /** Pvz. `rounded-2xl`, Oak: `rounded-xl border border-…`. */
+  /** Pvz. `rounded-2xl` arba `rounded-xl border border-…`. */
   className?: string;
   /** Pasirinktinai — slankiklio zonos pavadinimas ekrano skaitytuvams. */
   ariaLabel?: string;

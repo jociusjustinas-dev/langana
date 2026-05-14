@@ -31,7 +31,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/oak-me-up", "/ziemos-sodai/"],
+        disallow: ["/api/", "/_next/", "/ziemos-sodai/"],
       },
     ],
     sitemap: sitemapUrl,

@@ -11,7 +11,7 @@ type StaticRoute = {
   changeFrequency: ChangeFrequency;
 };
 
-/** Visi indeksuojami statiniai maršrutai (be /oak-me-up, be /ziemos-sodai/<slug> stubų, be /api). */
+/** Visi indeksuojami statiniai maršrutai (be /ziemos-sodai/<slug> stubų, be /api). */
 const STATIC_ROUTES: StaticRoute[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/langai", priority: 0.9, changeFrequency: "monthly" },
