@@ -4,11 +4,16 @@ import { AliuminioFasadaiTabs } from "@/components/aliuminio-sprendimai/Aliumini
 import { DurysComparisonTable } from "@/components/durys/DurysComparisonTable";
 import { CaseStudiesProjectsCarousel } from "@/components/plastikiniai-langai/CaseStudiesProjectsCarousel";
 import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
+import { ProcessSteps, type ProcessStep } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
+import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { ALUMINUM_FACADES_PRODUCTS } from "@/data/aliuminio-fasadai-products";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 import { ALIUMINIO_FASADAI_FAQ } from "@/data/structured-data-faqs";
+
+/** Dešinysis stulpelis – kaip „Kodėl Langana“ antroji sekcija (split + nuotrauka). */
+const FACADE_INTRO_SPLIT_IMAGE = "/images/alium4.png";
 
 const FACADE_WHY_CARDS = [
   {
@@ -87,28 +92,33 @@ const FA_FACADE_COMPARISON_ROWS = [
   },
 ] as const;
 
-const FACADE_PROCESS_STEPS = [
+const FACADE_PROCESS_STEPS: readonly ProcessStep[] = [
   {
-    title: "1. Konsultacija ir objekto įvertinimas",
-    body: "Susitinkame su projekto užsakovu arba architektu, aptariame fasado paskirtį, dydį, energinį poreikį ir biudžetą. Šiauliuose ir aplinkiniame regione konsultaciją atliekame objekte. Toliau esantiems projektams pradiniai aptarimai vyksta nuotoliniu būdu su parengtais brėžiniais.",
+    title: "Konsultacija ir objekto įvertinimas",
+    description:
+      "Susitinkame su projekto užsakovu arba architektu, aptariame fasado paskirtį, dydį, energinį poreikį ir biudžetą. Šiauliuose ir aplinkiniame regione konsultaciją atliekame objekte. Toliau esantiems projektams pradiniai aptarimai vyksta nuotoliniu būdu su parengtais brėžiniais.",
   },
   {
-    title: "2. Techninio sprendimo paruošimas",
-    body: "Mūsų komanda parengia detalų techninį pasiūlymą – sistemos parinkimas, mazgai, statinės apkrovos, stiklo paketai, fasado dažai ir kiti techniniai parametrai. Fasado projektavimas apima projektinį brėžinį ir sąmatą sutartam terminui.",
+    title: "Techninio sprendimo paruošimas",
+    description:
+      "Mūsų komanda parengia detalų techninį pasiūlymą – sistemos parinkimas, mazgai, statinės apkrovos, stiklo paketai, fasado dažai ir kiti techniniai parametrai. Fasado projektavimas apima projektinį brėžinį ir sąmatą sutartam terminui.",
   },
   {
-    title: "3. Gamyba pagal užsakymą",
-    body: "Konstrukcijos pagaminamos specializuotoje aliuminio gamykloje pagal patvirtintą projektą. Gamybos terminas priklauso nuo užsakymo apimties, sezono ir pasirinktos sistemos – tikslų terminą patvirtiname užsakymo metu.",
+    title: "Gamyba pagal užsakymą",
+    description:
+      "Konstrukcijos pagaminamos specializuotoje aliuminio gamykloje pagal patvirtintą projektą. Gamybos terminas priklauso nuo užsakymo apimties, sezono ir pasirinktos sistemos – tikslų terminą patvirtiname užsakymo metu.",
   },
   {
-    title: "4. Montavimas objekte",
-    body: "Fasado montavimas vykdomas patyrusių montuotojų pagal sistemos gamintojo techninius reikalavimus. Užtikriname sandarumą, statinį stabilumą ir ilgaamžišką eksploataciją. Montažo trukmė priklauso nuo objekto dydžio ir sudėtingumo.",
+    title: "Montavimas objekte",
+    description:
+      "Fasado montavimas vykdomas patyrusių montuotojų pagal sistemos gamintojo techninius reikalavimus. Užtikriname sandarumą, statinį stabilumą ir ilgaamžišką eksploataciją. Montažo trukmė priklauso nuo objekto dydžio ir sudėtingumo.",
   },
   {
-    title: "5. Priežiūra ir garantija",
-    body: "Sumontuotam fasadui suteikiame garantiją tiek konstrukcijos elementams, tiek montavimo darbams. Garantijos sąlygas patvirtiname užsakymo metu. Eksploatacijos priežiūra – periodinis valymas ir sandarinimo elementų patikra, kurią klientas gali atlikti savarankiškai arba užsakyti pas mus.",
+    title: "Priežiūra ir garantija",
+    description:
+      "Sumontuotam fasadui suteikiame garantiją tiek konstrukcijos elementams, tiek montavimo darbams. Garantijos sąlygas patvirtiname užsakymo metu. Eksploatacijos priežiūra – periodinis valymas ir sandarinimo elementų patikra, kurią klientas gali atlikti savarankiškai arba užsakyti pas mus.",
   },
-] as const;
+];
 
 const RELATED_SOLUTIONS = [
   {
@@ -157,30 +167,40 @@ export function AliuminioFasadaiPage() {
         title="Aliuminio fasadai Šiauliuose"
       />
 
-      <section className="w-full bg-white py-14 md:py-[100px]" id="kas-yra-aliuminio-fasadai">
-        <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
-          <h2 className="max-w-[min(100%,52rem)] text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
-            <span className="text-[#263cd0]">Kas yra </span>
-            <span className="text-[#16216b]">aliuminio fasadai ir kam jie tinka</span>
-          </h2>
-          <div className="mt-6 max-w-[920px] space-y-4 text-base leading-relaxed text-[#16216b] md:text-[17px]">
-            <p>
+      <section className="w-full bg-white px-4 py-14 md:px-[70px] md:py-[100px]" id="kas-yra-aliuminio-fasadai">
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
+          <div className="flex min-h-0 min-w-0 flex-col gap-5 lg:max-w-none lg:justify-center">
+            <h2 className="text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
+              <span className="text-[#263cd0]">Kas yra aliuminio fasadai </span>
+              <span className="text-[#16216b]">ir kam jie tinka</span>
+            </h2>
+            <p className="max-w-[52rem] text-base leading-relaxed text-[#16216b] md:text-[17px]">
               Aliuminio fasadai – tai modernių pastatų išorės sienų sistemos, kuriose stiklo paketai ar kitos užpildymo
               medžiagos tvirtinamos prie aliuminio profilio karkaso. Šios konstrukcijos suteikia pastatui ne tik estetišką
               ir reprezentatyvią išvaizdą, bet ir užtikrina šilumos bei garso izoliaciją, atsparumą oro sąlygoms ir
               ilgaamžiškumą, kuris matuojamas dešimtmečiais.
             </p>
-            <p>
+            <p className="max-w-[52rem] text-base leading-relaxed text-[#16216b] md:text-[17px]">
               Aliuminio fasadai Šiauliuose ir visoje Lietuvoje naudojami komerciniuose, viešuosiuose ir moderniuose
               gyvenamuosiuose pastatuose – nuo prekybos centrų ir biurų iki mokyklų, ligoninių ir individualių namų su
               didelėmis stiklo plokštumomis. Aliuminio profilis leidžia projektuoti dideles, atviras erdves su
               panoraminiais langais, kurių neįmanoma realizuoti naudojant tradicines konstrukcines medžiagas.
             </p>
-            <p>
+            <p className="max-w-[52rem] text-base leading-relaxed text-[#16216b] md:text-[17px]">
               Skirtingai nei plastikinės konstrukcijos, aliuminis išlaiko savo formą net esant didelėms apkrovoms ir
               didelėms stiklo masyvams, todėl jis yra pirmas pasirinkimas architektams, dirbantiems su sudėtingais ir
               reprezentatyviais projektais.
             </p>
+          </div>
+          <div className="relative mx-auto aspect-[4/3] min-h-[240px] w-full max-w-lg overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:max-w-none lg:aspect-auto lg:min-h-[min(100%,420px)] lg:self-stretch">
+            <ParallaxCoverImage
+              alt="Aliuminio fasadų konstrukcijos ir stiklo plokštumos"
+              fill
+              loading="lazy"
+              sizes="(max-width: 1023px) 100vw, 45vw"
+              src={FACADE_INTRO_SPLIT_IMAGE}
+              style={{ objectPosition: "50% 42%" }}
+            />
           </div>
         </div>
       </section>
@@ -253,29 +273,21 @@ export function AliuminioFasadaiPage() {
         </div>
       </div>
 
-      <section className="w-full bg-white pb-16 md:pb-[100px]" id="procesas-fasadai">
-        <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
-          <h2 className="max-w-[min(100%,48rem)] text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
-            <span className="text-[#263cd0]">Kaip vyksta </span>
-            <span className="text-[#16216b]">aliuminio fasado projektas</span>
-          </h2>
-          <p className="mt-4 max-w-[920px] text-base leading-relaxed text-[#16216b] md:text-[17px]">
-            Aliuminio fasadas yra didesnės apimties projektas, todėl darbai vyksta nuosekliai ir kontroliuojamai. Štai
-            pagrindiniai etapai nuo pirmojo susitikimo iki sumontuoto fasado. Kiekvienas etapas uždaromas dokumentais,
-            kad užsakovas matytų, kas patvirtinta prieš gamybą ir prieš montavimą.
-          </p>
-          <ol className="mt-10 list-none space-y-10">
-            {FACADE_PROCESS_STEPS.map((step) => (
-              <li className="max-w-[920px]" key={step.title}>
-                <h3 className="text-xl font-semibold leading-snug tracking-[-0.03em] text-[#16216b] md:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-[#16216b] md:text-[17px]">{step.body}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <div className="scroll-mt-28 md:scroll-mt-32" id="procesas-fasadai">
+        <section className="w-full bg-white pb-8 pt-4 md:pb-10 md:pt-6">
+          <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
+            <p className="max-w-[920px] text-base leading-relaxed text-[#16216b] md:text-[17px]">
+              Aliuminio fasadas yra didesnės apimties projektas, todėl darbai vyksta nuosekliai ir kontroliuojamai.
+              Štai pagrindiniai etapai nuo pirmojo susitikimo iki sumontuoto fasado. Kiekvienas etapas uždaromas
+              dokumentais, kad užsakovas matytų, kas patvirtinta prieš gamybą ir prieš montavimą.
+            </p>
+          </div>
+        </section>
+        <ProcessSteps
+          headingLine1="Kaip vyksta aliuminio fasado projektas?"
+          steps={FACADE_PROCESS_STEPS}
+        />
+      </div>
 
       <CaseStudiesProjectsCarousel
         headingLead="Realūs klientų "
