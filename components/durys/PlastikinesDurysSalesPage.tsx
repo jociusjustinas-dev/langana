@@ -10,6 +10,7 @@ import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { PLASTIKINES_DURYS_FAQ } from "@/data/structured-data-faqs";
 
 const HERO_IMAGE = "/images/durys.png";
 
@@ -60,33 +61,6 @@ const SELECTION_ROWS: { q: string; why: string }[] = [
   {
     q: "Ar reikalingas didesnis sandarumas?",
     why: "Tokiu atveju verta rinktis geresnį stiklo paketą ir tinkamą montavimo sprendimą.",
-  },
-];
-
-const FAQ = [
-  {
-    question: "Ar plastikinės durys tinka kaip pagrindinės lauko durys?",
-    answer:
-      "Taip, plastikinės durys puikiai tinka kaip lauko durys individualiam namui, jei parenkamas tinkamas profilis, stiklo paketas, furnitūra ir montavimo būdas.",
-  },
-  {
-    question: "Ar plastikinės durys yra šiltos?",
-    answer:
-      "Taip. Jose gali būti montuojami 2 arba 3 stiklų stiklo paketai, turintys geras termoizoliacines savybes.",
-  },
-  {
-    question: "Ar plastikines duris galima pritaikyti prie namo spalvos?",
-    answer:
-      "Taip. Plastikiniai profiliai gali būti laminuojami arba dažomi įvairiomis spalvomis, todėl duris galima derinti prie namo fasado ir interjero.",
-  },
-  {
-    question: "Ar plastikinės durys gali atsidaryti į išorę?",
-    answer:
-      "Taip, plastikinės durys gali atsidaryti tiek į vidų, tiek į išorę. Tai priklauso nuo pasirinktos furnitūros ir konkrečios situacijos.",
-  },
-  {
-    question: "Ar plastikines duris lengva prižiūrėti?",
-    answer: "Taip, plastikinės durys lengvai valomos ir nereikalauja sudėtingos priežiūros.",
   },
 ];
 
@@ -230,7 +204,7 @@ export function PlastikinesDurysSalesPage() {
         faqIdPrefix="plastikines-durys-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={PLASTIKINES_DURYS_FAQ}
         sectionId="duk-plastikines-durys"
       />
 

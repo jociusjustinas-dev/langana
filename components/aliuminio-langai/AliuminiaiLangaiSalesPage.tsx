@@ -7,29 +7,7 @@ import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
 import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { aliuminioLangaiShowcaseProducts } from "@/data/aliuminio-langai-showcase";
-
-const FAQ = [
-  {
-    question: "Ar aliuminiai langai yra šilti?",
-    answer:
-      "Taip, šiuolaikinės aliuminio sistemos turi šilumos izoliacijos sprendimus. Pavyzdžiui, HI sistemos skirtos geresniam sandarumui ir mažesniems šilumos nuostoliams.",
-  },
-  {
-    question: "Kada verta rinktis aliuminius langus?",
-    answer:
-      "Kai reikia didelių konstrukcijų, vitrinų, modernaus dizaino, tvirtumo arba sprendimo komerciniam ar viešosios paskirties objektui.",
-  },
-  {
-    question: "Ar aliuminiai langai tinka gyvenamiesiems namams?",
-    answer:
-      "Taip. Kai kurios sistemos skirtos ir gyvenamiesiems namams, įskaitant energiją taupančius bei pasyvius pastatus.",
-  },
-  {
-    question: "Kuo skiriasi TM 102HI ir TM 62 sistema?",
-    answer:
-      "TM 102HI yra aukščiausios šilumos izoliacijos sistema energiją taupantiems ir pasyviems objektams, o TM 62 yra universalesnė trijų kamerų sistema modernioms konstrukcijoms.",
-  },
-];
+import { ALIUMINIAI_LANGAI_FAQ } from "@/data/structured-data-faqs";
 
 const PROCESS = [
   {
@@ -91,7 +69,7 @@ export function AliuminiaiLangaiSalesPage() {
         faqIdPrefix="aliuminio-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={ALIUMINIAI_LANGAI_FAQ}
         sectionId="duk-aliuminis"
       />
 

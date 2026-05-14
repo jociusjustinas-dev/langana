@@ -4,6 +4,8 @@ import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { AliuminesStumdomosSistemosSalesPage } from "@/components/stumdomos-sistemos/AliuminesStumdomosSistemosSalesPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { aliuminesStumdomosJsonLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -15,7 +17,9 @@ export const metadata: Metadata = pageMeta({
 
 export default function AliuminesStumdomosSistemosPage() {
   return (
-    <div className="flex min-h-full flex-col bg-white text-[#16216b]">
+    <>
+      <JsonLd data={aliuminesStumdomosJsonLd()} />
+      <div className="flex min-h-full flex-col bg-white text-[#16216b]">
       <SiteHeader entrance="default" />
       <main className="flex min-h-0 flex-1 flex-col">
         <AliuminesStumdomosSistemosSalesPage />
@@ -23,5 +27,6 @@ export default function AliuminesStumdomosSistemosPage() {
         <SiteFooter />
       </main>
     </div>
+    </>
   );
 }

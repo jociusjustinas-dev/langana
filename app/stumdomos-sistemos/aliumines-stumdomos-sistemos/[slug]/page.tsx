@@ -6,8 +6,10 @@ import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { ProductInnerPage } from "@/components/product-inner/ProductInnerPage";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getAluminumSlidingProductBySlug } from "@/data/aliumines-stumdomos-sistemos-products";
 import { getProductInnerContent } from "@/data/product-inner";
+import { breadcrumbSchema, productSchema, systemBreadcrumbItems } from "@/lib/jsonld";
 import { getSystem, systemDescription, systemTitle } from "@/lib/product-systems";
 import { pageMeta } from "@/lib/seo";
 
@@ -44,9 +46,16 @@ export default async function AliuminesStumdomosSistemosInnerPage({ params }: Pr
   const { slug } = await params;
   const product = getAluminumSlidingProductBySlug(slug);
   const inner = getProductInnerContent(slug);
+  const system = getSystem(slug);
+  const productLd =
+    system != null
+      ? [productSchema(system), breadcrumbSchema(systemBreadcrumbItems(system))]
+      : null;
 
   return (
-    <div className="flex min-h-full flex-col bg-white text-[#16216b]">
+    <>
+      {productLd ? <JsonLd data={productLd} /> : null}
+      <div className="flex min-h-full flex-col bg-white text-[#16216b]">
       <SiteHeader entrance="default" />
       <main className="flex min-h-0 flex-1 flex-col">
         {product ? (
@@ -76,5 +85,6 @@ export default async function AliuminesStumdomosSistemosInnerPage({ params }: Pr
         <SiteFooter />
       </main>
     </div>
+    </>
   );
 }

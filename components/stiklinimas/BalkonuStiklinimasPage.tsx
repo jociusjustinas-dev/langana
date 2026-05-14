@@ -8,6 +8,7 @@ import { BalkonuStiklinimasSolutionTabs } from "@/components/stiklinimas/Balkonu
 import { BalkonuValueFeaturesSection } from "@/components/stiklinimas/BalkonuValueFeaturesSection";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { BALKONU_STIKLINIMAS_FAQ } from "@/data/structured-data-faqs";
 import type { ProductInnerSimilarItem } from "@/data/product-inner/types";
 
 const TAI_PAT_GAL_DOMINA_BALKONU: ProductInnerSimilarItem[] = [
@@ -59,29 +60,6 @@ const COMPARISON_ROWS = [
   { feature: "Atsparumas aplinkai", values: { plastic: "Geras", aluminum: "Labai geras" } },
   { feature: "Priežiūra", values: { plastic: "Lengva", aluminum: "Lengva" } },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Ar įstiklintas balkonas tampa šiltesnis?",
-    answer: "Taip, stiklinimas padeda sumažinti šilumos nuostolius ir gali pagerinti šalia esančio kambario mikroklimatą.",
-  },
-  {
-    question: "Ar balkonų stiklinimas sumažina triukšmą?",
-    answer: "Taip, įstiklintas balkonas gali sumažinti iš gatvės ar kiemo sklindantį triukšmą.",
-  },
-  {
-    question: "Ar stiklus galima atidaryti?",
-    answer: "Taip, balkonų stiklinimui gali būti naudojamos judančios konstrukcijos, kurios atsidaro į šonus.",
-  },
-  {
-    question: "Ar galima stiklinti skirtingo dydžio balkonus?",
-    answer: "Taip, sprendimas pritaikomas pagal balkono dydį ir konstrukciją.",
-  },
-  {
-    question: "Ar tokį balkoną lengva prižiūrėti?",
-    answer: "Taip, priežiūra panaši į įprastų langų valymą - dažniausiai užtenka vandens ir paprastų valymo priemonių.",
-  },
-];
 
 const PROCESS = [
   {
@@ -228,7 +206,7 @@ export function BalkonuStiklinimasPage() {
         faqIdPrefix="balkonu-stiklinimas-faq"
         headingLead="Dažniausiai"
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={BALKONU_STIKLINIMAS_FAQ}
         sectionId="duk-balkonu-stiklinimas"
       />
 

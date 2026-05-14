@@ -7,6 +7,8 @@ import { SiteHeader } from "@/components/home/SiteHeader";
 import { BalkonuStiklinimasPage } from "@/components/stiklinimas/BalkonuStiklinimasPage";
 import { StiklinimasCategoryPage } from "@/components/stiklinimas/StiklinimasCategoryPage";
 import { TerasuStiklinimasPage } from "@/components/stiklinimas/TerasuStiklinimasPage";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { stiklinimasJsonLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug?: string[] }> };
@@ -60,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function StiklinimasPage({ params }: Props) {
   const { slug } = await params;
   const isHub = !slug?.length;
+  const ld = stiklinimasJsonLd(slug);
   const page = !slug?.length ? (
     <StiklinimasCategoryPage />
   ) : slug.length === 1 && slug[0] === "balkonu-stiklinimas" ? (
@@ -74,22 +77,25 @@ export default async function StiklinimasPage({ params }: Props) {
   );
 
   return (
-    <div className="flex min-h-full flex-col bg-white text-[#16216b]">
-      <SiteHeader entrance="default" />
-      <main className="flex min-h-0 flex-1 flex-col">
-        {page}
-        <HomeCta
-          showPattern
-          {...(isHub
-            ? {
-                title: "Norite įstiklinti balkoną?",
-                titleHighlight: "Gauti pasiūlymą",
-                subtitle: "Matavimas ir pasiūlymas — nemokamai.",
-              }
-            : {})}
-        />
-        <SiteFooter />
-      </main>
-    </div>
+    <>
+      {ld ? <JsonLd data={ld} /> : null}
+      <div className="flex min-h-full flex-col bg-white text-[#16216b]">
+        <SiteHeader entrance="default" />
+        <main className="flex min-h-0 flex-1 flex-col">
+          {page}
+          <HomeCta
+            showPattern
+            {...(isHub
+              ? {
+                  title: "Norite įstiklinti balkoną?",
+                  titleHighlight: "Gauti pasiūlymą",
+                  subtitle: "Matavimas ir pasiūlymas — nemokamai.",
+                }
+              : {})}
+          />
+          <SiteFooter />
+        </main>
+      </div>
+    </>
   );
 }

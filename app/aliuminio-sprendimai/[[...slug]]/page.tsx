@@ -8,9 +8,11 @@ import { AliuminioFasadaiPage } from "@/components/aliuminio-sprendimai/Aliumini
 import { AliuminioPertvarosPage } from "@/components/aliuminio-sprendimai/AliuminioPertvarosPage";
 import { AliuminioSprendimaiHubPage } from "@/components/aliuminio-sprendimai/AliuminioSprendimaiHubPage";
 import { ProductInnerPage } from "@/components/product-inner/ProductInnerPage";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getAluminumFacadeProductBySlug } from "@/data/aliuminio-fasadai-products";
 import { getAluminumPartitionProductBySlug } from "@/data/aliuminio-pertvaros-products";
 import { getProductInnerContent } from "@/data/product-inner";
+import { aliuminioSprendimaiJsonLd } from "@/lib/jsonld";
 import { getSystem, systemDescription, systemTitle } from "@/lib/product-systems";
 import { pageMeta } from "@/lib/seo";
 
@@ -101,6 +103,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AliuminioSprendimaiPage({ params }: Props) {
   const { slug } = await params;
   const isHub = !slug?.length;
+  const ld = aliuminioSprendimaiJsonLd(slug);
 
   const page = !slug?.length ? (
     <AliuminioSprendimaiHubPage />
@@ -154,22 +157,25 @@ export default async function AliuminioSprendimaiPage({ params }: Props) {
   );
 
   return (
-    <div className="flex min-h-full flex-col bg-white text-[#16216b]">
-      <SiteHeader entrance="default" />
-      <main className="flex min-h-0 flex-1 flex-col">
-        {page}
-        <HomeCta
-          showPattern
-          {...(isHub
-            ? {
-                title: "Aliuminio konstrukcija jūsų projektui?",
-                subtitle: "Dirbame su YAWAL ir PONZIO — gauti komercinį pasiūlymą.",
-              }
-            : {})}
-        />
-        <SiteFooter />
-      </main>
-    </div>
+    <>
+      {ld ? <JsonLd data={ld} /> : null}
+      <div className="flex min-h-full flex-col bg-white text-[#16216b]">
+        <SiteHeader entrance="default" />
+        <main className="flex min-h-0 flex-1 flex-col">
+          {page}
+          <HomeCta
+            showPattern
+            {...(isHub
+              ? {
+                  title: "Aliuminio konstrukcija jūsų projektui?",
+                  subtitle: "Dirbame su YAWAL ir PONZIO — gauti komercinį pasiūlymą.",
+                }
+              : {})}
+          />
+          <SiteFooter />
+        </main>
+      </div>
+    </>
   );
 }
 

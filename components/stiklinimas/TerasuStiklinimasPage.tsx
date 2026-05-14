@@ -9,6 +9,7 @@ import { TerasuStiklinimasSystemTabs } from "@/components/stiklinimas/TerasuStik
 import { TerasuValueFeaturesSection } from "@/components/stiklinimas/TerasuValueFeaturesSection";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { TERASU_STIKLINIMAS_FAQ } from "@/data/structured-data-faqs";
 import type { ProductInnerSimilarItem } from "@/data/product-inner/types";
 
 const TAI_PAT_GAL_DOMINA_TERASU: ProductInnerSimilarItem[] = [
@@ -70,30 +71,6 @@ const VS_WINTER_GARDEN_ROWS = [
   { feature: "Norite paprastesnio ir greitesnio sprendimo", values: { fit: "Terasų stiklinimas" } },
   { feature: "Norite pilnesnės papildomos poilsio erdvės", values: { fit: "Žiemos sodas" } },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Ar įstiklinta terasa gali būti naudojama žiemą?",
-    answer:
-      "Tai priklauso nuo pasirinktos sistemos. Šiltesnės ir sandaresnės sistemos leidžia terasa naudotis ilgiau, tačiau galutinis komfortas priklauso nuo konstrukcijos, stiklo ir montavimo.",
-  },
-  {
-    question: "Ar terasos stiklinimas apsaugo nuo lietaus ir vėjo?",
-    answer: "Taip, kokybiškai parinkta ir sumontuota konstrukcija padeda apsaugoti terasą nuo lietaus, vėjo, sniego ir dulkių.",
-  },
-  {
-    question: "Ar galima atidaryti stiklinimo sistemas?",
-    answer: "Taip, dažnai naudojamos lengvai stumdomos durys ar kiti atidaromi sprendimai, leidžiantys įsileisti daugiau oro.",
-  },
-  {
-    question: "Ar terasos stiklinimas sumažina triukšmą?",
-    answer: "Taip, stiklinimas gali sumažinti iš aplinkos sklindantį triukšmą ir sukurti ramesnę poilsio zoną.",
-  },
-  {
-    question: "Ar terasos stiklinimas tinka moderniam ir klasikiniam namui?",
-    answer: "Taip, konstrukcija gali būti pritaikoma prie skirtingų architektūrinių stilių.",
-  },
-];
 
 const PROCESS = [
   {
@@ -258,7 +235,7 @@ export function TerasuStiklinimasPage() {
         faqIdPrefix="terasu-stiklinimas-faq"
         headingLead="Dažniausiai"
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={TERASU_STIKLINIMAS_FAQ}
         sectionId="duk-terasu-stiklinimas"
       />
 

@@ -8,6 +8,7 @@ import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { SPECIALIOS_DURYS_FAQ } from "@/data/structured-data-faqs";
 
 const HERO_IMAGE = "/images/durys.png";
 
@@ -71,29 +72,6 @@ const WHY_LANGANA = [
     body: "Specialios paskirties durims svarbu ne tik pats gaminys, bet ir tikslus montavimas, todėl pasirūpiname viso proceso kokybe.",
   },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Ar specialios paskirties durys gaminamos pagal individualius matmenis?",
-    answer:
-      "Taip, durys gali būti parenkamos ar gaminamos pagal konkrečią angą, objekto paskirtį ir techninius reikalavimus.",
-  },
-  {
-    question: "Ar šiame puslapyje nurodytos priešgaisrinės durys?",
-    answer:
-      "Taip, priešgaisrinės durys yra viena iš specialios paskirties durų grupių, skirtų objektams su papildomais saugos reikalavimais.",
-  },
-  {
-    question: "Kokios informacijos reikia priešgaisrinių durų pasiūlymui?",
-    answer:
-      "Reikalingi angos matmenys, montavimo vieta, objekto tipas ir, jei turite, projektiniai reikalavimai arba nurodyta atsparumo ugniai klasė.",
-  },
-  {
-    question: "Ar galite padėti parinkti tinkamą sprendimą?",
-    answer:
-      "Taip, galite atsiųsti informaciją apie objektą, o mes padėsime įvertinti, kuris durų sprendimas tinkamiausias.",
-  },
-];
 
 const PROCESS = [
   {
@@ -230,7 +208,7 @@ export function SpecialiosPaskirtiesDurysSalesPage() {
         faqIdPrefix="specialios-durys-faq"
         headingLead="Dažniausiai "
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={SPECIALIOS_DURYS_FAQ}
         sectionId="duk-specialios-durys"
       />
 

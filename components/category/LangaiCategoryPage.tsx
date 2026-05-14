@@ -12,6 +12,7 @@ import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { LANGAI_HUB_FAQ } from "@/data/structured-data-faqs";
 
 const LANGAI_IMAGES = {
   hero: "/images/Langai/ChatGPT Image May 7, 2026, 02_55_35 PM (6).png",
@@ -98,29 +99,6 @@ const COMPARISON_ROWS: {
   },
 ];
 
-const FAQ_ITEMS: { question: string; answer: string }[] = [
-  {
-    question: "Ar plastikiniai langai tikrai šilti?",
-    answer:
-      "Taip, modernūs plastikiniai langai pasižymi puikia šilumos izoliacija ir padeda sumažinti šildymo išlaidas.",
-  },
-  {
-    question: "Kuo skiriasi aliuminio langai?",
-    answer:
-      "Aliuminio langai yra tvirtesni, leidžia daryti didesnes stiklo konstrukcijas ir suteikia modernesnį vaizdą.",
-  },
-  {
-    question: "Kiek laiko tarnauja langai?",
-    answer:
-      "Kokybiški langai gali tarnauti 20–30 metų ar ilgiau, priklausomai nuo naudojimo ir priežiūros.",
-  },
-  {
-    question: "Kiek trunka montavimas?",
-    answer:
-      "Dažniausiai montavimas užtrunka 1–5 dienas, priklausomai nuo projekto dydžio ir langų skaičiaus.",
-  },
-];
-
 function ComparisonValueCell({ tone, text }: ComparisonCell) {
   const a11y =
     tone === "yes"
@@ -187,7 +165,7 @@ function LangaiFaq() {
           </div>
         </div>
 
-        <FaqAccordion idPrefix="faq-trigger" items={FAQ_ITEMS} />
+        <FaqAccordion idPrefix="faq-trigger" items={LANGAI_HUB_FAQ} />
       </div>
     </AnimatedSection>
   );

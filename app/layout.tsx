@@ -7,6 +7,8 @@ import { MobileStickyCta } from "@/components/home/MobileStickyCta";
 import { RouteReveal } from "@/components/layout/RouteReveal";
 import { ScrollSmootherClient } from "@/components/layout/ScrollSmootherClient";
 import { SmoothScrollAnchors } from "@/components/layout/SmoothScrollAnchors";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { localBusinessSchema, organizationSchema, websiteSchema } from "@/lib/jsonld";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -52,25 +54,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LOCAL_BUSINESS_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "UAB Langana",
-  url: SITE_URL,
-  telephone: "+37060620666",
-  email: "uablangana@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Tilžės g. 83b",
-    addressLocality: "Šiauliai",
-    addressCountry: "LT",
-  },
-  openingHours: ["Mo-Fr 08:00-17:00", "Sa 09:00-13:00"],
-  priceRange: "€€",
-  description: "Aukščiausios kokybės langai, durys, stiklinimas ir stumdomos sistemos Šiauliuose.",
-  areaServed: "Lietuva",
-  sameAs: ["https://www.facebook.com/uablangana/"],
-} as const;
+const ROOT_JSON_LD = [localBusinessSchema(), organizationSchema(), websiteSchema()];
 
 export default function RootLayout({
   children,
@@ -90,11 +74,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
           type="text/javascript"
         />
-        <script
-          // eslint-disable-next-line react/no-danger -- JSON-LD structured data
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_JSON_LD) }}
-          type="application/ld+json"
-        />
+        <JsonLd data={ROOT_JSON_LD} />
         {/*
           Fiksuoti sluoksniai (SiteHeader, home preloader) — už ScrollSmoother transformo ribų.
           Žr. https://gsap.com/docs/v3/Plugins/ScrollSmoother/ — position:fixed ne smooth-content viduje.

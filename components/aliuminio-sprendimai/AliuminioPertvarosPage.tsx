@@ -5,21 +5,7 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { ALUMINUM_PARTITIONS_PRODUCTS } from "@/data/aliuminio-pertvaros-products";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
-
-const FAQ = [
-  {
-    question: "Kur dažniausiai naudojamos aliuminio pertvaros?",
-    answer: "Dažniausiai jos naudojamos biuruose, viešosios paskirties objektuose ir komercinėse erdvėse zonavimui.",
-  },
-  {
-    question: "Ar galima derinti pertvaras su stiklu ir durimis?",
-    answer: "Taip, pertvarų sistemos leidžia derinti skirtingus stiklo ir durų sprendimus pagal objekto poreikius.",
-  },
-  {
-    question: "Ar padedate parinkti sistemą pagal projektą?",
-    answer: "Taip, įvertiname objektą ir parenkame tinkamą sistemą pagal funkciją, estetiką ir biudžetą.",
-  },
-];
+import { ALIUMINIO_PERTVAROS_FAQ } from "@/data/structured-data-faqs";
 
 const PROCESS = [
   { title: "Poreikio analizė", description: "Aptariame, kaip turi būti zonuojama erdvė ir kokia pertvarų funkcija objekte." },
@@ -76,7 +62,7 @@ export function AliuminioPertvarosPage() {
         faqIdPrefix="aliuminio-pertvaros-faq"
         headingLead="Dažniausiai"
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={ALIUMINIO_PERTVAROS_FAQ}
         sectionId="duk-pertvaros"
       />
     </div>

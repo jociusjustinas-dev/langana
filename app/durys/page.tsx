@@ -4,6 +4,9 @@ import { DurysCategoryPage } from "@/components/category/DurysCategoryPage";
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { DURYS_HUB_FAQ } from "@/data/structured-data-faqs";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -15,7 +18,24 @@ export const metadata: Metadata = pageMeta({
 
 export default function DurysPage() {
   return (
-    <div className="flex min-h-full flex-col bg-white text-[#16216b]">
+    <>
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: "Durys Šiauliuose",
+            description:
+              "Plastikinės, aliuminio, metalinės ir specialios paskirties durys Šiauliuose — parinkimas, gamyba ir montavimas.",
+            path: "/durys",
+            serviceType: "Durų gamyba ir montavimas",
+          }),
+          breadcrumbSchema([
+            { name: "Pradžia", path: "/" },
+            { name: "Durys", path: "/durys" },
+          ]),
+          faqSchema(DURYS_HUB_FAQ),
+        ]}
+      />
+      <div className="flex min-h-full flex-col bg-white text-[#16216b]">
       <SiteHeader entrance="default" />
       <main className="flex min-h-0 flex-1 flex-col">
         <DurysCategoryPage />
@@ -27,5 +47,6 @@ export default function DurysPage() {
         <SiteFooter />
       </main>
     </div>
+    </>
   );
 }

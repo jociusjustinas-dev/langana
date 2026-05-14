@@ -7,6 +7,7 @@ import { AliuminesStumdomosSolutionTabs } from "@/components/stumdomos-sistemos/
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ALUMINUM_SLIDING_PRODUCTS } from "@/data/aliumines-stumdomos-sistemos-products";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { ALIUMINES_STUMDOMOS_FAQ } from "@/data/structured-data-faqs";
 
 const WHY_CARDS = [
   {
@@ -48,31 +49,6 @@ const COMP_ROWS = [
   { feature: "Balkonai / lodžijos", values: { aluminum: "Tinka", plastic: "Tinka" } },
   { feature: "Ilgaamžiškumas", values: { aluminum: "Labai aukštas", plastic: "Geras" } },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Kuo skiriasi DP 180 ir DP 150T sistemos?",
-    answer:
-      "Abi sistemos skirtos pakeliamoms-slankiosioms konstrukcijoms, tačiau DP 180 leidžia įrengti itin didelių gabaritų ir iki 440 kg varčios svorio duris, o DP 150T dažnai naudojama žiemos sodams ir išėjimams į terasą.",
-  },
-  {
-    question: "Kada rinktis L 50 sistemą?",
-    answer:
-      "L 50 sistema tinkama balkonams, lodžijoms ir slankioms pertvaroms, kai nereikia šilumos skyriklių, bet svarbi apsauga nuo triukšmo ir atmosferos poveikio.",
-  },
-  {
-    question: "Ar galima įrengti žemą arba įleistą slenkstį?",
-    answer: "Taip, DP 180 sistemoje galima įrengti duris su įleistu slenksčiu, todėl nelieka architektūrinių barjerų.",
-  },
-  {
-    question: "Ar aliuminės stumdomos sistemos gali būti automatinės?",
-    answer: "Taip, DP 180 sistemoje galima įrengti automatinio durų atidarymo ir uždarymo sistemą.",
-  },
-  {
-    question: "Ar galima naudoti sulankstomas sistemas vidaus pertvaroms?",
-    answer: "Taip, Harmonic sistemos gali būti naudojamos vidinėms pertvaroms, kai norima atskirti erdves nenaudojant papildomų sienų.",
-  },
-];
 
 const PROCESS = [
   {
@@ -176,7 +152,7 @@ export function AliuminesStumdomosSistemosSalesPage() {
         faqIdPrefix="aliumines-stumdomos-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={ALIUMINES_STUMDOMOS_FAQ}
         sectionId="duk-aliumines-stumdomos"
       />
 

@@ -12,6 +12,7 @@ import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { STIKLINIMAS_HUB_FAQ } from "@/data/structured-data-faqs";
 
 const MAIN_DIRECTIONS = [
   {
@@ -106,26 +107,6 @@ const FIT_ROWS = [
   { feature: "Norite daugiau šviesos ir vizualinio lengvumo", values: { recommended: "Aliuminio konstrukcijos" } },
   { feature: "Norite komforto didesnę metų dalį", values: { recommended: "Šiltos sistemos" } },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Kuo skiriasi šilta ir šalta stiklinimo sistema?",
-    answer:
-      "Šilta sistema skirta geresnei šilumos izoliacijai, o šalta sistema dažniausiai naudojama apsaugai nuo vėjo, lietaus, sniego ir dulkių.",
-  },
-  {
-    question: "Ar stiklinimas sumažina triukšmą?",
-    answer: "Taip, stiklinimas gali sumažinti iš lauko sklindantį triukšmą, ypač gyvenant prie judrių gatvių.",
-  },
-  {
-    question: "Ar galima stiklinti skirtingų dydžių balkonus?",
-    answer: "Taip, sprendimas parenkamas pagal konkrečią angą, balkono konstrukciją ir naudojimo poreikį.",
-  },
-  {
-    question: "Ar atliekate montavimą?",
-    answer: "Taip, stiklinimo konstrukcijos parenkamos, pagaminamos ir sumontuojamos pagal objektą.",
-  },
-];
 
 const PROCESS = [
   {
@@ -337,7 +318,7 @@ export function StiklinimasCategoryPage() {
         faqIdPrefix="stiklinimas-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={STIKLINIMAS_HUB_FAQ}
         sectionId="duk-stiklinimas"
       />
 

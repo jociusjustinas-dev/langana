@@ -7,6 +7,7 @@ import { StumdomosSistemosTabs } from "@/components/stumdomos-sistemos/Stumdomos
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { STUMDOMOS_HUB_FAQ } from "@/data/structured-data-faqs";
 
 const STUMDOMOS_IMAGES = {
   hero: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_44_30 PM (1).png",
@@ -47,27 +48,6 @@ const USE_CASES = [
     imageUrl: STUMDOMOS_IMAGES.largeOpenings,
   },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Kada verta rinktis stumdomą sistemą?",
-    answer:
-      "Kai norite patogaus išėjimo į balkoną, terasą ar kiemą, daugiau natūralios šviesos ir taupesnio erdvės naudojimo.",
-  },
-  {
-    question: "Kuo skiriasi aliuminės ir plastikinės stumdomos sistemos?",
-    answer:
-      "Aliuminės sistemos dažniau pasirenkamos didelėms angoms ir modernesnei architektūrai, o plastikinės – praktiškesniems ir ekonomiškesniems sprendimams.",
-  },
-  {
-    question: "Ar stumdomos sistemos gali būti šiltos?",
-    answer: "Taip, tinkamai parinkta sistema ir stiklo paketas gali užtikrinti gerą šilumos izoliaciją.",
-  },
-  {
-    question: "Ar atliekate montavimą?",
-    answer: "Taip, sistema parenkama pagal objektą ir sumontuojama profesionaliai.",
-  },
-];
 
 const PROCESS = [
   {
@@ -187,7 +167,7 @@ export function StumdomosSistemosCategoryPage() {
         faqIdPrefix="stumdomos-sistemos-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={STUMDOMOS_HUB_FAQ}
         sectionId="duk-stumdomos-sistemos"
       />
 

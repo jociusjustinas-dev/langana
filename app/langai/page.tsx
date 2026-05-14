@@ -4,6 +4,9 @@ import { LangaiCategoryPage } from "@/components/category/LangaiCategoryPage";
 import { HomeCta } from "@/components/home/HomeCta";
 import { SiteFooter } from "@/components/home/SiteFooter";
 import { SiteHeader } from "@/components/home/SiteHeader";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { LANGAI_HUB_FAQ } from "@/data/structured-data-faqs";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -15,7 +18,24 @@ export const metadata: Metadata = pageMeta({
 
 export default function LangaiPage() {
   return (
-    <div className="flex min-h-full flex-col bg-white text-[#16216b]">
+    <>
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: "Langai Šiauliuose",
+            description:
+              "Plastikiniai ir aliuminio langai Šiauliuose — montavimas, garantija, nemokamas matavimas ir pasiūlymas.",
+            path: "/langai",
+            serviceType: "Langų gamyba ir montavimas",
+          }),
+          breadcrumbSchema([
+            { name: "Pradžia", path: "/" },
+            { name: "Langai", path: "/langai" },
+          ]),
+          faqSchema(LANGAI_HUB_FAQ),
+        ]}
+      />
+      <div className="flex min-h-full flex-col bg-white text-[#16216b]">
       <SiteHeader entrance="default" />
       <main className="flex min-h-0 flex-1 flex-col">
         <LangaiCategoryPage />
@@ -27,5 +47,6 @@ export default function LangaiPage() {
         <SiteFooter />
       </main>
     </div>
+    </>
   );
 }

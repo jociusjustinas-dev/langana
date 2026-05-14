@@ -6,9 +6,11 @@ import { ProductDetailHero } from "@/components/catalog/ProductDetailHero";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { SiteMainClosing } from "@/components/home/SiteMainClosing";
 import { ProductInnerPage } from "@/components/product-inner/ProductInnerPage";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getAluminumLangaiProductBySlug } from "@/data/aliuminio-langai-products";
 import { getPlasticLangaiProductBySlug } from "@/data/catalog";
 import { getProductInnerContent } from "@/data/product-inner";
+import { breadcrumbSchema, productSchema, systemBreadcrumbItems } from "@/lib/jsonld";
 import { getSystem, systemDescription, systemTitle } from "@/lib/product-systems";
 import { pageMeta } from "@/lib/seo";
 
@@ -55,6 +57,12 @@ export default async function LangaiSubPage({ params }: Props) {
       ? "/langai/aliuminio-langai"
       : "/langai/plastikiniai-langai";
 
+  const system = getSystem(slug);
+  const productLd =
+    system != null
+      ? [productSchema(system), breadcrumbSchema(systemBreadcrumbItems(system))]
+      : null;
+
   let body: ReactNode;
   if (product && inner) {
     body = (
@@ -77,12 +85,15 @@ export default async function LangaiSubPage({ params }: Props) {
   }
 
   return (
-    <div className={shellClass}>
-      <SiteHeader entrance="default" />
-      <main className="flex min-h-0 flex-1 flex-col">
-        {body}
-        <SiteMainClosing />
-      </main>
-    </div>
+    <>
+      {productLd ? <JsonLd data={productLd} /> : null}
+      <div className={shellClass}>
+        <SiteHeader entrance="default" />
+        <main className="flex min-h-0 flex-1 flex-col">
+          {body}
+          <SiteMainClosing />
+        </main>
+      </div>
+    </>
   );
 }

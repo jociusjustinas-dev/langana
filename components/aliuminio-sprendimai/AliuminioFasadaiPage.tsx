@@ -5,21 +5,7 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { ALUMINUM_FACADES_PRODUCTS } from "@/data/aliuminio-fasadai-products";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
-
-const FAQ = [
-  {
-    question: "Kam tinka aliuminio fasadų sistemos?",
-    answer: "Aliuminio fasadai dažniausiai naudojami komerciniuose, viešosios paskirties ir moderniuose gyvenamuosiuose objektuose.",
-  },
-  {
-    question: "Kuo skiriasi FA 50N ir FA 50N HI?",
-    answer: "FA 50N HI turi geresnes šilumos izoliacijos savybes, todėl dažniau pasirenkama energetiškai reiklesniems projektams.",
-  },
-  {
-    question: "Ar padedate suprojektuoti sprendimą pagal objektą?",
-    answer: "Taip, įvertiname projekto reikalavimus ir parenkame tinkamą fasado sistemą pagal konstrukciją, estetiką ir techninius kriterijus.",
-  },
-];
+import { ALIUMINIO_FASADAI_FAQ } from "@/data/structured-data-faqs";
 
 const PROCESS = [
   { title: "Konsultacija", description: "Aptariame objekto tipą, fasado paskirtį ir pagrindinius techninius reikalavimus." },
@@ -76,7 +62,7 @@ export function AliuminioFasadaiPage() {
         faqIdPrefix="aliuminio-fasadai-faq"
         headingLead="Dažniausiai"
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={ALIUMINIO_FASADAI_FAQ}
         sectionId="duk-fasadai"
       />
     </div>

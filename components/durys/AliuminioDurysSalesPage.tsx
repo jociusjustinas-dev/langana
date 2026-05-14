@@ -10,6 +10,7 @@ import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { ALIUMINIO_DURYS_FAQ } from "@/data/structured-data-faqs";
 
 const HERO_IMAGE = "/images/alium4.png";
 
@@ -60,34 +61,6 @@ const SELECTION_ROWS: { q: string; why: string }[] = [
   {
     q: "Ar objektas naudojamas intensyviai?",
     why: "Komerciniams ir pramoniniams objektams svarbu rinktis tvirtesnį sprendimą.",
-  },
-];
-
-const FAQ = [
-  {
-    question: "Ar aliuminio durys tinka individualiam namui?",
-    answer:
-      "Taip, aliuminio durys tinka individualiems namams, ypač kai svarbu saugumas, tvirtumas ir solidus įėjimo vaizdas.",
-  },
-  {
-    question: "Ar aliuminio durys saugios?",
-    answer:
-      "Taip. Aliuminio durys yra tvirtos, o papildomai galima rinktis dvigubas spynas, sklendes, grandinėles ir kitus saugumo mechanizmus.",
-  },
-  {
-    question: "Ar aliuminio durys izoliuoja garsą?",
-    answer:
-      "Taip, aliuminio durys padeda sumažinti išorės triukšmą, todėl tinka daugiabučiams ar namams šalia judresnių gatvių.",
-  },
-  {
-    question: "Ar galima pasirinkti durų spalvą?",
-    answer:
-      "Taip, aliuminio profiliai gali būti dengiami specialiais dažais, todėl galima rinktis spalvą pagal pastato fasadą ir stilių.",
-  },
-  {
-    question: "Ar aliuminio durys atsparios lietui ir aplinkos poveikiui?",
-    answer:
-      "Taip, jos gali būti dengiamos vandeniui atspariomis medžiagomis, o tinkamas montavimas užtikrina ilgesnį tarnavimo laiką.",
   },
 ];
 
@@ -232,7 +205,7 @@ export function AliuminioDurysSalesPage() {
         faqIdPrefix="aliuminio-durys-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={ALIUMINIO_DURYS_FAQ}
         sectionId="duk-aliuminio-durys"
       />
 

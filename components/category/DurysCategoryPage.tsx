@@ -14,6 +14,7 @@ import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { SegmentedPillTabList } from "@/components/ui/SegmentedPillTabList";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { DURYS_HUB_FAQ } from "@/data/structured-data-faqs";
 const DURYS_IMAGES = {
   hero: "/images/Durys/ChatGPT Image May 7, 2026, 03_18_07 PM (1).png",
   plastic: "/images/Durys/ChatGPT Image May 7, 2026, 03_18_07 PM (2).png",
@@ -85,32 +86,6 @@ const SELECTION_COMPARE_COLUMNS = [
   },
 ] as const;
 
-const FAQ_ITEMS: { question: string; answer: string }[] = [
-  {
-    question: "Kokios durys geriausiai tinka individualiam namui?",
-    answer:
-      "Dažniausiai individualiems namams pasirenkamos plastikinės arba aliuminio durys. Plastikinės durys dažniau pasirenkamos dėl kainos ir šilumos, o aliuminio – dėl tvirtumo, dizaino ir ilgaamžiškumo.",
-  },
-  {
-    question: "Kada verta rinktis šarvuotas duris?",
-    answer:
-      "Šarvuotos durys tinkamos tada, kai svarbiausias prioritetas yra saugumas – butams, namams, biurams ar kitoms patalpoms, kuriose norima didesnės apsaugos.",
-  },
-  {
-    question: "Kuo skiriasi aliuminio ir plastikinės durys?",
-    answer:
-      "Plastikinės durys dažniausiai yra ekonomiškesnis ir šiltas sprendimas, o aliuminio durys – tvirtesnės, modernesnės ir geriau tinka intensyvesniam naudojimui ar didesnėms konstrukcijoms.",
-  },
-  {
-    question: "Ar galite pagaminti duris pagal individualius matmenis?",
-    answer: "Taip, durys gali būti gaminamos pagal konkrečią angą, objekto poreikius ir pasirinktą sistemą.",
-  },
-  {
-    question: "Ar atliekate montavimą?",
-    answer: "Taip, pasirūpiname ne tik durų parinkimu ir gamyba, bet ir profesionaliu montavimu.",
-  },
-];
-
 const PROCESS_STEPS = [
   {
     title: "Konsultacija",
@@ -169,7 +144,7 @@ function DurysFaq() {
           </div>
         </div>
 
-        <FaqAccordion idPrefix="faq-durys" items={FAQ_ITEMS} />
+        <FaqAccordion idPrefix="faq-durys" items={DURYS_HUB_FAQ} />
       </div>
     </AnimatedSection>
   );

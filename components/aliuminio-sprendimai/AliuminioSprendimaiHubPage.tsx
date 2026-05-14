@@ -12,6 +12,7 @@ import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
 import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { ALIUMINIO_SPRENDIMAI_HUB_FAQ } from "@/data/structured-data-faqs";
 
 /** Hub sekcijų nuotraukos iš `public/images/Aliuminio sprendimai /` (ne `alium3` / `alium4`). */
 const HUB_PAGE_IMAGES = {
@@ -129,33 +130,6 @@ const PROCESS = [
   {
     title: "Garantinė priežiūra",
     description: "Po montavimo suteikiame garantinę priežiūrą ir padedame, jei reikalingi papildomi sprendimai.",
-  },
-] as const;
-
-const FAQ = [
-  {
-    question: "Kur naudojamos aliuminio konstrukcijos?",
-    answer:
-      "Aliuminio konstrukcijos naudojamos fasadams, pertvaroms, langams, durims, vitrinoms, stumdomoms sistemoms, žiemos sodams ir nestandartiniams gaminiams.",
-  },
-  {
-    question: "Kuo aliuminis pranašesnis už plastiką ar medį?",
-    answer:
-      "Aliuminis leidžia kurti didesnių gabaritų konstrukcijas, yra atsparus aplinkos poveikiui, ilgaamžis ir tinkamas moderniai architektūrai.",
-  },
-  {
-    question: "Kuo skiriasi šilti ir šalti aliuminio profiliai?",
-    answer:
-      "Šilti profiliai naudojami išorės gaminiams, kur svarbi šilumos izoliacija. Šalti profiliai dažniausiai naudojami vidaus pertvaroms, vitrinoms ir panašioms konstrukcijoms.",
-  },
-  {
-    question: "Ar galima rinktis spalvą?",
-    answer: "Taip, aliuminio profiliai gali būti dažomi pagal RAL paletę arba medžio imitacijos spalvomis.",
-  },
-  {
-    question: "Ar gaminate nestandartines konstrukcijas?",
-    answer:
-      "Taip, galima gaminti nestandartinius sprendimus, tokius kaip žiemos sodai, apvalūs langai, trapecijos, arkos, automatinės durys ar didelių matmenų stumdomos sistemos.",
   },
 ] as const;
 
@@ -409,7 +383,7 @@ export function AliuminioSprendimaiHubPage() {
         faqIdPrefix="aliuminio-sprendimai-faq"
         headingLead="Dažniausiai"
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={ALIUMINIO_SPRENDIMAI_HUB_FAQ}
         sectionId="duk-aliuminio-sprendimai"
       />
 

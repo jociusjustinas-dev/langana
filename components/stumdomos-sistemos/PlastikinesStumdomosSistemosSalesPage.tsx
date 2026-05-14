@@ -8,6 +8,7 @@ import { CaseStudiesProjectsCarousel } from "@/components/plastikiniai-langai/Ca
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { PLASTIKINES_STUMDOMOS_FAQ } from "@/data/structured-data-faqs";
 
 const VIDEO_EMBED_URL = "https://www.youtube.com/embed/JPYr8x_Z-A4";
 const STUMDOMOS_IMAGES = {
@@ -65,26 +66,6 @@ const COMPARISON_ROWS = [
   { feature: "Priežiūra", values: { plastic: "Lengva", aluminum: "Lengva" } },
   { feature: "Naudojimas", values: { plastic: "Balkonai, terasos, namai", aluminum: "Terasos, vitrinos, didelės konstrukcijos" } },
 ] as const;
-
-const FAQ = [
-  {
-    question: "Ar plastikinės stumdomos sistemos tinka terasai?",
-    answer:
-      "Taip, jos gali būti naudojamos terasoms, kai anga nėra labai didelė ir svarbus praktiškas, ekonomiškas sprendimas.",
-  },
-  {
-    question: "Ar plastikinė sistema taupo vietą?",
-    answer: "Taip. Stumdoma konstrukcija juda į šoną, todėl nereikia papildomos vietos varčiai atidaryti.",
-  },
-  {
-    question: "Ar plastikinės stumdomos sistemos pigesnės už aliumines?",
-    answer: "Dažniausiai taip. Jos dažniau pasirenkamos tada, kai svarbus biudžetas ir standartinis naudojimas.",
-  },
-  {
-    question: "Ar galima pritaikyti pagal angą?",
-    answer: "Taip, sprendimas parenkamas pagal angos dydį, naudojimo poreikį ir montavimo sąlygas.",
-  },
-];
 
 const PROCESS = [
   {
@@ -222,7 +203,7 @@ export function PlastikinesStumdomosSistemosSalesPage() {
         faqIdPrefix="plastikines-stumdomos-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={PLASTIKINES_STUMDOMOS_FAQ}
         sectionId="duk-plastikines-stumdomos"
       />
 

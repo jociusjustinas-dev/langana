@@ -10,6 +10,7 @@ import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ResponsiveComparisonGrid } from "@/components/ui/ResponsiveComparisonGrid";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { METALINES_DURYS_FAQ } from "@/data/structured-data-faqs";
 
 const HERO_IMAGE = "/images/durys.png";
 
@@ -60,32 +61,6 @@ const SELECTION_ROWS: { q: string; why: string }[] = [
   {
     q: "Ar reikia pristatymo?",
     why: "Galima pasirūpinti durų pristatymu į nurodytą adresą.",
-  },
-];
-
-const FAQ = [
-  {
-    question: "Ar metalinės durys tinka kaip lauko durys?",
-    answer:
-      "Taip, metalinės durys yra vienas dažniausių pasirinkimų lauko durims, kai svarbiausia saugumas, tvirtumas ir ilgaamžiškumas.",
-  },
-  {
-    question: "Ar metalinės durys padeda sumažinti triukšmą?",
-    answer:
-      "Taip, metalinės durys akustikos atžvilgiu gali padėti sumažinti iš lauko ar laiptinės sklindančius garsus.",
-  },
-  {
-    question: "Ar metalinės durys yra brangios?",
-    answer:
-      "Ne visada. Metalinės durys dažnai yra vienas ekonomiškesnių pasirinkimų, ypač vertinant saugumą, ilgaamžiškumą ir kokybę.",
-  },
-  {
-    question: "Ar galite sumontuoti duris?",
-    answer: "Taip, teikiamos durų montavimo paslaugos, todėl klientui nereikia rūpintis atskirais darbais.",
-  },
-  {
-    question: "Ar durims suteikiama garantija?",
-    answer: "Taip, durims suteikiama garantija, todėl galite labiau pasitikėti pasirinktu sprendimu.",
   },
 ];
 
@@ -224,7 +199,7 @@ export function MetalinesDurysSalesPage() {
         faqIdPrefix="metalines-durys-faq"
         headingLead="Jūsų klausimai – "
         headingRest="aiškūs atsakymai"
-        items={FAQ}
+        items={METALINES_DURYS_FAQ}
         sectionId="duk-metalines-durys"
       />
 

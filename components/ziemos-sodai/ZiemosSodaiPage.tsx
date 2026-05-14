@@ -8,6 +8,7 @@ import { ZiemosSodaiSystemTabs } from "@/components/ziemos-sodai/ZiemosSodaiSyst
 import { ZiemosSodaiUseCasesSection } from "@/components/ziemos-sodai/ZiemosSodaiUseCasesSection";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
+import { ZIEMOS_SODAI_FAQ } from "@/data/structured-data-faqs";
 
 const VS_TERRACE_COLUMNS = [{ key: "fit", label: "Tinkamesnis sprendimas" }] as const;
 const VS_TERRACE_ROWS = [
@@ -91,33 +92,6 @@ const WHY_ZIEMOS_SODAS = [
     body: "Forma, spalva, dydis ir stilius parenkami pagal jūsų namą ir norimą rezultatą.",
   },
 ] as const;
-
-const FAQ: { question: string; answer: string }[] = [
-  {
-    question: "Ar žiemos sodas gali būti prijungtas prie namo?",
-    answer:
-      "Taip, žiemos sodas gali būti projektuojamas kaip namo pratęsimas arba kaip atskiras statinys, priklausomai nuo erdvės ir konstrukcinių galimybių.",
-  },
-  {
-    question: "Ar žiemos sodą galima naudoti žiemą?",
-    answer:
-      "Tai priklauso nuo konstrukcijos, stiklinimo ir šilumos izoliacijos sprendimų. Jei norite naudoti erdvę dažniau, reikia tai aptarti projektavimo pradžioje.",
-  },
-  {
-    question: "Ar galima pasirinkti žiemos sodo formą ir spalvą?",
-    answer: "Taip, žiemos sodas kuriamas individualiai, todėl galima derinti formą, spalvą ir stilių prie jūsų namo.",
-  },
-  {
-    question: "Ar žiemos sodas tinka augalams?",
-    answer:
-      "Taip, tai viena dažniausių žiemos sodo paskirčių. Daug natūralios šviesos sukuria tinkamą erdvę augalams.",
-  },
-  {
-    question: "Ar žiemos sodas padidina namų vertę?",
-    answer:
-      "Gerai suprojektuotas ir kokybiškai įrengtas žiemos sodas gali padidinti namų funkcionalumą, estetiką ir vertę.",
-  },
-];
 
 const PROCESS: { title: string; description: string }[] = [
   {
@@ -351,7 +325,7 @@ export function ZiemosSodaiPage() {
         faqIdPrefix="ziemos-sodai-faq"
         headingLead="Dažniausiai"
         headingRest="užduodami klausimai"
-        items={FAQ}
+        items={ZIEMOS_SODAI_FAQ}
         sectionId="duk-ziemos-sodai"
       />
     </div>

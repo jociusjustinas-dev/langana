@@ -7,25 +7,10 @@ import { ProcessSteps } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { PlastikiniaiLangaiSolutionTabs } from "@/components/plastikiniai-langai/PlastikiniaiLangaiSolutionTabs";
 import { plasticLangaiShowcaseProducts } from "@/data/catalog";
+import { PLASTIKINIAI_LANGAI_FAQ } from "@/data/structured-data-faqs";
 import { assets } from "@/lib/figma-assets";
 
 const P = assets.plastikiniaiLangai;
-
-const FAQ = [
-  {
-    question: "Ar plastikiniai langai tikrai šilti?",
-    answer:
-      "Taip, modernūs plastikiniai langai pasižymi puikia šilumos izoliacija ir padeda sumažinti šildymo išlaidas.",
-  },
-  {
-    question: "Kiek laiko jie tarnauja?",
-    answer: "Kokybiški plastikiniai langai gali tarnauti 20–30 metų ar ilgiau.",
-  },
-  {
-    question: "Ar jie tinka garso izoliacijai?",
-    answer: "Taip, plastikiniai langai efektyviai mažina išorės triukšmą.",
-  },
-];
 
 const PROCESS = [
   {
@@ -87,7 +72,7 @@ export function PlastikiniaiLangaiSalesPage() {
 
       <BenefitsSection variant="plasticSubcategory" />
 
-      <FaqSection items={FAQ} />
+      <FaqSection items={PLASTIKINIAI_LANGAI_FAQ} />
 
       <CaseStudiesProjectsCarousel
         headingLead="Realūs klientų "
