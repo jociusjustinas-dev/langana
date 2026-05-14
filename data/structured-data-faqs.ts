@@ -376,6 +376,36 @@ export const ALIUMINIO_FASADAI_FAQ: StructuredFaqItem[] = [
     answer:
       "Taip, įvertiname projekto reikalavimus ir parenkame tinkamą fasado sistemą pagal konstrukciją, estetiką ir techninius kriterijus.",
   },
+  {
+    question: "Kokia aliuminio fasado kaina?",
+    answer:
+      "Aliuminio fasado kaina priklauso nuo pasirinktos sistemos (FA 50N ar FA 50N HI), stiklo paketo specifikacijos, fasado dydžio, sudėtingumo ir spalvų pasirinkimo. Tikslų pasiūlymą pateikiame po nemokamo objekto įvertinimo Šiauliuose arba pagal pateiktus projekto brėžinius.",
+  },
+  {
+    question: "Ar aliuminio fasadą galima sumontuoti renovuojamame pastate?",
+    answer:
+      "Taip, aliuminio fasadų sistemos puikiai tinka renovacijai. Dažnai jie naudojami senų prekybos centrų, biurų pastatų ir mokyklų atnaujinimui, suteikiant modernią išvaizdą ir pagerinant pastato energinį efektyvumą.",
+  },
+  {
+    question: "Kiek tarnauja aliuminio fasadas?",
+    answer:
+      "Tinkamai sumontuotas ir prižiūrimas aliuminio fasadas tarnauja kelis dešimtmečius. Aliuminis nerūdija, todėl konstrukcija išlaiko savo formą ir išvaizdą daug ilgiau nei betono ar medžio konstrukcijos.",
+  },
+  {
+    question: "Ar fasadas tinkamas Lietuvos klimato sąlygoms?",
+    answer:
+      "Taip, aliuminio fasadų sistemos sertifikuotos ES rinkai ir testuotos Šiaurės Europos klimato zonoje. FA 50N HI sistema su thermal break technologija užtikrina šilumos izoliaciją net stipriausių šalčių metu.",
+  },
+  {
+    question: "Kokias spalvas galima rinktis?",
+    answer:
+      "Aliuminio profilis dažomas miltelinio dažymo metodu. Galima rinktis iš pilnos RAL spalvų paletės arba užsakyti individualų atspalvį pagal projektą. Populiariausios spalvos – juoda, antracitas ir balta, tačiau galimybės nėra ribotos.",
+  },
+  {
+    question: "Ar suteikiate aliuminio fasado garantiją?",
+    answer:
+      "Taip, mes suteikiame garantiją tiek konstrukcijai, tiek montavimo darbams. Tikslias garantijos sąlygas patvirtiname užsakymo metu, atsižvelgdami į pasirinktą sistemą, objekto specifiką ir naudojimo intensyvumą.",
+  },
 ];
 
 export const ALIUMINIO_PERTVAROS_FAQ: StructuredFaqItem[] = [
