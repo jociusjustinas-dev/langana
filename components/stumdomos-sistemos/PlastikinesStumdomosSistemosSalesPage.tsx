@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PlastikinesStumdomosUseCaseTabs } from "@/components/stumdomos-sistemos/PlastikinesStumdomosUseCaseTabs";
 import { DurysComparisonTable } from "@/components/durys/DurysComparisonTable";
 import { ProcessSteps, type ProcessStep } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
@@ -7,6 +8,7 @@ import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
 import { CaseStudiesProjectsCarousel } from "@/components/plastikiniai-langai/CaseStudiesProjectsCarousel";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
 import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
+import { ValueFeaturesSplitSection } from "@/components/ui/ValueFeaturesSplitSection";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 import { PLASTIKINES_STUMDOMOS_FAQ } from "@/data/structured-data-faqs";
 
@@ -18,43 +20,29 @@ const STUMDOMOS_IMAGES = {
   living: "/images/Stumdomos sistemos/ChatGPT Image May 7, 2026, 02_45_46 PM (2).png",
 } as const;
 
-const BENEFIT_CARD_HEADING =
-  "text-xl font-semibold leading-[1.25] tracking-[-0.04em] md:text-[25px] md:leading-[30px]";
+/** Dešinysis stulpelis – kaip fasadų / pertvarų įvadas (split + nuotrauka). */
+const PLASTIKINES_INTRO_SPLIT_IMAGE = STUMDOMOS_IMAGES.terrace;
 
-const USE_CASES = [
-  {
-    title: "Terasoms",
-    body: "Plastikinė stumdoma sistema terasoje suteikia patogų išėjimą iš gyvenamosios patalpos į lauko zoną be papildomos varstymo erdvės. Stiklo paneliai praleidžia maksimalią natūralią šviesą, todėl namuose tampa šviesiau ištisus metus. Tinka standartinėms terasų angoms iki maždaug 3–4 metrų pločio, kur svarbu ekonomiškas sprendimas ir geras šilumos izoliacijos lygis.",
-    imageUrl: STUMDOMOS_IMAGES.terrace,
-  },
-  {
-    title: "Balkonams",
-    body: "Balkonams plastikinė stumdoma sistema yra dažniausiai pasirenkamas sprendimas daugiabučiuose ir individualiuose namuose. Stumdomos varčios užima minimaliai vietos, todėl balkone lieka daugiau erdvės baldams, augalams ar laikomiems daiktams. Sistema apsaugo nuo lietaus, vėjo ir dulkių, o tinkamas stiklo paketas užtikrina šilumos izoliaciją netgi šaltesniu sezonu.",
-    imageUrl: STUMDOMOS_IMAGES.balcony,
-  },
-  {
-    title: "Gyvenamosioms erdvėms",
-    body: "Vidinėms gyvenamosioms erdvėms plastikinės stumdomos sistemos naudojamos zonų atskyrimui – tarp svetainės ir valgomojo, virtuvės ir gyvenamosios zonos, ar pereinant tarp kambarių. Stumdomas sprendimas leidžia atverti ar uždaryti erdvę pagal poreikį, nereikalauja papildomos zonos durims atidaryti, todėl tinka net mažesniems butams ir kompaktiškiems namams.",
-    imageUrl: STUMDOMOS_IMAGES.living,
-  },
-] as const;
-
-const WHY_CHOOSE_CARDS = [
+const WHY_CHOOSE_FEATURES = [
   {
     title: "Šilumos izoliacija",
-    body: "Plastikinis profilis su daugiakameriniu sandariu užtikrina gerą šilumos izoliaciją. Tinkamai parinktas stiklo paketas (dvigubas arba trigubas) leidžia naudoti sistemą ne tik vasarą, bet ir šaltesnį sezoną, sumažinant šilumos nuostolius iš patalpos.",
+    description:
+      "Plastikinis profilis su daugiakameriniu sandariu užtikrina gerą šilumos izoliaciją. Tinkamai parinktas stiklo paketas (dvigubas arba trigubas) leidžia naudoti sistemą ne tik vasarą, bet ir šaltesnį sezoną, sumažinant šilumos nuostolius iš patalpos.",
   },
   {
     title: "Garso izoliacija",
-    body: "Stumdomos sistemos su kokybiškomis sandarinimo tarpinėmis efektyviai mažina iš lauko sklindantį triukšmą. Tai ypač aktualu balkonams prie judrių gatvių ar terasoms miesto centre, kur svarbu ramybė namuose.",
+    description:
+      "Stumdomos sistemos su kokybiškomis sandarinimo tarpinėmis efektyviai mažina iš lauko sklindantį triukšmą. Tai ypač aktualu balkonams prie judrių gatvių ar terasoms miesto centre, kur svarbu ramybė namuose.",
   },
   {
     title: "Ekonomiškas sprendimas",
-    body: "Plastikinės sistemos yra reikšmingai ekonomiškesnės už aliuminio analogus, todėl tai populiariausias pasirinkimas standartinėms balkonų ir terasų angoms. Investicija greitai atsiperka per šildymo sąskaitų taupymą ir patogesnį naudojimą.",
+    description:
+      "Plastikinės sistemos yra reikšmingai ekonomiškesnės už aliuminio analogus, todėl tai populiariausias pasirinkimas standartinėms balkonų ir terasų angoms. Investicija greitai atsiperka per šildymo sąskaitų taupymą ir patogesnį naudojimą.",
   },
   {
     title: "Paprasta priežiūra",
-    body: "Plastikinis profilis nereikalauja periodinio dažymo ar specialios priežiūros – pakanka periodiškai nuvalyti drėgnu skudurėliu. Stiklai valomi standartiniais langams skirtais valikliais, todėl priežiūra tampa kasdienės rutinos dalimi.",
+    description:
+      "Plastikinis profilis nereikalauja periodinio dažymo ar specialios priežiūros – pakanka periodiškai nuvalyti drėgnu skudurėliu. Stiklai valomi standartiniais langams skirtais valikliais, todėl priežiūra tampa kasdienės rutinos dalimi.",
   },
 ] as const;
 
@@ -192,28 +180,40 @@ export function PlastikinesStumdomosSistemosSalesPage() {
       />
 
       <section className="w-full bg-white px-4 py-14 md:px-[70px] md:py-[100px]" id="kas-yra-plastikines-stumdomos">
-        <div className="mx-auto max-w-[1440px]">
-          <h2 className="max-w-[min(100%,44rem)] text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
-            <span className="text-[#263cd0]">Kas yra plastikinės </span>
-            <span className="text-[#16216b]">stumdomos sistemos</span>
-          </h2>
-          <div className="mt-6 max-w-[52rem] space-y-5 text-base leading-relaxed text-[#16216b] md:mt-8 md:text-[17px]">
-            <p>
-              Plastikinės stumdomos sistemos – tai konstrukcijos, kuriose stiklo paneliai slidinėja šoninėmis
-              kreipiamosiomis arba paraleliai sienai, vietoj įprasto atidarymo į vidų ar į išorę. Šis sprendimas
-              idealiai tinka tada, kai svarbu sutaupyti vietą prie angos, nes nereikia palikti tarpo varčios
-              atidarymui.
-            </p>
-            <p>
-              Plastikinės stumdomos sistemos Šiauliuose ir visoje Lietuvoje plačiai naudojamos balkonams, terasoms ir
-              vidaus erdvėms tarp gyvenamų patalpų. Skirtingai nei aliuminis, plastikiniai profiliai yra šiltesni,
-              ekonomiškesni ir tinkami standartinėms angoms gyvenamosiose patalpose. Tai populiariausias pasirinkimas
-              daugiabučių balkonams ir privatiems namams su standartinio dydžio terasomis.
-            </p>
-            <p>
-              Sistema dažnai pasirenkama vietoj klasikinių varstomų durų ar langų, nes ji leidžia geriau išnaudoti
-              patalpos planą – baldai gali būti pastatyti arti angos, neribojant varčios judėjimo erdvės.
-            </p>
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
+          <div className="flex min-h-0 min-w-0 flex-col gap-5 lg:max-w-none lg:justify-center">
+            <h2 className="text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
+              <span className="text-[#263cd0]">Kas yra plastikinės </span>
+              <span className="text-[#16216b]">stumdomos sistemos</span>
+            </h2>
+            <div className="max-w-[52rem] space-y-5 text-base leading-relaxed text-[#16216b] md:text-[17px]">
+              <p>
+                Plastikinės stumdomos sistemos – tai konstrukcijos, kuriose stiklo paneliai slidinėja šoninėmis
+                kreipiamosiomis arba paraleliai sienai, vietoj įprasto atidarymo į vidų ar į išorę. Šis sprendimas
+                idealiai tinka tada, kai svarbu sutaupyti vietą prie angos, nes nereikia palikti tarpo varčios
+                atidarymui.
+              </p>
+              <p>
+                Plastikinės stumdomos sistemos Šiauliuose ir visoje Lietuvoje plačiai naudojamos balkonams, terasoms ir
+                vidaus erdvėms tarp gyvenamų patalpų. Skirtingai nei aliuminis, plastikiniai profiliai yra šiltesni,
+                ekonomiškesni ir tinkami standartinėms angoms gyvenamosiose patalpose. Tai populiariausias pasirinkimas
+                daugiabučių balkonams ir privatiems namams su standartinio dydžio terasomis.
+              </p>
+              <p>
+                Sistema dažnai pasirenkama vietoj klasikinių varstomų durų ar langų, nes ji leidžia geriau išnaudoti
+                patalpos planą – baldai gali būti pastatyti arti angos, neribojant varčios judėjimo erdvės.
+              </p>
+            </div>
+          </div>
+          <div className="relative mx-auto aspect-[4/3] min-h-[240px] w-full max-w-lg overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:max-w-none lg:aspect-auto lg:min-h-[min(100%,420px)] lg:self-stretch">
+            <ParallaxCoverImage
+              alt="Plastikinė stumdoma sistema terasoje ar balkone"
+              fill
+              loading="lazy"
+              sizes="(max-width: 1023px) 100vw, 45vw"
+              src={PLASTIKINES_INTRO_SPLIT_IMAGE}
+              style={{ objectPosition: "50% 45%" }}
+            />
           </div>
         </div>
       </section>
@@ -255,56 +255,17 @@ export function PlastikinesStumdomosSistemosSalesPage() {
         </div>
       </section>
 
-      <section className="w-full bg-white" id="kur-tinka-plastikines-stumdomos">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-4 pb-8 pt-4 md:flex-row md:items-center md:justify-between md:px-[70px] md:pb-8 md:pt-10">
-          <div className="max-w-[min(100%,46rem)] space-y-4">
-            <h2 className="text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
-              <span className="text-[#263cd0]">Kur tinka plastikinės </span>
-              <span className="text-[#16216b]">stumdomos sistemos?</span>
-            </h2>
-            <p className="text-base leading-relaxed text-[#16216b] md:text-[17px]">
-              Plastikinės stumdomos sistemos yra universalios – tinka tiek lauko zonoms, tiek vidaus erdvių zonavimui.
-              Žemiau – pagrindiniai pritaikymo scenarijai, kuriuose šis sprendimas geriausiai atsiskleidžia.
-            </p>
-          </div>
-        </div>
-        <div className="mx-auto grid max-w-[1440px] gap-4 px-4 pb-16 md:grid-cols-3 md:gap-4 md:px-[70px] md:pb-[100px] md:pt-6">
-          {USE_CASES.map((card) => (
-            <article className="relative flex min-h-[432px] flex-col justify-end overflow-hidden p-4" key={card.title}>
-              <ParallaxCoverImage alt={card.title} fill sizes="(min-width: 768px) 33vw, 100vw" src={card.imageUrl} />
-              <div className="relative rounded-xl bg-white p-4">
-                <h3 className="text-[22px] font-semibold leading-tight tracking-[-0.02em] text-[#263cd0] md:text-[24px]">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-[#16216b] md:text-[15px]">{card.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <PlastikinesStumdomosUseCaseTabs />
 
-      <section className="w-full bg-white pb-14 md:pb-[100px]" id="kodel-plastikine-stumdoma-sistema">
-        <div className="mx-auto max-w-[1440px] px-4 md:px-[70px]">
-          <h2 className="max-w-[min(100%,44rem)] text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
-            <span className="text-[#263cd0]">Kodėl rinktis </span>
-            <span className="text-[#16216b]">plastikinę stumdomą sistemą</span>
-          </h2>
-          <p className="mt-4 max-w-[920px] text-base leading-relaxed text-[#16216b] md:text-[17px]">
-            Plastikinė stumdoma sistema sujungia kelis pranašumus, kurie kartu kuria praktišką ir ekonomišką
-            sprendimą kasdieniam naudojimui.
-          </p>
-        </div>
-        <div className="mx-auto mt-8 grid max-w-[1440px] gap-4 px-4 md:mt-10 md:grid-cols-2 md:gap-4 md:px-[70px] lg:grid-cols-4">
-          {WHY_CHOOSE_CARDS.map((card) => (
-            <FeatureHoverCard
-              description={card.body}
-              headingClassName={BENEFIT_CARD_HEADING}
-              key={card.title}
-              title={card.title}
-            />
-          ))}
-        </div>
-      </section>
+      <ValueFeaturesSplitSection
+        features={WHY_CHOOSE_FEATURES}
+        headingLead="Kodėl rinktis "
+        headingRest="plastikinę stumdomą sistemą"
+        imageAlt="Plastikinė stumdoma sistema balkone ar terasoje"
+        imageSrc={STUMDOMOS_IMAGES.balcony}
+        intro="Plastikinė stumdoma sistema sujungia kelis pranašumus, kurie kartu kuria praktišką ir ekonomišką sprendimą kasdieniam naudojimui."
+        sectionId="kodel-plastikine-stumdoma-sistema"
+      />
 
       <section className="w-full bg-white" id="kodel-rinktis-plastikines-stumdomas">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-4 pb-8 pt-4 md:flex-row md:items-center md:justify-between md:px-[70px] md:pb-8 md:pt-10">
