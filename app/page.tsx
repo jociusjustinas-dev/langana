@@ -1,4 +1,4 @@
-import { HomePageView } from "@/components/home/HomePageView";
+import { HomePage } from "@/components/home/HomePage";
 import { homeMetadata } from "@/lib/seo";
 
 export const metadata = homeMetadata({
@@ -9,5 +9,5 @@ export const metadata = homeMetadata({
 });
 
 export default function Home() {
-  return <HomePageView />;
+  return <HomePage />;
 }

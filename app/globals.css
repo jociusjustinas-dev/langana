@@ -243,3 +243,18 @@ html[data-langana-header-portal="1"] .langana-site-header-clearance {
     opacity: 0.8 !important;
   }
 }
+
+/* Pagrindinis: antraštė SSR; preloader metu paslėpta, po jo — nusileidžia. */
+html[data-home-preloader] [data-site-header-home] {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-home-preloader] [data-site-header-home] {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

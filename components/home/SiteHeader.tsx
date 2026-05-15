@@ -32,16 +32,21 @@ type SiteHeaderProps = {
    */
   entrance?: "default" | "slide";
   visible?: boolean;
+  /**
+   * Pagrindinis SSR: antraštė visada HTML; slinkimas per `data-home-preloader` + globals.css.
+   */
+  homeEntrance?: boolean;
 };
 
 export function SiteHeader({
   className = "",
   entrance = "default",
   visible = true,
+  homeEntrance = false,
 }: SiteHeaderProps) {
   const pathname = usePathname();
   const slide = entrance === "slide";
-  const hidden = slide && !visible;
+  const hidden = slide && !visible && !homeEntrance;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mega, setMega] = useState<MegaPanelState | null>(null);
   const drawerTitleId = useId();
@@ -128,14 +133,17 @@ export function SiteHeader({
   const header = (
     <header
       ref={headerRef}
+      {...(homeEntrance ? { "data-site-header-home": "" } : {})}
       className={[
         "z-50 w-full bg-[#f6f7ff]",
-        slide
+        homeEntrance || slide
           ? "fixed left-0 right-0 top-0"
           : "sticky top-0",
-        hidden
-          ? "-translate-y-full opacity-0 pointer-events-none"
-          : "translate-y-0 opacity-100",
+        homeEntrance
+          ? "translate-y-0 opacity-100 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+          : hidden
+            ? "-translate-y-full opacity-0 pointer-events-none"
+            : "translate-y-0 opacity-100",
         className,
       ].join(" ")}
     >
