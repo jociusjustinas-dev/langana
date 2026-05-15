@@ -188,11 +188,23 @@ export function HeroBento({ mode = "home" }: HeroBentoProps) {
               </h1>
             ) : (
               <h1 className="text-4xl font-semibold leading-[1.15] tracking-[-0.04em] text-[#16216b] sm:text-5xl sm:leading-[1.18] md:text-[60px] md:leading-[75px]">
-                <span className="block">Inovatyvūs namų</span>
-                <span className="text-[#263cd0]">atnaujinimo sprendimai</span>
+                <span className="block">Langai, durys, stiklinimas</span>
+                <span className="text-[#263cd0]">Šiauliuose</span>
               </h1>
             )}
           </AnimatedSection>
+          {!isKatalog && (
+            <AnimatedSection
+              as="div"
+              className="w-full max-w-[52rem] text-center"
+              delayMs={Math.round((STAGGER.headline + 0.04) * 1000)}
+            >
+              <p className="text-base leading-relaxed text-[#16216b] md:text-[17px]">
+                Inovatyvūs namų atnaujinimo sprendimai – langai, durys, stiklinimas, stumdomos sistemos,
+                žiemos sodai ir aliuminio konstrukcijos. Nemokamas matavimas ir pasiūlymas per 24 val.
+              </p>
+            </AnimatedSection>
+          )}
           {!isKatalog && (
             <AnimatedSection
               as="div"

@@ -1,5 +1,9 @@
 import { HeroBento } from "@/components/home/HeroBento";
+import { HomeCompletedProjectsSection } from "@/components/home/HomeCompletedProjectsSection";
+import { HomeFaqSection } from "@/components/home/HomeFaqSection";
 import { HomePreloader } from "@/components/home/HomePreloader";
+import { HomeServicesGrid } from "@/components/home/HomeServicesGrid";
+import { HomeWhyChooseSection } from "@/components/home/HomeWhyChooseSection";
 import { SiteHeader } from "@/components/home/SiteHeader";
 import { SiteMainClosing } from "@/components/home/SiteMainClosing";
 
@@ -11,6 +15,10 @@ export function HomePage() {
       <SiteHeader homeEntrance />
       <main className="flex min-h-0 flex-1 flex-col" style={{ paddingTop: 0 }}>
         <HeroBento />
+        <HomeServicesGrid />
+        <HomeWhyChooseSection />
+        <HomeCompletedProjectsSection />
+        <HomeFaqSection />
         <SiteMainClosing />
       </main>
     </div>
