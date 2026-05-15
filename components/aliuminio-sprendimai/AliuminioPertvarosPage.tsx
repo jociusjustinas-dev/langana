@@ -7,9 +7,14 @@ import { FaqSection } from "@/components/plastikiniai-langai/FaqSection";
 import { ProcessSteps, type ProcessStep } from "@/components/plastikiniai-langai/ProcessSteps";
 import { SalesHero } from "@/components/plastikiniai-langai/SalesHero";
 import { FeatureHoverCard } from "@/components/ui/FeatureHoverCard";
+import { ParallaxCoverImage } from "@/components/ui/ParallaxCoverImage";
 import { ALUMINUM_PARTITIONS_PRODUCTS } from "@/data/aliuminio-pertvaros-products";
 import { CAROUSEL_CATEGORIES } from "@/data/implemented-projects";
 import { ALIUMINIO_PERTVAROS_FAQ } from "@/data/structured-data-faqs";
+import { aluminumPartitionProductImages } from "@/lib/figma-assets";
+
+/** Dešinysis stulpelis – kaip „Kodėl Langana“ / fasadų įvadas (split + nuotrauka). */
+const PERTVAROS_INTRO_SPLIT_IMAGE = aluminumPartitionProductImages.pbi50n;
 
 const BENEFIT_CARD_HEADING =
   "text-xl font-semibold leading-[1.25] tracking-[-0.04em] md:text-[25px] md:leading-[30px]";
@@ -164,34 +169,46 @@ export function AliuminioPertvarosPage() {
       />
 
       <section className="w-full bg-white px-4 py-14 md:px-[70px] md:py-[100px]" id="kas-yra-aliuminio-pertvaros">
-        <div className="mx-auto max-w-[1440px]">
-          <h2 className="max-w-[min(100%,44rem)] text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
-            <span className="text-[#263cd0]">Kas yra aliuminio pertvaros </span>
-            <span className="text-[#16216b]">ir kam jos tinka</span>
-          </h2>
-          <div className="mt-6 max-w-[52rem] space-y-5 text-base leading-relaxed text-[#16216b] md:mt-8 md:text-[17px]">
-            <p>
-              Aliuminio pertvaros – tai vidaus erdvių zonavimo sistemos, kuriose stiklo paneliai ar kitos užpildymo
-              medžiagos tvirtinamos prie aliuminio profilio karkaso. Šios konstrukcijos leidžia padalinti didelę erdvę į
-              funkcines zonas, neprarandant šviesos ir vizualinio atvirumo, būdingo modernių patalpų dizainui.
-            </p>
-            <p>
-              Aliuminio pertvaros Šiauliuose ir visoje Lietuvoje plačiai naudojamos ofisuose, parduotuvėse, viešbučiuose,
-              klinikose, mokyklose ir individualiose gyvenamosiose patalpose. Stiklo pertvara dažnai pasirenkama vietoj
-              tradicinės gipso kartono sienos, nes ji suteikia profesionalią išvaizdą ir gerokai pagerina patalpos
-              akustinį komfortą be šviesos nuostolių.
-            </p>
-            <p>
-              Skirtingai nei stacionarios gipso ar mūro sienos, aliuminio pertvaros yra modulinės ir gali būti
-              perkonfigūruojamos pakeičiant patalpos paskirtį. Tai ypač svarbu nuomojamuose ofisuose ar besiplečiančiose
-              įmonėse, kur erdvės struktūra keičiasi pagal poreikį.
-            </p>
-            <p>
-              Vidaus pertvaros su stiklu leidžia išlaikyti bendrą erdvės pojūtį ir tuo pačiu aiškiai atskirti darbo vietas,
-              poilsio zonas ar aptarnavimo srautus. Objektams Šiauliuose siūlome konsultaciją vietoje, kad greičiau
-              įvertintume angas, grindų lygius ir sujungimus su lubomis. Tolimesniems miestams techninį paketą
-              deriname pagal brėžinius ir nuotraukas.
-            </p>
+        <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12 xl:gap-14">
+          <div className="flex min-h-0 min-w-0 flex-col gap-5 lg:max-w-none lg:justify-center">
+            <h2 className="text-3xl font-semibold leading-[1.18] tracking-[-0.032em] md:text-[45px] md:leading-[52px]">
+              <span className="text-[#263cd0]">Kas yra aliuminio pertvaros </span>
+              <span className="text-[#16216b]">ir kam jos tinka</span>
+            </h2>
+            <div className="max-w-[52rem] space-y-5 text-base leading-relaxed text-[#16216b] md:text-[17px]">
+              <p>
+                Aliuminio pertvaros – tai vidaus erdvių zonavimo sistemos, kuriose stiklo paneliai ar kitos užpildymo
+                medžiagos tvirtinamos prie aliuminio profilio karkaso. Šios konstrukcijos leidžia padalinti didelę erdvę į
+                funkcines zonas, neprarandant šviesos ir vizualinio atvirumo, būdingo modernių patalpų dizainui.
+              </p>
+              <p>
+                Aliuminio pertvaros Šiauliuose ir visoje Lietuvoje plačiai naudojamos ofisuose, parduotuvėse,
+                viešbučiuose, klinikose, mokyklose ir individualiose gyvenamosiose patalpose. Stiklo pertvara dažnai
+                pasirenkama vietoj tradicinės gipso kartono sienos, nes ji suteikia profesionalią išvaizdą ir gerokai
+                pagerina patalpos akustinį komfortą be šviesos nuostolių.
+              </p>
+              <p>
+                Skirtingai nei stacionarios gipso ar mūro sienos, aliuminio pertvaros yra modulinės ir gali būti
+                perkonfigūruojamos pakeičiant patalpos paskirtį. Tai ypač svarbu nuomojamuose ofisuose ar besiplečiančiose
+                įmonėse, kur erdvės struktūra keičiasi pagal poreikį.
+              </p>
+              <p>
+                Vidaus pertvaros su stiklu leidžia išlaikyti bendrą erdvės pojūtį ir tuo pačiu aiškiai atskirti darbo
+                vietas, poilsio zonas ar aptarnavimo srautus. Objektams Šiauliuose siūlome konsultaciją vietoje, kad
+                greičiau įvertintume angas, grindų lygius ir sujungimus su lubomis. Tolimesniems miestams techninį
+                paketą deriname pagal brėžinius ir nuotraukas.
+              </p>
+            </div>
+          </div>
+          <div className="relative mx-auto aspect-[4/3] min-h-[240px] w-full max-w-lg overflow-hidden rounded-2xl bg-[#e8ebfa] lg:mx-0 lg:max-w-none lg:aspect-auto lg:min-h-[min(100%,420px)] lg:self-stretch">
+            <ParallaxCoverImage
+              alt="Aliuminio ir stiklo vidaus pertvaros interjere"
+              fill
+              loading="lazy"
+              sizes="(max-width: 1023px) 100vw, 45vw"
+              src={PERTVAROS_INTRO_SPLIT_IMAGE}
+              style={{ objectPosition: "50% 45%" }}
+            />
           </div>
         </div>
       </section>
