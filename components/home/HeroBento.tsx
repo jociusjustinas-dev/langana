@@ -43,18 +43,17 @@ function ProductCard({
   imageUnoptimized?: boolean;
 }) {
   const isHero = size === "hero";
-  return (
-    <AnimatedSection
-      as="div"
-      className={[
-        "group relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl text-center",
-        "px-6 sm:px-8",
-        isHero
-          ? "min-h-[min(52svh,480px)] pb-16 pt-20 sm:min-h-[min(60svh,520px)] md:min-h-[min(80vw,560px)] md:px-20"
-          : "min-h-[220px] py-14 sm:min-h-[min(52vw,380px)] sm:py-16 md:min-h-[min(68vw,480px)] md:px-16",
-      ].join(" ")}
-      delayMs={Math.round(revealDelaySec * 1000)}
-    >
+  const showDescription = Boolean(description);
+  const cardClassName = [
+    "group relative flex w-full flex-col items-center justify-center overflow-hidden rounded-2xl text-center",
+    "px-6 sm:px-8",
+    isHero
+      ? "min-h-[min(52svh,480px)] pb-16 pt-20 sm:min-h-[min(60svh,520px)] md:min-h-[min(80vw,560px)] md:px-20"
+      : "min-h-[220px] py-14 sm:min-h-[min(52vw,380px)] sm:py-16 md:min-h-[min(68vw,480px)] md:px-16",
+  ].join(" ");
+
+  const cardBody = (
+    <>
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <Image
           alt=""
@@ -65,15 +64,24 @@ function ProductCard({
           src={image}
           unoptimized={imageUnoptimized}
         />
-        <div className="absolute inset-0 rounded-[inherit] bg-black/20 transition-[background-color] duration-300 group-hover:bg-black/30" />
+        <div
+          className={[
+            "absolute inset-0 rounded-[inherit] transition-[background-color] duration-300",
+            showDescription ? "bg-black/35 group-hover:bg-black/45" : "bg-black/20 group-hover:bg-black/30",
+          ].join(" ")}
+        />
       </div>
 
       <div
         className={[
           "relative z-10 flex w-full max-w-3xl flex-col items-center gap-5",
-          "transition-transform duration-300 ease-out will-change-transform",
-          "-translate-y-6 sm:-translate-y-8",
-          "group-hover:translate-y-0 group-focus-within:translate-y-0",
+          showDescription
+            ? "translate-y-0"
+            : [
+                "transition-transform duration-300 ease-out will-change-transform",
+                "-translate-y-6 sm:-translate-y-8",
+                "group-hover:translate-y-0 group-focus-within:translate-y-0",
+              ].join(" "),
         ].join(" ")}
       >
         {badge && (
@@ -85,7 +93,7 @@ function ProductCard({
 
         {description ? (
           <h3
-            className={`font-semibold text-white ${
+            className={`font-semibold text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] ${
               isHero
                 ? "text-[32px] leading-tight tracking-[-0.05em] sm:text-[40px] md:text-[45px] md:leading-[1.1]"
                 : "text-[28px] leading-tight tracking-[-0.04em] sm:text-[35px] md:text-[40px] md:leading-[1.1]"
@@ -108,7 +116,9 @@ function ProductCard({
         )}
 
         {description ? (
-          <p className="max-w-md text-[14px] leading-relaxed text-white/90 sm:text-[15px]">{description}</p>
+          <p className="max-w-md text-[14px] font-medium leading-relaxed text-white sm:text-[15px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
+            {description}
+          </p>
         ) : !badge ? (
           <p className="text-[15px] font-semibold text-white opacity-100">{subtitle}</p>
         ) : null}
@@ -120,6 +130,16 @@ function ProductCard({
           Sužinokite daugiau
         </Link>
       </div>
+    </>
+  );
+
+  if (showDescription) {
+    return <div className={cardClassName}>{cardBody}</div>;
+  }
+
+  return (
+    <AnimatedSection as="div" className={cardClassName} delayMs={Math.round(revealDelaySec * 1000)}>
+      {cardBody}
     </AnimatedSection>
   );
 }
