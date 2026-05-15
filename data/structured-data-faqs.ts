@@ -332,6 +332,31 @@ export const PLASTIKINES_STUMDOMOS_FAQ: StructuredFaqItem[] = [
     question: "Ar galima pritaikyti pagal angą?",
     answer: "Taip, sprendimas parenkamas pagal angos dydį, naudojimo poreikį ir montavimo sąlygas.",
   },
+  {
+    question: "Kokia plastikinės stumdomos sistemos kaina?",
+    answer:
+      "Plastikinės stumdomos sistemos kaina priklauso nuo angos dydžio, pasirinkto stiklo paketo (dvigubas ar trigubas), spalvų ir papildomų funkcijų (uždaroma spyna, moskito tinkleliai). Tikslų pasiūlymą pateikiame po nemokamo objekto matavimo Šiauliuose arba pagal pateiktus brėžinius.",
+  },
+  {
+    question: "Kiek tarnauja plastikinė stumdoma sistema?",
+    answer:
+      "Tinkamai sumontuota ir prižiūrima plastikinė stumdoma sistema tarnauja 25–35 metus. Profilio mechanizmai sukurti dažnam kasdieniam naudojimui, o aukštos kokybės sandarinimo tarpinės išlaiko savo savybes daugelį metų.",
+  },
+  {
+    question: "Ar plastikinė stumdoma sistema tinka šaltesniu sezonu?",
+    answer:
+      "Taip. Plastikinis profilis su daugiakameriniu sandaru ir tinkamai parinktu stiklo paketu (paprastai dvigubu su Low-E danga arba triguba) užtikrina gerą šilumos izoliaciją net šalčiausiomis žiemos dienomis. Šildymo nuostoliai per stumdomą sistemą nedaug skiriasi nuo standartinių plastikinių langų.",
+  },
+  {
+    question: "Ar į sistemą galima įmontuoti moskito tinklelį?",
+    answer:
+      "Taip. Į plastikines stumdomas sistemas galima įmontuoti slankiuosius moskito tinklelius, kurie užtikrina apsaugą nuo vabzdžių vasaros sezonu. Tai patogus sprendimas balkonams ir terasoms, kuriose dažnai laikomos durys atidarytos vėdinimui.",
+  },
+  {
+    question: "Ar galima rinktis spalvas?",
+    answer:
+      "Taip. Plastikinis profilis gali būti baltas (standartinis variantas), pilkas, juodas, antracitas arba dengtas medienos imitacijos plėvele. Spalvos pasirinkimas priklauso nuo profilio gamintojo paletės – aptariame pasirinkimą konsultacijos metu.",
+  },
 ];
 
 export const ALIUMINIO_SPRENDIMAI_HUB_FAQ: StructuredFaqItem[] = [
