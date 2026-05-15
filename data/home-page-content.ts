@@ -1,48 +1,43 @@
 import type { FaqItem } from "@/components/plastikiniai-langai/FaqSection";
 import { IMPLEMENTED_PROJECTS } from "@/data/implemented-projects";
 
-export type HomeServiceItem = {
-  title: string;
-  description: string;
-  href: string;
+/** Trumpi hero bento kortelių aprašymai (SSR + nuotraukų kortelės). */
+export const HOME_FEATURED_BENTO = {
+  href: "/langai",
+  title: ["Aukščiausios kokybės", "langai ir jų priedai"] as const,
+  description: "Plastikiniai ir aliuminio langai – Kömmerling, Wital, Veka, TM sistemos.",
 };
 
-export const HOME_SERVICES: readonly HomeServiceItem[] = [
+export const HOME_BENTO_GRID_META = [
   {
-    title: "Langai",
-    href: "/langai",
-    description:
-      "Plastikiniai ir aliuminio langai Šiauliuose – Kömmerling, Wital, Veka ir TM sistemos. Parinksime stiklo paketą pagal šilumos, garso ir saugumo poreikius, atliksime tikslų matavimą ir montavimą su apdaila.",
-  },
-  {
-    title: "Durys",
-    href: "/durys",
-    description:
-      "Plastikinės, aliuminio, metalinės ir specialios paskirties durys – įėjimui, terasai ar komerciniam objektui. Deriname sandarumą, saugumą ir ilgaamžiškumą su jūsų fasado architektūra bei kasdieniu naudojimu.",
-  },
-  {
-    title: "Stiklinimas",
+    key: "stiklinimas",
     href: "/stiklinimas",
-    description:
-      "Balkonų ir terasų stiklinimas – šilti bei šalti variantai, stumdomos dalys ir aliuminio konstrukcijos. Padidinsime naudojamą plotą, apsaugosime nuo lietaus ir vėjo, išlaikysime šviesą bei estetiką.",
+    title: ["Elegantiški", "stikliniai balkonai"] as const,
+    description: "Balkonų ir terasų stiklinimas – šilti bei šalti variantai.",
   },
   {
-    title: "Stumdomos sistemos",
-    href: "/stumdomos-sistemos",
-    description:
-      "Aliuminės ir plastikinės stumdomos sistemos terasoms, paviljonams ir didelėms angoms. Sklandus judėjimas, sandarumas ir daugiau natūralios šviesos – sprendimai pritaikyti jūsų erdvės matmenims.",
+    key: "durys",
+    href: "/durys",
+    title: ["Aukščiausios", "rūšies durys"] as const,
+    description: "Plastikinės, aliuminio ir metalinės durys – sandarumas ir saugumas.",
   },
   {
-    title: "Žiemos sodai",
-    href: "/ziemos-sodai",
-    description:
-      "Individualūs žiemos sodų projektai – stiklinės konstrukcijos poilsiui, augalams ir jaukiai erdvei ištisus metus. Nuo projektavimo iki montavimo deriname šilumą, apšvietimą ir ryšį su kiemu ar terasa.",
-  },
-  {
-    title: "Aliuminio sprendimai",
+    key: "aliuminio-sprendimai",
     href: "/aliuminio-sprendimai",
-    description:
-      "Aliuminio fasadai ir pertvaros biurams, komercijai ir privatiems namams. Plonas profilis, tvirtumas ir modernus vaizdas – PBI ir kitos sistemos pritaikomos pagal akustiką, saugumą ir interjero liniją.",
+    title: ["Patvarios aliuminio", "konstrukcijos"] as const,
+    description: "Fasadai ir pertvaros – tvirtumas ir modernus vaizdas.",
+  },
+  {
+    key: "stumdomos-sistemos",
+    href: "/stumdomos-sistemos",
+    title: ["Efektyvios", "stumdomos sistemos"] as const,
+    description: "Aliuminės ir plastikinės sistemos terasoms ir didelėms angoms.",
+  },
+  {
+    key: "ziemos-sodai",
+    href: "/ziemos-sodai",
+    title: ["Jaukūs", "žiemos sodai"] as const,
+    description: "Stiklinės konstrukcijos poilsiui ir augalams ištisus metus.",
   },
 ] as const;
 

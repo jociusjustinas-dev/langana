@@ -5,7 +5,16 @@ import Link from "next/link";
 import { AnimatedSection } from "@/components/animations/AnimatedSection";
 import { HeroPattern } from "@/components/home/HeroPattern";
 import { KontaktaiQuoteLink } from "@/components/kontaktai/KontaktaiQuoteLink";
+import { HOME_BENTO_GRID_META, HOME_FEATURED_BENTO } from "@/data/home-page-content";
 import { assets } from "@/lib/figma-assets";
+
+const BENTO_IMAGES: Record<(typeof HOME_BENTO_GRID_META)[number]["key"], string> = {
+  stiklinimas: assets.hero.balcony,
+  durys: assets.hero.doors,
+  "aliuminio-sprendimai": assets.hero.aluminum,
+  "stumdomos-sistemos": assets.hero.sliding,
+  "ziemos-sodai": assets.hero.ziemosSodai,
+};
 
 export type HeroBentoMode = "home" | "katalog";
 
@@ -13,6 +22,7 @@ function ProductCard({
   image,
   title,
   subtitle = "Įrengiame vos per 5 dienas",
+  description,
   size = "small",
   badge,
   revealDelaySec = 0,
@@ -22,6 +32,8 @@ function ProductCard({
   image: string;
   title: [string, string];
   subtitle?: string;
+  /** Trumpas segmento aprašymas (pagrindinis puslapis, SSR). */
+  description?: string;
   size?: "hero" | "small";
   badge?: boolean;
   /** Staggered load (Figma 6437 → 6438 sequence) */
@@ -71,20 +83,35 @@ function ProductCard({
           </div>
         )}
 
-        <div
-          className={`font-semibold text-white ${
-            isHero
-              ? "text-[32px] leading-tight tracking-[-0.05em] sm:text-[40px] md:text-[45px] md:leading-[1.1]"
-              : "text-[28px] leading-tight tracking-[-0.04em] sm:text-[35px] md:text-[40px] md:leading-[1.1]"
-          }`}
-        >
-          <span className="block">{title[0]}</span>
-          <span className="block">{title[1]}</span>
-        </div>
-
-        {!badge && (
-          <p className="text-[15px] font-semibold text-white opacity-100">{subtitle}</p>
+        {description ? (
+          <h3
+            className={`font-semibold text-white ${
+              isHero
+                ? "text-[32px] leading-tight tracking-[-0.05em] sm:text-[40px] md:text-[45px] md:leading-[1.1]"
+                : "text-[28px] leading-tight tracking-[-0.04em] sm:text-[35px] md:text-[40px] md:leading-[1.1]"
+            }`}
+          >
+            <span className="block">{title[0]}</span>
+            <span className="block">{title[1]}</span>
+          </h3>
+        ) : (
+          <div
+            className={`font-semibold text-white ${
+              isHero
+                ? "text-[32px] leading-tight tracking-[-0.05em] sm:text-[40px] md:text-[45px] md:leading-[1.1]"
+                : "text-[28px] leading-tight tracking-[-0.04em] sm:text-[35px] md:text-[40px] md:leading-[1.1]"
+            }`}
+          >
+            <span className="block">{title[0]}</span>
+            <span className="block">{title[1]}</span>
+          </div>
         )}
+
+        {description ? (
+          <p className="max-w-md text-[14px] leading-relaxed text-white/90 sm:text-[15px]">{description}</p>
+        ) : !badge ? (
+          <p className="text-[15px] font-semibold text-white opacity-100">{subtitle}</p>
+        ) : null}
 
         <Link
           className="inline-flex items-center justify-center rounded-full bg-white px-8 py-[15px] text-[15px] font-semibold text-[#263cd0] transition-colors duration-300 group-hover:bg-[#263cd0] group-hover:text-white"
@@ -97,23 +124,7 @@ function ProductCard({
   );
 }
 
-const GRID: {
-  key: string;
-  image: string;
-  title: [string, string];
-}[] = [
-  { key: "balcony", image: assets.hero.balcony, title: ["Elegantiški", "stikliniai balkonai"] },
-  { key: "doors", image: assets.hero.doors, title: ["Aukščiausios", "rūšies durys"] },
-  { key: "aluminum", image: assets.hero.aluminum, title: ["Patvarios aliuminio", "konstrukcijos"] },
-  { key: "sliding", image: assets.hero.sliding, title: ["Efektyvios", "stumdomos sistemos"] },
-  {
-    key: "ziemos-sodai",
-    image: assets.hero.ziemosSodai,
-    title: ["Jaukūs", "žiemos sodai"],
-  },
-];
-
-/** Katalogo režime kortelių eilė atitinka GRID. */
+/** Katalogo režime kortelių eilė atitinka `HOME_BENTO_GRID_META`. */
 const KATALOG_TILE_HREFS = [
   "/stiklinimas",
   "/durys",
@@ -264,34 +275,37 @@ export function HeroBento({ mode = "home" }: HeroBentoProps) {
         <div className="flex flex-col gap-4">
           <ProductCard
             badge
-            href={isKatalog ? "/langai" : "/katalogas"}
+            description={isKatalog ? undefined : HOME_FEATURED_BENTO.description}
+            href={isKatalog ? "/langai" : HOME_FEATURED_BENTO.href}
             image={assets.hero.featured}
             revealDelaySec={STAGGER.featured}
             size="hero"
-            title={["Aukščiausios kokybės", "langai ir jų priedai"]}
+            title={[...HOME_FEATURED_BENTO.title]}
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {GRID.slice(0, 4).map((item, i) => (
+            {HOME_BENTO_GRID_META.slice(0, 4).map((tile, i) => (
               <ProductCard
-                key={item.key}
-                href={isKatalog ? KATALOG_TILE_HREFS[i]! : "/katalogas"}
-                image={item.image}
+                key={tile.key}
+                description={isKatalog ? undefined : tile.description}
+                href={isKatalog ? KATALOG_TILE_HREFS[i]! : tile.href}
+                image={BENTO_IMAGES[tile.key]}
                 revealDelaySec={TILE_STAGGER_SEC[i] ?? 0.58}
                 size="small"
-                title={item.title}
+                title={[...tile.title]}
               />
             ))}
           </div>
 
           <div className="w-full">
             <ProductCard
-              href={isKatalog ? KATALOG_TILE_HREFS[4]! : "/katalogas"}
-              image={GRID[4]!.image}
+              description={isKatalog ? undefined : HOME_BENTO_GRID_META[4]!.description}
+              href={isKatalog ? KATALOG_TILE_HREFS[4]! : HOME_BENTO_GRID_META[4]!.href}
+              image={BENTO_IMAGES[HOME_BENTO_GRID_META[4]!.key]}
               imageUnoptimized
               revealDelaySec={STAGGER.tile4}
               size="small"
-              title={GRID[4]!.title}
+              title={[...HOME_BENTO_GRID_META[4]!.title]}
             />
           </div>
         </div>
